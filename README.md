@@ -41,10 +41,24 @@ pnpm install
 ### Tests
 
 - **Unitaires** — Vitest (environnement jsdom) + `@testing-library/react`. Les
-  fichiers `*.test.ts(x)` vivent dans `tests/` et `src/`.
-- **End-to-end** — Playwright (`tests/e2e/*.spec.ts`). La config démarre
-  automatiquement `pnpm dev` sur `http://localhost:3000`. Au premier lancement,
-  installer le navigateur : `pnpm exec playwright install chromium`.
+  fichiers `*.test.ts(x)` vivent dans `tests/`.
+  - **Couverture** : `pnpm test --coverage` (rapport texte + HTML dans
+    `coverage/`). Seuils : lignes / fonctions / statements **≥ 80 %**,
+    branches **≥ 75 %** (configurés dans `vitest.config.ts`).
+- **End-to-end** — Playwright (`tests/e2e/*.spec.ts`) : parcours visiteur
+  complet ([landing.spec.ts](tests/e2e/landing.spec.ts)) + audit **axe-core**
+  ([a11y.spec.ts](tests/e2e/a11y.spec.ts)). La config démarre automatiquement
+  `pnpm dev`. Au premier lancement : `pnpm exec playwright install chromium`.
+
+Vérification globale :
+
+```bash
+pnpm lint && pnpm test --coverage && pnpm test:e2e && pnpm build
+```
+
+La **CI GitHub Actions** ([ci.yml](.github/workflows/ci.yml)) exécute
+lint + tests (coverage) + build et un job e2e (Playwright + axe) à chaque push
+et pull request sur `main`.
 
 ### Qualité
 
@@ -62,6 +76,14 @@ cp .env.local.example .env.local
 
 - `NEXT_PUBLIC_APP_URL` — URL de l'application Kitoo (laisser `"#"` tant qu'elle
   n'est pas connue). `.env.local` est ignoré par git.
+
+### Remplacer `NEXT_PUBLIC_APP_URL` quand le lien de l'app arrive
+
+- **En local** : éditer `.env.local` (`NEXT_PUBLIC_APP_URL="https://app.kitoo.fr"`).
+- **En production (Vercel)** : mettre à jour la variable sur les 3 environnements
+  puis redéployer — procédure détaillée dans [`DEPLOY.md`](DEPLOY.md). Tous les
+  CTA (`Button` primaire, header, hero, CTA final) consomment cette valeur via
+  `siteConfig.appUrl`, donc une seule mise à jour suffit.
 
 ## Arborescence
 
@@ -244,14 +266,18 @@ focus pervenche visible, skip-link, cibles tactiles ≥ 44px.
   en anglais — `feat:`, `fix:`, `chore:`, `test:`, `docs:`, `ci:`, `refactor:`.
   Commits atomiques et lisibles.
 - **CI** : GitHub Actions ([`.github/workflows/ci.yml`](.github/workflows/ci.yml))
-  lance `lint + test + build` à chaque push et PR sur `main`.
+  lance `lint + test (coverage) + build` et un job e2e à chaque push et PR sur
+  `main`.
+- Guide complet du contributeur : [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
-> **Déploiement Vercel** : voir l'Étape 10 / `DEPLOY.md`. Le dépôt se connecte à
-> Vercel (import du repo) pour un déploiement automatique à chaque push sur `main`.
+> **Déploiement Vercel** : déploiement automatique à chaque push sur `main`.
+> Commandes CLI, headers de sécurité et mise à jour de `NEXT_PUBLIC_APP_URL` :
+> voir [`DEPLOY.md`](DEPLOY.md).
 
-## ⚠️ Avant l'étape suivante
+## Design system
 
-Le **design system Kitoo doit être déposé dans `design-system/`** (tokens, polices,
-logo, guidelines) **avant de coder les sections du site**. Voir
-[`design-system/README.md`](design-system/README.md) pour le détail des fichiers
-attendus.
+La source de vérité visuelle vit dans
+[`design-system/`](design-system/) : `guidelines/` (PDF du DS), `tokens/`,
+`fonts/` (Goodly Medium), `assets/` (logo koala — **ne jamais recolorer**). Les
+valeurs sont traduites dans [`tailwind.config.ts`](tailwind.config.ts). Voir
+[`design-system/README.md`](design-system/README.md).
