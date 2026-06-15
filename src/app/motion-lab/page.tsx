@@ -8,6 +8,7 @@
  * animations » dans ton OS : tout doit apparaître immédiatement, sans mouvement.
  */
 import { Menu, Plus, X } from "lucide-react";
+import { notFound } from "next/navigation";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion";
 import { Button, Card, Container, IconButton } from "@/components/ui";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
@@ -17,6 +18,9 @@ function Spacer() {
 }
 
 export default function MotionLabPage() {
+  // Banc d'essai dev uniquement — inaccessible en production (retiré en R10).
+  if (process.env.NODE_ENV === "production") notFound();
+
   const reduce = useReducedMotion();
 
   return (

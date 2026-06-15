@@ -4,6 +4,7 @@
  * ⚠️ Dev only — sera retiré en R10. Server Component (la résolution
  * réel/placeholder lit le système de fichiers au build).
  */
+import { notFound } from "next/navigation";
 import { Blob, Illustration, Mascot } from "@/components/illustrations";
 import { Card, Container } from "@/components/ui";
 import { illustrationKeys, type MascotPose } from "@/lib/illustrations";
@@ -18,6 +19,9 @@ const poses: MascotPose[] = [
 ];
 
 export default function IllustrationLabPage() {
+  // Banc d'essai dev uniquement — inaccessible en production (retiré en R10).
+  if (process.env.NODE_ENV === "production") notFound();
+
   return (
     <div className="bg-ink-50 relative overflow-hidden py-16">
       <Blob className="pointer-events-none absolute top-10 -right-32 -z-0 w-[420px] opacity-60" />

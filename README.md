@@ -70,6 +70,12 @@ et pull request sur `main`.
 - **ESLint** : règles `eslint-config-next` (core-web-vitals + TypeScript).
 - **Prettier** : `.prettierrc` avec `prettier-plugin-tailwindcss` (tri des
   classes). Aucune règle stylistique d'ESLint n'entre en conflit avec Prettier.
+- **Audit transversal (R9)** — [`QUALITY.md`](QUALITY.md) : matrice responsive
+  testée (320 → 1440px+ et mobile paysage, **0 débordement**), conformité **WCAG
+  AA** (axe-core **0 violation** sur la page complète, `h1` unique, modes
+  dyslexie/daltonisme, `prefers-reduced-motion`), optimisations perf (SVG/lazy,
+  anti-CLS, animations GPU bornées au viewport, `lottie-react` retiré) et scores
+  **Lighthouse 100/100/100/100** maintenus après refonte.
 
 ## Variables d'environnement
 

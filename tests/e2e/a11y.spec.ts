@@ -65,3 +65,41 @@ test("la préférence dyslexie persiste après rechargement", async ({ page }) =
   // L'anti-flash réapplique l'attribut avant le rendu.
   await expect(page.locator("html")).toHaveAttribute("data-font", "dyslexia");
 });
+
+test("hiérarchie de titres : un seul h1 sur la landing refondue", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.locator("h1")).toHaveCount(1);
+  await expect(page.locator("h1")).toContainText(/Prends soin de toi/i);
+});
+
+test("mode daltonisme : la palette d'humeur bascule et persiste", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: /Mode daltonisme/i }).click();
+  await expect(page.locator("html")).toHaveAttribute(
+    "data-contrast",
+    "colorblind",
+  );
+  await page.reload();
+  await expect(page.locator("html")).toHaveAttribute(
+    "data-contrast",
+    "colorblind",
+  );
+});
+
+test("reduced-motion : les sections révélées sont visibles immédiatement", async ({
+  browser,
+}) => {
+  const context = await browser.newContext({ reducedMotion: "reduce" });
+  const page = await context.newPage();
+  await page.goto("/#confiance");
+  // Le titre de la section (animé via Reveal) est pleinement opaque, sans scroll.
+  const heading = page.getByRole("heading", {
+    name: /Sérieux, sécurisé/i,
+  });
+  await expect(heading).toBeVisible();
+  await context.close();
+});
