@@ -164,7 +164,20 @@ s'empilent dans [`page.tsx`](src/app/page.tsx), dans l'ordre de la navigation :
    **psychologues partenaires** (vouvoyés). Registre non diagnostique (« les
    outils t'orientent »).
 
-_(FAQ : étape suivante.)_
+5. **FAQ** ([Faq.tsx](src/components/sections/Faq.tsx)) — ancre `#faq` :
+   accordéon accessible (`aria-expanded`/`aria-controls`, clavier natif,
+   **un seul panneau ouvert à la fois**), 5 questions douces (confidentialité,
+   accès, suivi psy, échange avec un pro, sécurité).
+6. **Confiance / RGPD** ([TrustBlock.tsx](src/components/sections/TrustBlock.tsx))
+   — chiffrement HTTPS, OAuth 2.0 (Google/Apple), **conformité RGPD**
+   (consentement explicite, droit d'accès, droit à l'effacement) et le
+   **disclaimer médical** obligatoire, cadrage soutenant et non clinique.
+7. **CTA final** ([FinalCta.tsx](src/components/sections/FinalCta.tsx)) —
+   invitation chaleureuse → `siteConfig.appUrl` (`_blank` + `rel` sécurisé),
+   sur `Card soft`.
+
+Un **security-review** a été passé sur cette étape (liens externes sûrs, pas de
+`dangerouslySetInnerHTML`, aucune entrée utilisateur, aucun secret) — sans alerte.
 
 ## Navigation & layout
 
