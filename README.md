@@ -258,6 +258,46 @@ focus pervenche visible, skip-link, cibles tactiles ≥ 44px.
 - Contrôles dans le footer : [`AccessibilityToggle.tsx`](src/components/AccessibilityToggle.tsx)
   (`aria-pressed`).
 
+## Animations & mouvement
+
+Fondations de mouvement (refonte R1) basées sur **Framer Motion**, alignées sur
+les tokens du DS (ease-out `cubic-bezier(0.22, 0.61, 0.36, 1)`, durées
+120–320 ms, fondus + légères montées, aucun rebond).
+
+- **Presets** ([src/lib/motion.ts](src/lib/motion.ts)) : `transitions` (`soft`
+  ~240 ms, `quick` ~160 ms) et `variants` (`fadeInUp`, `fadeIn`, `scaleIn`,
+  `staggerContainer`). `resolveVariants(name, reduce)` renvoie des variants
+  neutres si le mouvement est réduit.
+- **`Reveal`** ([src/components/motion/Reveal.tsx](src/components/motion/Reveal.tsx))
+  — anime ses enfants à l'entrée dans le viewport (`whileInView`, une seule
+  fois). **`Stagger` / `Stagger.Item`** — apparition décalée d'une liste.
+- **Accessibilité** : tout le mouvement se neutralise sous
+  `prefers-reduced-motion: reduce` (apparition immédiate, hook
+  [useReducedMotion](src/hooks/useReducedMotion.ts)). `scroll-behavior: smooth`
+  est lui aussi désactivé dans ce cas.
+- **Perf** : animations sur `transform`/`opacity` uniquement (GPU), composants
+  `"use client"` compatibles SSR.
+
+Animer une nouvelle section :
+
+```tsx
+import { Reveal, Stagger, StaggerItem } from "@/components/motion";
+
+<Reveal>
+  <h2>Ton humeur cette semaine</h2>
+</Reveal>;
+
+<Stagger as="ul" className="grid gap-6 sm:grid-cols-3">
+  {items.map((it) => (
+    <StaggerItem as="li" key={it.id}>
+      {it.label}
+    </StaggerItem>
+  ))}
+</Stagger>;
+```
+
+> Banc d'essai dev : `/motion-lab` (temporaire, retiré en R10).
+
 ## Versioning & contribution
 
 - **Branche principale** : `main` (toujours stable, build + tests au vert).
