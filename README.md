@@ -139,6 +139,32 @@ import { Button, Card, Container, Section } from "@/components/ui";
 La page **`/styleguide`** (dev only, retirée plus tard) présente tous les
 variants.
 
+## Navigation & layout
+
+Le layout global vit dans [`src/components/layout/`](src/components/layout) et est
+monté dans [`layout.tsx`](src/app/layout.tsx) : `SkipLink` → `Header` →
+`<main id="content">` → `Footer`.
+
+- **Header** ([Header.tsx](src/components/layout/Header.tsx)) — sticky, effet
+  givré (`backdrop-blur`) qui s'accentue au scroll. Navigation par **ancres**
+  (top-nav, pas le rail 248px de l'app : choix vitrine documenté en JSDoc).
+  Menu mobile burger accessible : `aria-expanded`/`aria-controls`, fermeture au
+  clic sur un lien, au clic extérieur et à la touche **Échap**. CTA « Accéder à
+  l'app » → `siteConfig.appUrl` (`target="_blank"` + `rel="noopener noreferrer"`).
+- **Footer** ([Footer.tsx](src/components/layout/Footer.tsx)) — disclaimer médical
+  obligatoire (doux), colonnes Navigation / Légal (RGPD, placeholders) / Réseaux,
+  copyright à **année dynamique**, logo koala.
+- **SkipLink** ([SkipLink.tsx](src/components/layout/SkipLink.tsx)) — « Aller au
+  contenu » visible au focus, cible `#content`.
+
+**Ancres** (depuis `siteConfig.nav`) : `#hero`, `#fonctionnalites`,
+`#comment-ca-marche`, `#pour-qui`, `#faq`. Défilement doux via
+`scroll-behavior: smooth` + `scroll-margin-top` (neutralisé si
+`prefers-reduced-motion`).
+
+**Accessibilité** : navigation au clavier, `aria-label` sur les nav, anneau de
+focus pervenche visible, skip-link, cibles tactiles ≥ 44px.
+
 ## Versioning & contribution
 
 - **Branche principale** : `main` (toujours stable, build + tests au vert).

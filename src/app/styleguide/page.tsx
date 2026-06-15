@@ -77,7 +77,7 @@ export default function StyleguidePage() {
   const [selected, setSelected] = useState<string | null>("respiration");
 
   return (
-    <main className="bg-ink-50">
+    <div className="bg-ink-50">
       <Container>
         <Section id="intro">
           <p className="text-eyebrow text-brand-600 tracking-[0.04em] uppercase">
@@ -233,6 +233,6 @@ export default function StyleguidePage() {
           </div>
         </Section>
       </Container>
-    </main>
+    </div>
   );
 }

@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Atkinson_Hyperlegible, Nunito } from "next/font/google";
 import localFont from "next/font/local";
+import { Footer } from "@/components/layout/Footer";
+import { Header } from "@/components/layout/Header";
+import { SkipLink } from "@/components/layout/SkipLink";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
@@ -49,7 +52,14 @@ export default function RootLayout({
       lang="fr"
       className={`${goodly.variable} ${nunito.variable} ${atkinson.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col">{children}</body>
+      <body className="flex min-h-full flex-col">
+        <SkipLink />
+        <Header />
+        <main id="content" className="flex-1">
+          {children}
+        </main>
+        <Footer />
+      </body>
     </html>
   );
 }

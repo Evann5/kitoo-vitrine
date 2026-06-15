@@ -41,7 +41,7 @@ export const siteConfig: SiteConfig = {
   // Fallback "#" volontaire : aucune variable d'env requise pour faire tourner le site.
   appUrl: process.env.NEXT_PUBLIC_APP_URL ?? "#",
   nav: [
-    { label: "Accueil", href: "#accueil" },
+    { label: "Accueil", href: "#hero" },
     { label: "Fonctionnalités", href: "#fonctionnalites" },
     { label: "Comment ça marche", href: "#comment-ca-marche" },
     { label: "Pour qui", href: "#pour-qui" },

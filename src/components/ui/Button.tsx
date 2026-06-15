@@ -48,6 +48,22 @@ const sizes: Record<ButtonSize, string> = {
 };
 
 /**
+ * Compose les classes du bouton Kitoo. Réutilisable pour styliser un lien `<a>`
+ * comme un bouton (ex. CTA de navigation) sans imbriquer `<button>` dans `<a>`.
+ */
+export function buttonVariants({
+  variant = "primary",
+  size = "md",
+  className,
+}: {
+  variant?: ButtonVariant;
+  size?: ButtonSize;
+  className?: string;
+} = {}): string {
+  return cn(base, variants[variant], sizes[size], className);
+}
+
+/**
  * Bouton primitif Kitoo. Casse phrase pour le libellé, rayon 16px.
  * Transmet `ref` et tous les attributs natifs `<button>`.
  */
@@ -60,7 +76,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         ref={ref}
         type={type}
-        className={cn(base, variants[variant], sizes[size], className)}
+        className={buttonVariants({ variant, size, className })}
         {...props}
       />
     );
