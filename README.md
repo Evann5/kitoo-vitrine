@@ -2,6 +2,11 @@
 
 Site vitrine marketing (one-page) de l'application **Kitoo**.
 
+🌐 **Production : https://kitoo-vitrine.vercel.app**
+
+Déployé sur Vercel avec **déploiement automatique** à chaque push sur `main`.
+Détails et commandes CLI : [`DEPLOY.md`](DEPLOY.md).
+
 ## Stack
 
 - **Next.js** (App Router) — React 19
