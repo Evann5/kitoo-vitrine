@@ -155,7 +155,16 @@ s'empilent dans [`page.tsx`](src/app/page.tsx), dans l'ordre de la navigation :
    psychologue), **Espace bien-être** (articles & exercices validés). Grille
    responsive 1 → 2 → 3 colonnes.
 
-_(Comment ça marche, Pour qui, FAQ : étapes suivantes.)_
+3. **Comment ça marche** ([HowItWorks.tsx](src/components/sections/HowItWorks.tsx))
+   — ancre `#comment-ca-marche` : parcours en 3 étapes numérotées (notes ton
+   humeur → reçois des ressources → échanges avec un pro), ton encourageant et
+   sans pression. Timeline colonne (mobile) → 3 colonnes (desktop).
+4. **Pour qui** ([Audience.tsx](src/components/sections/Audience.tsx)) — ancre
+   `#pour-qui` : 2 profils — jeunes adultes **18–24 ans** (tutoyés) et
+   **psychologues partenaires** (vouvoyés). Registre non diagnostique (« les
+   outils t'orientent »).
+
+_(FAQ : étape suivante.)_
 
 ## Navigation & layout
 
