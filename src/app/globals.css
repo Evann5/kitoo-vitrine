@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+/* Charge les tokens du design system Kitoo (couleurs, rayons, ombres, fonts). */
+@config "../../tailwind.config.ts";
+
+/*
+ * Variables CSS de marque — miroir des tokens Tailwind pour les usages hors
+ * utilitaires (ombres composées, anneau de focus, surfaces).
+ * Source : design-system/guidelines/Kitoo_Design_System.pdf
+ */
+:root {
+  /* Pervenche */
+  --brand-50: #f3f3fe;
+  --brand-100: #e9eafa;
+  --brand-500: #9b9df0;
+  --brand-600: #7e80e6;
+
+  /* Encre */
+  --ink-50: #fafafd;
+  --ink-100: #f2f2f7;
+  --ink-200: #e6e6ee;
+  --ink-300: #d2d2de;
+  --ink-600: #5c5d70;
+  --ink-900: #16161d;
+
+  /* Surfaces sémantiques */
+  --canvas: var(--ink-50); /* fond de l'app : off-white teinté lavande */
+  --surface: #ffffff; /* cartes : blanc pur */
+  --surface-soft: var(--brand-100); /* surface douce lavande */
+  --text: var(--ink-900);
+
+  /* Anneau de focus pervenche (4px) */
+  --focus-ring: 0 0 0 4px rgba(155, 157, 240, 0.4);
+
+  /* Mouvement */
+  --ease-kitoo: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body), system-ui, sans-serif;
+  /* Le corps ne descend jamais sous 16px (WCAG). */
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/*
+ * Focus accessible : anneau pervenche doux, jamais d'outline dur.
+ * Visible uniquement au focus clavier (:focus-visible).
+ */
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: 12px;
+}
+
+/* Active le mode dyslexie (Atkinson Hyperlegible) via un attribut sur <html>. */
+[data-font="dyslexia"] body {
+  font-family: var(--font-dyslexia), system-ui, sans-serif;
+}
+
+/*
+ * Respect de prefers-reduced-motion : on neutralise animations et transitions
+ * pour les utilisateurs qui le demandent.
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
