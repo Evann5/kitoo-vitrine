@@ -75,7 +75,7 @@ et pull request sur `main`.
   AA** (axe-core **0 violation** sur la page complète, `h1` unique, modes
   dyslexie/daltonisme, `prefers-reduced-motion`), optimisations perf (SVG/lazy,
   anti-CLS, animations GPU bornées au viewport, `lottie-react` retiré) et scores
-  **Lighthouse 100/100/100/100** maintenus après refonte.
+  **Lighthouse ≥ 99** (a11y/BP/SEO 100, perf 99–100) maintenus après refonte.
 
 ## Variables d'environnement
 

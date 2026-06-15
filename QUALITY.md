@@ -7,15 +7,17 @@ accessibilité et performance.
 
 Audit `lighthouse@12 --preset=desktop` sur le build de production.
 
-| Catégorie      | Avant refonte (V1, étape 8) | Après refonte (R9) |
-| -------------- | --------------------------- | ------------------ |
-| Performance    | 100                         | **100**            |
-| Accessibilité  | 100                         | **100**            |
-| Best Practices | 100                         | **100**            |
-| SEO            | 100                         | **100**            |
+| Catégorie      | Avant refonte (V1, étape 8) | Après refonte (R9)        |
+| -------------- | --------------------------- | ------------------------- |
+| Performance    | 100                         | **99–100** (variance run) |
+| Accessibilité  | 100                         | **100**                   |
+| Best Practices | 100                         | **100**                   |
+| SEO            | 100                         | **100**                   |
 
-> La refonte (Hero plein écran, scroll-story, démo interactive, animations,
-> mascotte) **n'a dégradé aucun score**.
+> Mesuré sur le build de prod (local **100/100/100/100** ; prod déployée **99**
+> en perf selon la variance réseau/CDN). Tous les scores restent **≥ 95** : la
+> refonte (Hero plein écran, scroll-story, démo interactive, animations,
+> mascotte) **n'a pas dégradé la qualité**.
 
 ## Responsive — matrice testée
 
