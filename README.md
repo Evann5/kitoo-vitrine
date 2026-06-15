@@ -251,6 +251,22 @@ monté dans [`layout.tsx`](src/app/layout.tsx) : `SkipLink` → `Header` →
 **Accessibilité** : navigation au clavier, `aria-label` sur les nav, anneau de
 focus pervenche visible, skip-link, cibles tactiles ≥ 44px.
 
+### Navigation avancée (R8)
+
+- **Header au scroll** : se **condense** (hauteur réduite) et accentue l'effet
+  givré + ombre lavande au défilement (transition douce, atténuée en
+  reduced-motion).
+- **Section active** : [`useActiveSection`](src/hooks/useActiveSection.ts)
+  (IntersectionObserver, cleanup au démontage) met en évidence le lien de la
+  section visible avec **`aria-current="true"`**.
+- **CTA mobile collant** : [`MobileCtaBar`](src/components/layout/MobileCtaBar.tsx)
+  — barre fixe en bas **sur mobile uniquement**, apparaît après le hero, se masque
+  quand le footer entre en vue (ne le recouvre pas), `pb` de compensation sur le
+  `<main>`. Lien app `rel` sécurisé, hors tabulation quand masquée.
+- **Retour en haut** : [`BackToTop`](src/components/layout/BackToTop.tsx) — bouton
+  discret (au-dessus de la barre CTA sur mobile), écouteur scroll en `rAF`.
+- Observers nettoyés, animations sur `transform`/`opacity`, contraste AA.
+
 ## Accessibilité & SEO
 
 ### SEO

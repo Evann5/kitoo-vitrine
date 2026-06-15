@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Atkinson_Hyperlegible, Nunito } from "next/font/google";
 import localFont from "next/font/local";
+import { BackToTop } from "@/components/layout/BackToTop";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
+import { MobileCtaBar } from "@/components/layout/MobileCtaBar";
 import { SkipLink } from "@/components/layout/SkipLink";
 import { siteMetadata } from "@/lib/metadata";
 import "./globals.css";
@@ -119,10 +121,13 @@ export default function RootLayout({
       <body className="flex min-h-full flex-col">
         <SkipLink />
         <Header />
-        <main id="content" className="flex-1">
+        {/* Compensation `pb` mobile : réserve l'espace de la barre CTA collante. */}
+        <main id="content" className="flex-1 pb-20 md:pb-0">
           {children}
         </main>
         <Footer />
+        <MobileCtaBar />
+        <BackToTop />
       </body>
     </html>
   );
