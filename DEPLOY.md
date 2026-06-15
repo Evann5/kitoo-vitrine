@@ -6,6 +6,22 @@ Le site est déployé sur **Vercel**, configuré **entièrement en CLI**.
 - **Projet Vercel** : `evan-leev/kitoo-vitrine`
 - **Dépôt Git** : https://github.com/Evann5/kitoo-vitrine (connecté → déploiement continu)
 
+## Checklist de mise en ligne (V1)
+
+- [x] `pnpm lint` au vert
+- [x] `pnpm test --coverage` au vert (≥ 80 % lignes)
+- [x] `pnpm test:e2e` au vert (parcours visiteur + axe-core)
+- [x] `pnpm build` sans warning bloquant
+- [x] Smoke test `pnpm start` (page servie, CTA, disclaimer présents)
+- [x] CI GitHub Actions verte (jobs `quality` + `e2e`)
+- [x] Lighthouse : SEO & Accessibilité ≥ 95
+- [x] `pnpm audit --prod` : 0 vulnérabilité
+- [x] En-têtes de sécurité actifs (cf. ci-dessous)
+- [x] `NEXT_PUBLIC_APP_URL` configurée sur les 3 environnements Vercel
+- [x] Aucun secret commité ; `.env.local` et `.vercel/` ignorés
+- [ ] Remplacer `NEXT_PUBLIC_APP_URL` par le vrai lien quand l'équipe app le fournit
+      (cf. procédure ci-dessous)
+
 ## Déploiement continu
 
 Le projet Vercel est connecté au dépôt GitHub. **Chaque `git push` sur `main`
@@ -16,11 +32,13 @@ génère un déploiement de _preview_. Aucune action manuelle nécessaire au quo
 
 Définis dans [`vercel.json`](vercel.json) et appliqués à toutes les routes :
 
-| En-tête                  | Valeur                            |
-| ------------------------ | --------------------------------- |
-| `X-Content-Type-Options` | `nosniff`                         |
-| `Referrer-Policy`        | `strict-origin-when-cross-origin` |
-| `X-Frame-Options`        | `SAMEORIGIN`                      |
+| En-tête                     | Valeur                                     |
+| --------------------------- | ------------------------------------------ |
+| `X-Content-Type-Options`    | `nosniff`                                  |
+| `Referrer-Policy`           | `strict-origin-when-cross-origin`          |
+| `X-Frame-Options`           | `SAMEORIGIN`                               |
+| `Strict-Transport-Security` | `max-age=63072000; includeSubDomains`      |
+| `Permissions-Policy`        | `camera=(), microphone=(), geolocation=()` |
 
 ## Variable d'environnement
 

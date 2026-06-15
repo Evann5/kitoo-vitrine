@@ -9,9 +9,9 @@ import "./globals.css";
 
 /**
  * Goodly Medium — police display de marque (titres, wordmark, chiffres héros).
- * Chargée localement depuis le design system.
- * TODO: si `design-system/fonts/goodly-medium.otf` venait à manquer, basculer
- * sur un fallback Poppins (déjà présent dans la stack `font-display`).
+ * Chargée localement depuis le design system. Si le fichier `.otf` venait à
+ * manquer, le fallback Poppins (déclaré dans la stack `font-display`) prend le
+ * relais sans casser le rendu.
  */
 const goodly = localFont({
   src: "../../design-system/fonts/goodly-medium.otf",
@@ -109,7 +109,11 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: noFlashScript }} />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          // Contenu statique (aucune entrée utilisateur) ; on échappe tout de
+          // même `<` pour interdire toute sortie prématurée de la balise script.
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+          }}
         />
       </head>
       <body className="flex min-h-full flex-col">

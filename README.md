@@ -1,11 +1,15 @@
 # Kitoo — Site vitrine
 
-Site vitrine marketing (one-page) de l'application **Kitoo**.
+Site vitrine marketing (one-page) de l'application **Kitoo** (prévention en santé
+mentale pour les 18–24 ans).
 
 🌐 **Production : https://kitoo-vitrine.vercel.app**
+🏷️ **État : V1 livrable** (`v1.0.0`) — landing complète, testée, accessible (100/100
+Lighthouse SEO & Accessibilité) et déployée en continu.
 
 Déployé sur Vercel avec **déploiement automatique** à chaque push sur `main`.
-Détails et commandes CLI : [`DEPLOY.md`](DEPLOY.md).
+Détails et commandes CLI : [`DEPLOY.md`](DEPLOY.md). Historique :
+[`CHANGELOG.md`](CHANGELOG.md).
 
 ## Stack
 
@@ -157,9 +161,6 @@ import { Button, Card, Container, Section } from "@/components/ui";
   </Container>
 </Section>;
 ```
-
-La page **`/styleguide`** (dev only, retirée plus tard) présente tous les
-variants.
 
 ## Sections de la landing
 
