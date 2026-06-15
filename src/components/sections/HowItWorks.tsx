@@ -57,7 +57,7 @@ export function HowItWorks() {
     >
       <Container>
         <div className="max-w-prose">
-          <p className="text-eyebrow text-brand-600 font-bold tracking-[0.04em] uppercase">
+          <p className="text-eyebrow text-brand-800 font-bold tracking-[0.04em] uppercase">
             Comment ça marche
           </p>
           <h2
@@ -79,7 +79,7 @@ export function HowItWorks() {
               >
                 <div className="flex items-center gap-3">
                   <span
-                    className="rounded-pill bg-brand-500 font-display text-body inline-flex h-10 w-10 shrink-0 items-center justify-center text-white"
+                    className="rounded-pill bg-brand-700 font-display text-body inline-flex h-10 w-10 shrink-0 items-center justify-center text-white"
                     aria-hidden="true"
                   >
                     {step.number}

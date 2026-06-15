@@ -6,7 +6,8 @@ describe("Button", () => {
   test("rend le variant primary par défaut (pervenche)", () => {
     render(<Button>Noter mon humeur</Button>);
     const btn = screen.getByRole("button", { name: "Noter mon humeur" });
-    expect(btn).toHaveClass("bg-brand-500");
+    // brand-700 (et non 500) pour garantir un contraste WCAG AA avec le texte blanc.
+    expect(btn).toHaveClass("bg-brand-700");
     expect(btn).toHaveAttribute("type", "button");
   });
 

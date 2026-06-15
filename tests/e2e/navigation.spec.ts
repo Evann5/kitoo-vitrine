@@ -16,9 +16,11 @@ test("header sticky : liens de nav, CTA et skip-link présents (desktop)", async
   const cta = nav.getByRole("link", { name: /Accéder à l'app/i }).first();
   await expect(cta).toHaveAttribute("target", "_blank");
 
-  // Disclaimer médical présent dans le footer.
+  // Disclaimer médical présent dans le footer (le contenu en compte plusieurs).
   await expect(
-    page.getByText(/ne remplace pas un suivi médical professionnel/i),
+    page
+      .locator("footer")
+      .getByText(/ne remplace pas un suivi médical professionnel/i),
   ).toBeVisible();
 });
 

@@ -80,7 +80,7 @@ export default function StyleguidePage() {
     <div className="bg-ink-50">
       <Container>
         <Section id="intro">
-          <p className="text-eyebrow text-brand-600 tracking-[0.04em] uppercase">
+          <p className="text-eyebrow text-brand-800 tracking-[0.04em] uppercase">
             Design system · MVP
           </p>
           <h1 className="font-display text-display text-ink-900 mt-2">
@@ -142,7 +142,7 @@ export default function StyleguidePage() {
             <p className="text-small text-ink-600">
               5 min pour souffler — respiration 4-7-8. (small · 13px)
             </p>
-            <p className="text-eyebrow text-brand-600 tracking-[0.04em] uppercase">
+            <p className="text-eyebrow text-brand-800 tracking-[0.04em] uppercase">
               Ressource validée
             </p>
           </div>

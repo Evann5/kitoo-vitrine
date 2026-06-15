@@ -57,7 +57,7 @@ export function Faq() {
       aria-labelledby="faq-title"
     >
       <Container width="prose">
-        <p className="text-eyebrow text-brand-600 font-bold tracking-[0.04em] uppercase">
+        <p className="text-eyebrow text-brand-800 font-bold tracking-[0.04em] uppercase">
           Questions fréquentes
         </p>
         <h2

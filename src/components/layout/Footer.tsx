@@ -10,6 +10,7 @@
  * Server Component : l'année est calculée au rendu, aucun JS client nécessaire.
  */
 import Image from "next/image";
+import { AccessibilityToggle } from "@/components/AccessibilityToggle";
 import { siteConfig } from "@/lib/site-config";
 
 const legalLinks = [
@@ -33,7 +34,7 @@ function FooterColumn({
 }) {
   return (
     <div>
-      <h2 className="text-eyebrow text-ink-500 font-bold tracking-[0.04em] uppercase">
+      <h2 className="text-eyebrow text-ink-600 font-bold tracking-[0.04em] uppercase">
         {title}
       </h2>
       <ul className="mt-3 flex flex-col gap-2">
@@ -88,7 +89,11 @@ export function Footer() {
           <FooterColumn title="Réseaux" links={socialLinks} />
         </div>
 
-        <div className="border-ink-200 text-small text-ink-500 mt-10 border-t pt-6">
+        <div className="border-ink-200 mt-10 border-t pt-8">
+          <AccessibilityToggle />
+        </div>
+
+        <div className="text-small text-ink-600 mt-8">
           © {year} Kitoo. Prends soin de toi. 💜
         </div>
       </div>

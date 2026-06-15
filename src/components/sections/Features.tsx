@@ -97,7 +97,7 @@ export function Features() {
     >
       <Container>
         <div className="max-w-prose">
-          <p className="text-eyebrow text-brand-600 font-bold tracking-[0.04em] uppercase">
+          <p className="text-eyebrow text-brand-800 font-bold tracking-[0.04em] uppercase">
             Ce que Kitoo t&apos;apporte
           </p>
           <h2

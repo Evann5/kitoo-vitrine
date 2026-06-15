@@ -47,13 +47,14 @@ const config: Config = {
           900: "#16161D", // texte principal
           DEFAULT: "#16161D",
         },
-        // Échelle d'humeur — fixe, issue de la spec, à NE PAS re-thématiser.
+        // Échelle d'humeur — couleurs fixes du DS, exposées en variables CSS
+        // pour permettre la bascule daltonisme (override dans globals.css).
         mood: {
-          "very-positive": "#FFD93D",
-          positive: "#A8E6CF",
-          neutral: "#E0E0E0",
-          negative: "#FF8C42",
-          "very-negative": "#FF595E",
+          "very-positive": "var(--mood-very-positive)",
+          positive: "var(--mood-positive)",
+          neutral: "var(--mood-neutral)",
+          negative: "var(--mood-negative)",
+          "very-negative": "var(--mood-very-negative)",
         },
         // Sémantique — accordée au pervenche, jamais criarde.
         success: "#38B27E",

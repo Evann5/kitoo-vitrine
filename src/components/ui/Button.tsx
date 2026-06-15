@@ -31,7 +31,7 @@ const base = cn(
 
 const variants: Record<ButtonVariant, string> = {
   // Pervenche pleine avec lueur ; s'assombrit d'un cran au survol.
-  primary: cn("bg-brand-500 text-white shadow-brand", "hover:bg-brand-600"),
+  primary: cn("bg-brand-700 text-white shadow-brand", "hover:bg-brand-800"),
   // Remplissage teinte lavande au survol.
   ghost: cn("bg-transparent text-brand-700", "hover:bg-brand-100"),
   // Contour neutre.

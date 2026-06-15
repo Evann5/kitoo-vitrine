@@ -25,7 +25,7 @@ export function Hero() {
         <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-12">
           {/* Texte */}
           <div className="animate-enter text-center md:text-left">
-            <p className="text-eyebrow text-brand-600 font-bold tracking-[0.04em] uppercase">
+            <p className="text-eyebrow text-brand-800 font-bold tracking-[0.04em] uppercase">
               Prévention santé mentale · 18–24 ans
             </p>
 

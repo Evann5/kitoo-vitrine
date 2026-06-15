@@ -34,6 +34,26 @@
 
   /* Mouvement */
   --ease-kitoo: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  /* Échelle d'humeur — couleurs fixes du DS (valeurs par défaut). */
+  --mood-very-positive: #ffd93d;
+  --mood-positive: #a8e6cf;
+  --mood-neutral: #e0e0e0;
+  --mood-negative: #ff8c42;
+  --mood-very-negative: #ff595e;
+}
+
+/*
+ * Mode daltonisme : palette Okabe-Ito (distinguable en deutéranopie /
+ * protanopie). Diverge du bleu-vert (positif) au vermillon (négatif).
+ * Activé via `data-contrast="colorblind"` sur <html> (toggle + anti-flash).
+ */
+[data-contrast="colorblind"] {
+  --mood-very-positive: #009e73; /* bluish green */
+  --mood-positive: #56b4e9; /* sky blue */
+  --mood-neutral: #999999; /* gray */
+  --mood-negative: #e69f00; /* orange */
+  --mood-very-negative: #d55e00; /* vermillion */
 }
 
 /* Défilement doux vers les ancres (neutralisé plus bas si reduced-motion). */

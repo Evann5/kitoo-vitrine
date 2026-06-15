@@ -24,7 +24,7 @@ export const Tag = forwardRef<HTMLButtonElement, TagProps>(
           "rounded-pill text-small inline-flex items-center px-3 py-1 font-bold",
           "duration-kitoo ease-kitoo transition-colors",
           selected
-            ? "bg-brand-500 text-white"
+            ? "bg-brand-700 text-white"
             : "border-ink-300 text-ink-700 hover:bg-brand-100 hover:text-brand-700 border",
           className,
         )}

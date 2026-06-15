@@ -205,6 +205,35 @@ monté dans [`layout.tsx`](src/app/layout.tsx) : `SkipLink` → `Header` →
 **Accessibilité** : navigation au clavier, `aria-label` sur les nav, anneau de
 focus pervenche visible, skip-link, cibles tactiles ≥ 44px.
 
+## Accessibilité & SEO
+
+### SEO
+
+- **Métadonnées** centralisées dans [`src/lib/metadata.ts`](src/lib/metadata.ts) et
+  exposées via `metadata` de [`layout.tsx`](src/app/layout.tsx) : title/description,
+  **Open Graph** + **Twitter card**, `metadataBase`, `lang="fr"`.
+- **Image OG** générée (1200×630, brandée) :
+  [`opengraph-image.tsx`](src/app/opengraph-image.tsx).
+- **Favicon** dérivé du logo koala (`icon.png` / `apple-icon.png`).
+- [`sitemap.ts`](src/app/sitemap.ts) + [`robots.ts`](src/app/robots.ts).
+- **JSON-LD** `Organization` + `WebSite` injecté dans le layout.
+
+### Accessibilité (WCAG AA visé)
+
+- **0 violation** axe-core (critique/sérieuse) sur `/` — testé en e2e.
+- Contraste **≥ 4.5:1** partout (surfaces pervenche à texte passées en `brand-700`,
+  eyebrows en `brand-800`, labels en `ink-600`).
+- Landmarks `header`/`main`/`footer`/`nav`, focus pervenche visible, ordre de
+  tabulation logique, skip-link, `prefers-reduced-motion` respecté.
+- **Mode dyslexie** : bascule la police body sur **Atkinson Hyperlegible**
+  (`<html data-font="dyslexia">`).
+- **Mode daltonisme** : palette d'humeur alternative **Okabe-Ito**
+  (`<html data-contrast="colorblind">`), variables CSS surchargées.
+- Préférences persistées en `localStorage` + **script anti-flash** (inline dans
+  `layout.tsx`) qui applique le choix avant le premier rendu (pas de FOUC).
+- Contrôles dans le footer : [`AccessibilityToggle.tsx`](src/components/AccessibilityToggle.tsx)
+  (`aria-pressed`).
+
 ## Versioning & contribution
 
 - **Branche principale** : `main` (toujours stable, build + tests au vert).
