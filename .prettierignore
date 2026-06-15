@@ -1,0 +1,10 @@
+node_modules
+.next
+out
+build
+pnpm-lock.yaml
+coverage
+playwright-report
+test-results
+public
+design-system
