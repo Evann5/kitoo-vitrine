@@ -5,12 +5,12 @@ import { FinalCta } from "@/components/sections/FinalCta";
 import { Hero } from "@/components/sections/Hero";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { MoodDemo } from "@/components/sections/MoodDemo";
-import { TrustBlock } from "@/components/sections/TrustBlock";
+import { Trust } from "@/components/sections/Trust";
 
 /**
- * Page d'accueil (one-page). Les sections s'empilent ici dans l'ordre de la
- * navigation, suivies de l'aperçu interactif, des blocs de réassurance et du
- * CTA final.
+ * Page d'accueil (one-page). Les sections s'empilent ici : produit (hero,
+ * fonctionnalités, parcours, aperçu), réassurance/preuve sociale, public, FAQ,
+ * puis CTA final.
  */
 export default function Home() {
   return (
@@ -19,9 +19,9 @@ export default function Home() {
       <Features />
       <HowItWorks />
       <MoodDemo />
+      <Trust />
       <Audience />
       <Faq />
-      <TrustBlock />
       <FinalCta />
     </>
   );

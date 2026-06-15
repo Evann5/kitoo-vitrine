@@ -208,10 +208,16 @@ s'empilent dans [`page.tsx`](src/app/page.tsx), dans l'ordre de la navigation :
    accordéon accessible (`aria-expanded`/`aria-controls`, clavier natif,
    **un seul panneau ouvert à la fois**), 5 questions douces (confidentialité,
    accès, suivi psy, échange avec un pro, sécurité).
-6. **Confiance / RGPD** ([TrustBlock.tsx](src/components/sections/TrustBlock.tsx))
-   — chiffrement HTTPS, OAuth 2.0 (Google/Apple), **conformité RGPD**
-   (consentement explicite, droit d'accès, droit à l'effacement) et le
-   **disclaimer médical** obligatoire, cadrage soutenant et non clinique.
+6. **Confiance & preuve sociale** ([Trust.tsx](src/components/sections/Trust.tsx))
+   — ancre `#confiance`, **R7** (refonte enrichie du bloc confiance) : 4 cards
+   sécurité/RGPD (chiffrement HTTPS, OAuth 2.0, consentement/accès/effacement,
+   **validé par des pros**) + **disclaimer médical** obligatoire, ton soutenant
+   non clinique. **Stats** ([Stats.tsx](src/components/sections/Stats.tsx)) en
+   cards avec **compteur animé accessible** (valeur finale toujours dans le DOM,
+   `role="img"` + `aria-label`, neutralisé en reduced-motion). **Témoignages**
+   ([Testimonials.tsx](src/components/sections/Testimonials.tsx)) — **personas
+   fictifs** (mention « illustratifs », avatars en initiales, aucune vraie
+   personne/logo).
 7. **CTA final** ([FinalCta.tsx](src/components/sections/FinalCta.tsx)) —
    invitation chaleureuse → `siteConfig.appUrl` (`_blank` + `rel` sécurisé),
    sur `Card soft`.
