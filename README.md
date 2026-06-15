@@ -188,10 +188,21 @@ s'empilent dans [`page.tsx`](src/app/page.tsx), dans l'ordre de la navigation :
 > Les deux sections s'appuient sur le composant générique
 > [StoryBlock](src/components/sections/StoryBlock.tsx) (texte + illustration,
 > alternance gauche/droite desktop → empilé mobile, révélation `Reveal`/`Stagger`
-> neutralisée en reduced-motion). 4. **Pour qui** ([Audience.tsx](src/components/sections/Audience.tsx)) — ancre
-> `#pour-qui` : 2 profils — jeunes adultes **18–24 ans** (tutoyés) et
-> **psychologues partenaires** (vouvoyés). Registre non diagnostique (« les
-> outils t'orientent »).
+> neutralisée en reduced-motion).
+
+4. **Aperçu / démo humeur & gamification** ([MoodDemo.tsx](src/components/sections/MoodDemo.tsx))
+   — ancre `#apercu`, **R6** : démo **illustrative** (aucune donnée, aucun lien
+   app). Sélecteur des **5 niveaux d'humeur** ([MoodFace](src/components/ui/MoodFace.tsx)
+   sur-mesure + libellé, jamais la couleur seule) en **radiogroup accessible**
+   (flèches clavier, focus pervenche, cibles ≥ 44px) qui fait réagir la
+   **mascotte** (pose) et le **fond** (teinte douce compagne), transition
+   neutralisée en reduced-motion. **Gamification douce** ([Gamification.tsx](src/components/sections/Gamification.tsx))
+   : série + badges, ton bienveillant (« pas de pression »). CTA discret vers
+   l'app. Échelle d'humeur **fixe** du DS (`src/lib/moods.ts`). 4. **Pour qui** ([Audience.tsx](src/components/sections/Audience.tsx)) — ancre
+
+   > `#pour-qui` : 2 profils — jeunes adultes **18–24 ans** (tutoyés) et
+   > **psychologues partenaires** (vouvoyés). Registre non diagnostique (« les
+   > outils t'orientent »).
 
 5. **FAQ** ([Faq.tsx](src/components/sections/Faq.tsx)) — ancre `#faq` :
    accordéon accessible (`aria-expanded`/`aria-controls`, clavier natif,

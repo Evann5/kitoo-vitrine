@@ -74,7 +74,7 @@ export function Hero() {
                 {/* Lien secondaire discret (ne concurrence pas le CTA) */}
                 <a
                   href="#fonctionnalites"
-                  className="group rounded-control text-body text-brand-700 hover:text-brand-800 inline-flex items-center gap-1.5 px-1 py-1 font-bold"
+                  className="group rounded-control text-body text-brand-800 hover:text-brand-900 inline-flex items-center gap-1.5 px-1 py-1 font-bold"
                 >
                   Découvrir
                   <ArrowDown

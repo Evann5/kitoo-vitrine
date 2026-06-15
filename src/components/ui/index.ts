@@ -12,6 +12,8 @@ export type {
   IconButtonSize,
   IconButtonVariant,
 } from "./IconButton";
+export { MoodFace } from "./MoodFace";
+export type { MoodFaceProps } from "./MoodFace";
 export { Pill } from "./Pill";
 export { Pressable, pressClasses } from "./Pressable";
 export type { PressableProps } from "./Pressable";
