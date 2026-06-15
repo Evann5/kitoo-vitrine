@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
-import { describe, expect, test } from "vitest";
+import { describe, expect, test, vi } from "vitest";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 
-describe("HowItWorks", () => {
+describe("HowItWorks (scroll-story)", () => {
   test("rend les 3 étapes dans le bon ordre", () => {
     render(<HowItWorks />);
     const titles = screen
@@ -15,10 +15,17 @@ describe("HowItWorks", () => {
     ]);
   });
 
-  test("rend exactement 3 étapes dans une liste ordonnée", () => {
+  test("exactement 3 étapes numérotées dans une liste ordonnée", () => {
     const { container } = render(<HowItWorks />);
-    const items = container.querySelectorAll("ol > li");
-    expect(items).toHaveLength(3);
+    expect(container.querySelectorAll("ol > li")).toHaveLength(3);
+    for (const n of ["1", "2", "3"]) {
+      expect(screen.getByText(n)).toBeInTheDocument();
+    }
+  });
+
+  test("ton encourageant sans pression", () => {
+    render(<HowItWorks />);
+    expect(screen.getByText(/Pas de pression/i)).toBeInTheDocument();
   });
 
   test("la section porte l'ancre #comment-ca-marche", () => {
@@ -26,12 +33,20 @@ describe("HowItWorks", () => {
     expect(container.querySelector("#comment-ca-marche")).not.toBeNull();
   });
 
-  test("les icônes des étapes sont décoratives (aria-hidden)", () => {
-    const { container } = render(<HowItWorks />);
-    const icons = container.querySelectorAll("svg");
-    expect(icons.length).toBeGreaterThanOrEqual(3);
-    icons.forEach((icon) =>
-      expect(icon).toHaveAttribute("aria-hidden", "true"),
-    );
+  test("sous reduced-motion, les étapes restent présentes", () => {
+    window.matchMedia = vi.fn().mockImplementation((q: string) => ({
+      matches: q.includes("reduce"),
+      media: q,
+      onchange: null,
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+      addListener: vi.fn(),
+      removeListener: vi.fn(),
+      dispatchEvent: vi.fn(),
+    }));
+    render(<HowItWorks />);
+    expect(
+      screen.getByRole("heading", { name: "Tu notes ton humeur du jour" }),
+    ).toBeInTheDocument();
   });
 });

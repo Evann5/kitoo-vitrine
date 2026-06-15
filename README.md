@@ -177,20 +177,21 @@ s'empilent dans [`page.tsx`](src/app/page.tsx), dans l'ordre de la navigation :
    « Découvrir » (→ `#fonctionnalites`). Entrée orchestrée en cascade
    (`Reveal`/`Stagger`), neutralisée en reduced-motion. `h1` unique, anti-CLS.
 2. **Fonctionnalités** ([Features.tsx](src/components/sections/Features.tsx)) —
-   ancre `#fonctionnalites` : 3 piliers en cards, icônes Lucide décoratives —
-   **Mood tracker** (note ton humeur, tendances, badges + échelle d'humeur
-   illustrative), **Chat avec un pro** (messagerie sécurisée avec un
-   psychologue), **Espace bien-être** (articles & exercices validés). Grille
-   responsive 1 → 2 → 3 colonnes.
-
+   ancre `#fonctionnalites`, **scroll-story (R5)** : 3 blocs `StoryBlock`
+   alternés (texte ↔ mascotte), révélés au scroll — **Mood tracker** (+ échelle
+   d'humeur), **Chat avec un pro**, **Espace bien-être**.
 3. **Comment ça marche** ([HowItWorks.tsx](src/components/sections/HowItWorks.tsx))
-   — ancre `#comment-ca-marche` : parcours en 3 étapes numérotées (notes ton
-   humeur → reçois des ressources → échanges avec un pro), ton encourageant et
-   sans pression. Timeline colonne (mobile) → 3 colonnes (desktop).
-4. **Pour qui** ([Audience.tsx](src/components/sections/Audience.tsx)) — ancre
-   `#pour-qui` : 2 profils — jeunes adultes **18–24 ans** (tutoyés) et
-   **psychologues partenaires** (vouvoyés). Registre non diagnostique (« les
-   outils t'orientent »).
+   — ancre `#comment-ca-marche`, **scroll-story (R5)** : parcours en 3 étapes
+   numérotées alternées (notes ton humeur → reçois des ressources → échanges
+   avec un pro), ton encourageant et sans pression.
+
+> Les deux sections s'appuient sur le composant générique
+> [StoryBlock](src/components/sections/StoryBlock.tsx) (texte + illustration,
+> alternance gauche/droite desktop → empilé mobile, révélation `Reveal`/`Stagger`
+> neutralisée en reduced-motion). 4. **Pour qui** ([Audience.tsx](src/components/sections/Audience.tsx)) — ancre
+> `#pour-qui` : 2 profils — jeunes adultes **18–24 ans** (tutoyés) et
+> **psychologues partenaires** (vouvoyés). Registre non diagnostique (« les
+> outils t'orientent »).
 
 5. **FAQ** ([Faq.tsx](src/components/sections/Faq.tsx)) — ancre `#faq` :
    accordéon accessible (`aria-expanded`/`aria-controls`, clavier natif,

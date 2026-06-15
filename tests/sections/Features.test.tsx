@@ -1,17 +1,18 @@
 import { render, screen } from "@testing-library/react";
-import { Leaf } from "lucide-react";
 import { describe, expect, test } from "vitest";
-import { FeatureCard, Features } from "@/components/sections/Features";
+import { Features } from "@/components/sections/Features";
 
-describe("Features", () => {
-  test("rend les 3 cards avec titre et description", () => {
+describe("Features (scroll-story)", () => {
+  test("rend les 3 blocs avec titre et description", () => {
     render(<Features />);
     for (const title of [
       "Mood tracker",
       "Chat avec un pro",
       "Espace bien-être",
     ]) {
-      expect(screen.getByRole("heading", { name: title })).toBeInTheDocument();
+      expect(
+        screen.getByRole("heading", { level: 3, name: title }),
+      ).toBeInTheDocument();
     }
     expect(
       screen.getByText(/Note ton humeur chaque jour/i),
@@ -24,26 +25,21 @@ describe("Features", () => {
     ).toBeInTheDocument();
   });
 
+  test("chaque bloc a une illustration (mascotte placeholder)", () => {
+    render(<Features />);
+    expect(screen.getAllByRole("img").length).toBeGreaterThanOrEqual(3);
+  });
+
+  test("les icônes d'accent sont décoratives (aria-hidden)", () => {
+    const { container } = render(<Features />);
+    const decorativeIcons = container.querySelectorAll(
+      'svg[aria-hidden="true"]',
+    );
+    expect(decorativeIcons.length).toBeGreaterThanOrEqual(3);
+  });
+
   test("la section porte l'ancre #fonctionnalites", () => {
     const { container } = render(<Features />);
     expect(container.querySelector("#fonctionnalites")).not.toBeNull();
-  });
-
-  test("chaque icône de feature est décorative (aria-hidden)", () => {
-    const { container } = render(
-      <FeatureCard icon={Leaf} title="Test" description="Desc" />,
-    );
-    const icon = container.querySelector("svg");
-    expect(icon).not.toBeNull();
-    expect(icon).toHaveAttribute("aria-hidden", "true");
-  });
-
-  test("cas limite : feature sans icône ne fait pas planter le rendu", () => {
-    expect(() =>
-      render(<FeatureCard title="Sans icône" description="OK quand même" />),
-    ).not.toThrow();
-    expect(
-      screen.getByRole("heading", { name: "Sans icône" }),
-    ).toBeInTheDocument();
   });
 });

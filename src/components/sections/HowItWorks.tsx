@@ -1,50 +1,40 @@
 /**
- * Section « Comment ça marche » — le parcours d'usage en 3 étapes simples
- * (ancre `#comment-ca-marche`).
+ * Section « Comment ça marche » (R5) — le parcours en 3 étapes narratives, en
+ * storytelling vertical alterné (ancre `#comment-ca-marche`).
  *
- * Ton : encourageant, sans pression (« pas de pression, c'est quand tu veux »),
- * tutoiement, casse phrase. Aucun langage de diagnostic — les outils orientent,
- * ils n'évaluent pas. Source : brief / design system Kitoo.
- *
- * Server Component : icônes Lucide décoratives (`aria-hidden`), cohérentes avec
- * la section Fonctionnalités (toutes en outline).
+ * Ton encourageant et sans pression (« pas de pression, c'est quand tu veux »),
+ * tutoiement, casse phrase. Aucun langage de diagnostic. Server Component.
  */
-import {
-  MessageCircleHeart,
-  PenLine,
-  Sparkles,
-  type LucideIcon,
-} from "lucide-react";
+import { Blob, Mascot } from "@/components/illustrations";
 import { Container } from "@/components/ui";
+import type { MascotPose } from "@/lib/illustrations";
+import { StoryBlock } from "./StoryBlock";
 
 type Step = {
   number: number;
-  icon: LucideIcon;
   title: string;
-  description: string;
+  pose: MascotPose;
+  body: string;
 };
 
 const steps: Step[] = [
   {
     number: 1,
-    icon: PenLine,
     title: "Tu notes ton humeur du jour",
-    description:
-      "En quelques secondes, parmi 5 niveaux. Pas de pression : c'est quand tu veux, et rien n'est obligatoire.",
+    pose: "wave",
+    body: "En quelques secondes, parmi 5 niveaux. Pas de pression : c'est quand tu veux, et rien n'est obligatoire.",
   },
   {
     number: 2,
-    icon: Sparkles,
     title: "Tu reçois des ressources adaptées",
-    description:
-      "Selon comment tu te sens, Kitoo te propose des exercices et des contenus bien-être qui te correspondent.",
+    pose: "thinking",
+    body: "Selon comment tu te sens, Kitoo te propose des exercices et des contenus bien-être qui te correspondent.",
   },
   {
     number: 3,
-    icon: MessageCircleHeart,
     title: "Tu échanges avec un pro si tu veux",
-    description:
-      "Si tu en ressens le besoin, tu peux parler à un psychologue partenaire en messagerie sécurisée. On est là.",
+    pose: "support",
+    body: "Si tu en ressens le besoin, tu peux parler à un psychologue partenaire en messagerie sécurisée. On est là.",
   },
 ];
 
@@ -52,10 +42,11 @@ export function HowItWorks() {
   return (
     <section
       id="comment-ca-marche"
-      className="bg-brand-50 scroll-mt-24 py-16 sm:py-24"
+      className="bg-brand-50 relative scroll-mt-24 overflow-hidden py-16 sm:py-24"
       aria-labelledby="how-title"
     >
-      <Container>
+      <Blob className="pointer-events-none absolute -right-40 bottom-24 -z-0 w-[440px] opacity-40" />
+      <Container className="relative">
         <div className="max-w-prose">
           <p className="text-eyebrow text-brand-800 font-bold tracking-[0.04em] uppercase">
             Comment ça marche
@@ -68,39 +59,21 @@ export function HowItWorks() {
           </h2>
         </div>
 
-        {/* Timeline : colonne sur mobile, 3 colonnes sur desktop. */}
-        <ol className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
-          {steps.map((step) => {
-            const Icon = step.icon;
-            return (
-              <li
-                key={step.number}
-                className="rounded-card flex h-full flex-col bg-white p-6 shadow-sm"
+        <ol className="mt-12 flex flex-col gap-16 sm:gap-24">
+          {steps.map((step, i) => (
+            <li key={step.number}>
+              <StoryBlock
+                title={step.title}
+                step={step.number}
+                reverse={i % 2 === 1}
+                illustration={
+                  <Mascot pose={step.pose} className="w-full max-w-[300px]" />
+                }
               >
-                <div className="flex items-center gap-3">
-                  <span
-                    className="rounded-pill bg-brand-700 font-display text-body inline-flex h-10 w-10 shrink-0 items-center justify-center text-white"
-                    aria-hidden="true"
-                  >
-                    {step.number}
-                  </span>
-                  <span className="rounded-control bg-brand-100 text-brand-600 inline-flex h-10 w-10 items-center justify-center">
-                    <Icon
-                      aria-hidden="true"
-                      strokeWidth={1.75}
-                      className="h-5 w-5"
-                    />
-                  </span>
-                </div>
-                <h3 className="text-heading font-display text-ink-900 mt-4">
-                  {step.title}
-                </h3>
-                <p className="text-body text-ink-600 mt-2">
-                  {step.description}
-                </p>
-              </li>
-            );
-          })}
+                <p>{step.body}</p>
+              </StoryBlock>
+            </li>
+          ))}
         </ol>
       </Container>
     </section>
