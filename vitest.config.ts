@@ -8,6 +8,10 @@ export default defineConfig({
     alias: {
       // Aligne l'alias TS `@/*` -> `src/*` pour les tests unitaires.
       "@": fileURLToPath(new URL("./src", import.meta.url)),
+      // Neutralise le garde `server-only` dans l'environnement de test.
+      "server-only": fileURLToPath(
+        new URL("./tests/stubs/server-only.ts", import.meta.url),
+      ),
     },
   },
   test: {

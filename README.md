@@ -258,6 +258,33 @@ focus pervenche visible, skip-link, cibles tactiles ≥ 44px.
 - Contrôles dans le footer : [`AccessibilityToggle.tsx`](src/components/AccessibilityToggle.tsx)
   (`aria-pressed`).
 
+## Illustrations & mascotte
+
+Système d'illustrations à **placeholders** (refonte R3), conçu pour un
+remplacement **sans toucher au code**.
+
+- **Registre central** ([src/lib/illustrations.ts](src/lib/illustrations.ts)) :
+  le code consomme une **clé** (`koala-wave`, `koala-calm`, …, `blob-soft`,
+  `wave-divider`), jamais un chemin. Chaque clé porte ses métadonnées (fichier,
+  `alt`, dimensions, `kind`).
+- **Résolution automatique** : [Illustration](src/components/illustrations/Illustration.tsx)
+  affiche l'asset déposé dans `public/illustrations/` s'il existe (vérifié au
+  build), sinon un **placeholder SVG** doux et cohérent avec le DS. Dimensions
+  fixées (anti-CLS), `lazy` par défaut, `alt`/`aria-hidden` selon le sens.
+- **Mascotte** : [Mascot](src/components/illustrations/Mascot.tsx) (`pose`) avec
+  flottement idle doux (`motion-safe:animate-float`, neutralisé en
+  `prefers-reduced-motion`). **Décors** : [Blob](src/components/illustrations/Blob.tsx).
+
+### Remplacer un placeholder par la vraie illustration
+
+1. Dépose le fichier dans `public/illustrations/` avec le **nom exact** indiqué
+   dans [`public/illustrations/README.md`](public/illustrations/README.md)
+   (table clé → fichier, format, dimensions, ratio, `alt`).
+2. Redéploie : la résolution se fait au build, le placeholder est remplacé
+   automatiquement. **Aucune modification de code.**
+
+> Banc d'essai dev : `/illustration-lab` (temporaire, retiré en R10).
+
 ## Boutons & micro-interactions
 
 Système de boutons « signature » (refonte R2) — [Button.tsx](src/components/ui/Button.tsx).

@@ -106,6 +106,23 @@ const config: Config = {
       transitionDuration: {
         kitoo: "200ms",
       },
+      keyframes: {
+        // Flottement doux (idle de la mascotte) — montée/descente subtile.
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-8px)" },
+        },
+        // Respiration très légère (décors organiques).
+        breathe: {
+          "0%, 100%": { transform: "scale(1)" },
+          "50%": { transform: "scale(1.03)" },
+        },
+      },
+      animation: {
+        // Gardés derrière `motion-safe:` à l'usage → neutralisés en reduced-motion.
+        float: "float 6s ease-in-out infinite",
+        breathe: "breathe 8s ease-in-out infinite",
+      },
     },
   },
   plugins: [],
