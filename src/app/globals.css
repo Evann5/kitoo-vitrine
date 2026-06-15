@@ -67,6 +67,26 @@ body {
 }
 
 /*
+ * Animation d'entrée douce (fondu + légère montée) — entrées en ease-out,
+ * ~320ms. `both` garde l'état final ; sous reduced-motion (bloc ci-dessous)
+ * la durée est ramenée à ~0, l'élément s'affiche directement à son état final.
+ */
+@keyframes kitoo-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.animate-enter {
+  animation: kitoo-enter 320ms var(--ease-kitoo) both;
+}
+
+/*
  * Respect de prefers-reduced-motion : on neutralise animations et transitions
  * pour les utilisateurs qui le demandent.
  */

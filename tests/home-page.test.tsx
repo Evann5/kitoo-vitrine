@@ -2,8 +2,10 @@ import { render, screen } from "@testing-library/react";
 import { expect, test } from "vitest";
 import Home from "@/app/page";
 
-// Valide la chaîne jsdom + Testing Library en rendant le placeholder actuel.
-test("la page d'accueil affiche le nom de marque", () => {
+// La page d'accueil rend le Hero comme première section (titre de niveau 1).
+test("la page d'accueil affiche l'accroche du Hero", () => {
   render(<Home />);
-  expect(screen.getByRole("heading")).toHaveTextContent("Kitoo");
+  expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
+    /Prends soin de toi/i,
+  );
 });

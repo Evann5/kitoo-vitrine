@@ -1,22 +1,10 @@
-import { Container } from "@/components/ui";
+import { Hero } from "@/components/sections/Hero";
 
 /**
- * Page d'accueil (one-page). Pour l'instant un placeholder ; les sections
- * (hero, fonctionnalités, etc.) arrivent aux étapes suivantes. La section porte
- * l'ancre `#hero` ciblée par le lien « Accueil » de la navigation.
+ * Page d'accueil (one-page). Les sections s'empilent ici dans l'ordre de la
+ * navigation. Pour l'instant : Hero. (Fonctionnalités, Comment ça marche, Pour
+ * qui, FAQ arrivent aux étapes suivantes.)
  */
 export default function Home() {
-  return (
-    <section id="hero" className="scroll-mt-24 py-24">
-      <Container>
-        <h1 className="font-display text-display text-ink-900">
-          Kitoo — site en construction
-        </h1>
-        <p className="text-body text-ink-600 mt-4 max-w-prose">
-          La charpente est posée (header, navigation, footer). Les sections
-          arrivent bientôt. Prends soin de toi en attendant.
-        </p>
-      </Container>
-    </section>
-  );
+  return <Hero />;
 }

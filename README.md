@@ -139,6 +139,18 @@ import { Button, Card, Container, Section } from "@/components/ui";
 La page **`/styleguide`** (dev only, retirée plus tard) présente tous les
 variants.
 
+## Sections de la landing
+
+Les sections vivent dans [`src/components/sections/`](src/components/sections) et
+s'empilent dans [`page.tsx`](src/app/page.tsx), dans l'ordre de la navigation :
+
+1. **Hero** ([Hero.tsx](src/components/sections/Hero.tsx)) — ancre `#hero` :
+   accroche display, sous-titre explicatif, mascotte koala, CTA primaire
+   « Accéder à l'app » + CTA secondaire « Découvrir » (→ `#fonctionnalites`),
+   fond lavis pervenche, animation d'entrée douce.
+
+_(Fonctionnalités, Comment ça marche, Pour qui, FAQ : étapes suivantes.)_
+
 ## Navigation & layout
 
 Le layout global vit dans [`src/components/layout/`](src/components/layout) et est
