@@ -4,9 +4,11 @@ Site vitrine marketing (one-page) de l'application **Kitoo** (prévention en san
 mentale pour les 18–24 ans).
 
 🌐 **Production : https://kitoo-vitrine.vercel.app**
-🏷️ **État : V1 livrable** (`v1.0.0`) — landing complète, testée, accessible et
-déployée en continu. **Lighthouse (desktop, prod) : Performance 100 ·
-Accessibilité 100 · Best Practices 100 · SEO 100.**
+🏷️ **État : V2 — refonte UI/UX livrable** (`v2.0.0`) — landing refondue
+(animations douces, mascotte, scroll-story, démo humeur, navigation polie),
+testée, accessible et déployée en continu. **Lighthouse : Accessibilité 100 ·
+Best Practices 100 · SEO 100 · Performance 99–100.** Détails :
+[`CHANGELOG.md`](CHANGELOG.md) · [`QUALITY.md`](QUALITY.md).
 
 Déployé sur Vercel avec **déploiement automatique** à chaque push sur `main`.
 Détails et commandes CLI : [`DEPLOY.md`](DEPLOY.md). Historique :
@@ -327,8 +329,6 @@ remplacement **sans toucher au code**.
 2. Redéploie : la résolution se fait au build, le placeholder est remplacé
    automatiquement. **Aucune modification de code.**
 
-> Banc d'essai dev : `/illustration-lab` (temporaire, retiré en R10).
-
 ## Boutons & micro-interactions
 
 Système de boutons « signature » (refonte R2) — [Button.tsx](src/components/ui/Button.tsx).
@@ -397,8 +397,6 @@ import { Reveal, Stagger, StaggerItem } from "@/components/motion";
   ))}
 </Stagger>;
 ```
-
-> Banc d'essai dev : `/motion-lab` (temporaire, retiré en R10).
 
 ## Versioning & contribution
 

@@ -69,6 +69,5 @@ Aucun **débordement horizontal** et lisibilité maintenue à tous les breakpoin
 
 ## Pages de démo dev
 
-`/motion-lab` et `/illustration-lab` renvoient **404 en production**
-(`notFound()` si `NODE_ENV === "production"`) — suppression définitive prévue en
-R10.
+Les bancs d'essai `/motion-lab` et `/illustration-lab` ont été **supprimés** en
+R10 (ils n'existent plus dans le code ni en production).
