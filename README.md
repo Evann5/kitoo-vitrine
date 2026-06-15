@@ -148,8 +148,14 @@ s'empilent dans [`page.tsx`](src/app/page.tsx), dans l'ordre de la navigation :
    accroche display, sous-titre explicatif, mascotte koala, CTA primaire
    « Accéder à l'app » + CTA secondaire « Découvrir » (→ `#fonctionnalites`),
    fond lavis pervenche, animation d'entrée douce.
+2. **Fonctionnalités** ([Features.tsx](src/components/sections/Features.tsx)) —
+   ancre `#fonctionnalites` : 3 piliers en cards, icônes Lucide décoratives —
+   **Mood tracker** (note ton humeur, tendances, badges + échelle d'humeur
+   illustrative), **Chat avec un pro** (messagerie sécurisée avec un
+   psychologue), **Espace bien-être** (articles & exercices validés). Grille
+   responsive 1 → 2 → 3 colonnes.
 
-_(Fonctionnalités, Comment ça marche, Pour qui, FAQ : étapes suivantes.)_
+_(Comment ça marche, Pour qui, FAQ : étapes suivantes.)_
 
 ## Navigation & layout
 
