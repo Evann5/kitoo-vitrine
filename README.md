@@ -4,8 +4,9 @@ Site vitrine marketing (one-page) de l'application **Kitoo** (prévention en san
 mentale pour les 18–24 ans).
 
 🌐 **Production : https://kitoo-vitrine.vercel.app**
-🏷️ **État : V1 livrable** (`v1.0.0`) — landing complète, testée, accessible (100/100
-Lighthouse SEO & Accessibilité) et déployée en continu.
+🏷️ **État : V1 livrable** (`v1.0.0`) — landing complète, testée, accessible et
+déployée en continu. **Lighthouse (desktop, prod) : Performance 100 ·
+Accessibilité 100 · Best Practices 100 · SEO 100.**
 
 Déployé sur Vercel avec **déploiement automatique** à chaque push sur `main`.
 Détails et commandes CLI : [`DEPLOY.md`](DEPLOY.md). Historique :

@@ -14,7 +14,7 @@ Le site est déployé sur **Vercel**, configuré **entièrement en CLI**.
 - [x] `pnpm build` sans warning bloquant
 - [x] Smoke test `pnpm start` (page servie, CTA, disclaimer présents)
 - [x] CI GitHub Actions verte (jobs `quality` + `e2e`)
-- [x] Lighthouse : SEO & Accessibilité ≥ 95
+- [x] Lighthouse (desktop, prod) : **Perf 100 · A11y 100 · Best Practices 100 · SEO 100**
 - [x] `pnpm audit --prod` : 0 vulnérabilité
 - [x] En-têtes de sécurité actifs (cf. ci-dessous)
 - [x] `NEXT_PUBLIC_APP_URL` configurée sur les 3 environnements Vercel
