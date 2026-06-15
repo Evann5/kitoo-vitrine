@@ -7,8 +7,9 @@
  * fais défiler pour voir les révélations douces, puis active « réduire les
  * animations » dans ton OS : tout doit apparaître immédiatement, sans mouvement.
  */
+import { Menu, Plus, X } from "lucide-react";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion";
-import { Card, Container } from "@/components/ui";
+import { Button, Card, Container, IconButton } from "@/components/ui";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 function Spacer() {
@@ -32,6 +33,37 @@ export default function MotionLabPage() {
           <strong>{reduce ? "réduit (statique)" : "complet (animé)"}</strong>.
           Fais défiler pour voir les révélations.
         </p>
+
+        {/* Vitrine boutons (R2) — clique/maintiens pour voir l'enfoncement 3D. */}
+        <h2 className="font-display text-title text-ink-900 mt-12">
+          Boutons signature
+        </h2>
+        <div className="mt-4 flex flex-wrap items-center gap-3">
+          <Button variant="primary">Noter mon humeur</Button>
+          <Button variant="outline">Plus tard</Button>
+          <Button variant="ghost">Voir mes ressources</Button>
+        </div>
+        <div className="mt-4 flex flex-wrap items-center gap-3">
+          <Button size="sm">Petit</Button>
+          <Button size="md">Moyen</Button>
+          <Button size="lg">Grand</Button>
+          <Button loading>Chargement</Button>
+          <Button disabled>Désactivé</Button>
+        </div>
+        <div className="mt-4">
+          <Button fullWidth>Pleine largeur</Button>
+        </div>
+        <div className="mt-4 flex flex-wrap items-center gap-3">
+          <IconButton aria-label="Ouvrir le menu">
+            <Menu aria-hidden strokeWidth={1.75} className="h-5 w-5" />
+          </IconButton>
+          <IconButton aria-label="Fermer" variant="outline">
+            <X aria-hidden strokeWidth={1.75} className="h-5 w-5" />
+          </IconButton>
+          <IconButton aria-label="Ajouter" variant="solid">
+            <Plus aria-hidden strokeWidth={1.75} className="h-5 w-5" />
+          </IconButton>
+        </div>
 
         <Spacer />
 

@@ -73,6 +73,10 @@ const config: Config = {
         md: "0 6px 16px rgba(42,43,87,0.08), 0 12px 32px rgba(42,43,87,0.08)",
         brand: "0 8px 24px rgba(155,157,240,0.35)", // légère lueur pervenche
         focus: "0 0 0 4px rgba(155,157,240,0.40)", // anneau de focus 4px
+        // Boutons « 3D » : épaisseur basse pervenche foncée (brand-900) + halo
+        // lavande diffus. `btn-press` = état enfoncé (épaisseur réduite).
+        btn: "0 4px 0 0 #3B3C7D, 0 8px 18px rgba(42,43,87,0.18)",
+        "btn-press": "0 1px 0 0 #3B3C7D, 0 3px 10px rgba(42,43,87,0.14)",
       },
       fontFamily: {
         // Variables exposées par next/font dans layout.tsx.

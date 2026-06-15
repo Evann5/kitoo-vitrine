@@ -6,7 +6,15 @@ export { Card } from "./Card";
 export type { CardProps } from "./Card";
 export { Container } from "./Container";
 export type { ContainerProps } from "./Container";
+export { IconButton } from "./IconButton";
+export type {
+  IconButtonProps,
+  IconButtonSize,
+  IconButtonVariant,
+} from "./IconButton";
 export { Pill } from "./Pill";
+export { Pressable, pressClasses } from "./Pressable";
+export type { PressableProps } from "./Pressable";
 export type { PillProps } from "./Pill";
 export { Section } from "./Section";
 export type { SectionProps } from "./Section";

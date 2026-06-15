@@ -41,6 +41,55 @@ describe("Button", () => {
     expect(onClick).not.toHaveBeenCalled();
   });
 
+  test("toutes les tailles rendent un bouton", () => {
+    for (const size of ["sm", "md", "lg"] as const) {
+      const { unmount } = render(<Button size={size}>x</Button>);
+      expect(screen.getByRole("button")).toBeInTheDocument();
+      unmount();
+    }
+  });
+
+  test("fullWidth applique w-full", () => {
+    render(<Button fullWidth>Large</Button>);
+    expect(screen.getByRole("button")).toHaveClass("w-full");
+  });
+
+  test("effet 3D : le primary porte l'épaisseur (shadow-btn)", () => {
+    render(<Button>3D</Button>);
+    expect(screen.getByRole("button")).toHaveClass("shadow-btn");
+  });
+
+  test('as="a" rend un lien avec href/rel (CTA-lien)', () => {
+    render(
+      <Button
+        as="a"
+        href="https://app.kitoo.test"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Accéder à l&apos;app
+      </Button>,
+    );
+    const link = screen.getByRole("link", { name: /Accéder à l'app/i });
+    expect(link).toHaveAttribute("href", "https://app.kitoo.test");
+    expect(link).toHaveAttribute("rel", "noopener noreferrer");
+    expect(link).toHaveClass("bg-brand-700");
+  });
+
+  test("loading : désactive l'interaction (disabled + aria-busy)", () => {
+    const onClick = vi.fn();
+    render(
+      <Button loading onClick={onClick}>
+        Envoi
+      </Button>,
+    );
+    const btn = screen.getByRole("button");
+    expect(btn).toBeDisabled();
+    expect(btn).toHaveAttribute("aria-busy", "true");
+    fireEvent.click(btn);
+    expect(onClick).not.toHaveBeenCalled();
+  });
+
   test("cas limite : sans children ne casse pas", () => {
     expect(() => render(<Button />)).not.toThrow();
     expect(screen.getByRole("button")).toBeInTheDocument();

@@ -258,6 +258,37 @@ focus pervenche visible, skip-link, cibles tactiles ≥ 44px.
 - Contrôles dans le footer : [`AccessibilityToggle.tsx`](src/components/AccessibilityToggle.tsx)
   (`aria-pressed`).
 
+## Boutons & micro-interactions
+
+Système de boutons « signature » (refonte R2) — [Button.tsx](src/components/ui/Button.tsx).
+
+- **Effet 3D** : le `primary` a une **épaisseur basse** pervenche foncée
+  (`shadow-btn`, bord bas brand-900) + halo lavande. Au press, le bouton
+  **descend** (`translate-y`) et l'épaisseur se réduit (`shadow-btn-press`) —
+  enfoncement doux, jamais de saut. L'`outline` a une épaisseur neutre ; le
+  `ghost` un simple « squish ».
+- **API** (compatible existant) : `variant` (`primary`/`ghost`/`outline`),
+  `size` (`sm`/`md`/`lg`), `fullWidth`, `loading` (spinner + désactivation),
+  `as="a"` (CTA-lien `<a>` sans imbriquer `<button>`). `buttonVariants()` reste
+  disponible — les CTA existants (Hero, Header, FinalCta) en bénéficient
+  automatiquement.
+- **[IconButton](src/components/ui/IconButton.tsx)** — bouton icône rond,
+  `aria-label` **requis** par le typage. **[Pressable](src/components/ui/Pressable.tsx)** /
+  `pressClasses` — applique le « squish » à tout élément cliquable (cards…).
+- **États** : `hover` (assombrit d'un cran), `active` (enfoncement),
+  `focus-visible` (anneau pervenche 4px), `disabled`. Cibles tactiles ≥ 44px
+  (`md`/`lg`), contraste **AA** (texte blanc sur brand-700).
+- **Accessibilité du mouvement** : le déplacement au press est derrière
+  `motion-safe:` → neutralisé sous `prefers-reduced-motion` (l'épaisseur statique
+  reste, sans animation).
+
+```tsx
+<Button as="a" href={appUrl} target="_blank" rel="noopener noreferrer">
+  Accéder à l'app
+</Button>
+<IconButton aria-label="Ouvrir le menu"><Menu aria-hidden /></IconButton>
+```
+
 ## Animations & mouvement
 
 Fondations de mouvement (refonte R1) basées sur **Framer Motion**, alignées sur
