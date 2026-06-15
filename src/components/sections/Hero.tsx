@@ -1,79 +1,102 @@
 /**
- * Section Hero — première section visible de la landing (ancre `#hero`).
+ * Section Hero refondue (R4) — première impression, ancre `#hero`.
  *
- * Voix de marque Kitoo : chaleureuse, rassurante, dédramatisée, tutoiement,
- * casse phrase. L'accroche « Prends soin de toi, un jour à la fois. » reprend
- * le ton « ami bienveillant » du design system ; le sous-titre explique le
- * produit en une phrase compréhensible par un·e jeune de 18–24 ans.
+ * Hiérarchie d'action « à la Duolingo » : **un seul CTA dominant** (« Accéder à
+ * l'app », pervenche, gros) + un lien secondaire discret (« Découvrir ») qui ne
+ * concurrence pas le CTA. Voix de marque Kitoo : chaleureuse, rassurante,
+ * tutoiement, casse phrase.
  *
- * Server Component : l'animation d'entrée est 100 % CSS (`.animate-enter`),
- * neutralisée sous `prefers-reduced-motion`.
+ * Server Component : compose les wrappers d'animation client (`Reveal`,
+ * `Stagger`) avec la mascotte/les décors server (`Mascot`, `Blob`) via
+ * `children`. Entrée orchestrée en cascade, neutralisée sous
+ * `prefers-reduced-motion`. Mascotte `priority` (pas de lazy sur le hero).
  */
-import Image from "next/image";
-import { Container } from "@/components/ui";
-import { buttonVariants } from "@/components/ui/Button";
+import { ArrowDown } from "lucide-react";
+import { Blob, Mascot } from "@/components/illustrations";
+import { Reveal, Stagger, StaggerItem } from "@/components/motion";
+import { Button, Container } from "@/components/ui";
 import { siteConfig } from "@/lib/site-config";
 
 export function Hero() {
   return (
     <section
       id="hero"
-      className="bg-brand-50 scroll-mt-24 py-16 sm:py-24"
       aria-labelledby="hero-title"
+      className="bg-brand-50 relative flex min-h-[100svh] scroll-mt-24 items-center overflow-hidden pt-24 pb-16 sm:pt-28"
     >
-      <Container>
+      {/* Décors organiques doux en arrière-plan (jamais de dégradé criard). */}
+      <Blob
+        animate
+        className="pointer-events-none absolute -top-24 -left-40 -z-0 w-[520px] opacity-60"
+      />
+      <Blob className="pointer-events-none absolute right-[-10rem] -bottom-32 -z-0 w-[460px] opacity-50" />
+
+      <Container className="relative">
         <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-12">
-          {/* Texte */}
-          <div className="animate-enter text-center md:text-left">
-            <p className="text-eyebrow text-brand-800 font-bold tracking-[0.04em] uppercase">
-              Prévention santé mentale · 18–24 ans
-            </p>
+          {/* Texte + actions (cascade d'entrée) */}
+          <Stagger className="text-center md:text-left">
+            <StaggerItem>
+              <p className="text-eyebrow text-brand-800 font-bold tracking-[0.04em] uppercase">
+                Prévention santé mentale · 18–24 ans
+              </p>
+            </StaggerItem>
 
-            <h1
-              id="hero-title"
-              className="font-display text-display text-ink-900 mt-4"
-            >
-              Prends soin de toi, un jour à la fois.
-            </h1>
-
-            <p className="text-body text-ink-600 mx-auto mt-5 max-w-prose md:mx-0">
-              Kitoo t&apos;aide à suivre ton humeur au quotidien, à piocher dans
-              des ressources bien-être validées, et à échanger en confiance avec
-              des pros. Doucement, à ton rythme.
-            </p>
-
-            <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-center md:justify-start">
-              <a
-                href={siteConfig.appUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={buttonVariants({ variant: "primary", size: "lg" })}
+            <StaggerItem>
+              <h1
+                id="hero-title"
+                className="font-display text-display text-ink-900 mt-4"
               >
-                Accéder à l&apos;app
-              </a>
-              <a
-                href="#fonctionnalites"
-                className={buttonVariants({ variant: "outline", size: "lg" })}
-              >
-                Découvrir
-              </a>
-            </div>
-          </div>
+                Prends soin de toi, un jour à la fois.
+              </h1>
+            </StaggerItem>
 
-          {/* Mascotte koala — non recolorée. Halo lavande pour la présence
-              (l'image fait 195px, on ne l'agrandit pas au-delà). */}
-          <div className="animate-enter flex justify-center md:justify-end">
-            <div className="rounded-panel bg-brand-100 flex aspect-square w-64 items-center justify-center shadow-md sm:w-72">
-              <Image
-                src="/kitoo-logo.jpg"
-                alt="Koala violet, la mascotte bienveillante de Kitoo"
-                width={190}
-                height={190}
-                className="rounded-card"
-                priority
-              />
+            <StaggerItem>
+              <p className="text-body text-ink-600 mx-auto mt-5 max-w-prose md:mx-0">
+                Kitoo t&apos;aide à suivre ton humeur au quotidien, à piocher
+                dans des ressources bien-être validées, et à échanger en
+                confiance avec des pros.
+              </p>
+            </StaggerItem>
+
+            <StaggerItem>
+              <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center md:justify-start">
+                {/* CTA dominant unique */}
+                <Button
+                  as="a"
+                  variant="primary"
+                  size="lg"
+                  href={siteConfig.appUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Accéder à l&apos;app
+                </Button>
+                {/* Lien secondaire discret (ne concurrence pas le CTA) */}
+                <a
+                  href="#fonctionnalites"
+                  className="group rounded-control text-body text-brand-700 hover:text-brand-800 inline-flex items-center gap-1.5 px-1 py-1 font-bold"
+                >
+                  Découvrir
+                  <ArrowDown
+                    aria-hidden="true"
+                    strokeWidth={2}
+                    className="duration-kitoo ease-kitoo h-4 w-4 transition-transform group-hover:translate-y-0.5"
+                  />
+                </a>
+              </div>
+            </StaggerItem>
+          </Stagger>
+
+          {/* Mascotte (entrée douce + idle flottant) */}
+          <Reveal
+            variant="scaleIn"
+            className="flex justify-center md:justify-end"
+          >
+            <div className="relative w-64 sm:w-80">
+              <Blob className="pointer-events-none absolute inset-0 -z-0 scale-125 opacity-70" />
+              <Mascot pose="wave" priority className="relative w-full" />
             </div>
-          </div>
+          </Reveal>
         </div>
       </Container>
     </section>

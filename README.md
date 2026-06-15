@@ -168,10 +168,14 @@ import { Button, Card, Container, Section } from "@/components/ui";
 Les sections vivent dans [`src/components/sections/`](src/components/sections) et
 s'empilent dans [`page.tsx`](src/app/page.tsx), dans l'ordre de la navigation :
 
-1. **Hero** ([Hero.tsx](src/components/sections/Hero.tsx)) — ancre `#hero` :
-   accroche display, sous-titre explicatif, mascotte koala, CTA primaire
-   « Accéder à l'app » + CTA secondaire « Découvrir » (→ `#fonctionnalites`),
-   fond lavis pervenche, animation d'entrée douce.
+1. **Hero** ([Hero.tsx](src/components/sections/Hero.tsx)) — ancre `#hero`,
+   **refondu (R4)** : layout **plein écran** (`min-h-[100svh]`) deux colonnes
+   (empilé mobile-first), **mascotte koala animée** (`Mascot pose="wave"`,
+   `priority`, idle doux) sur **fond organique** (`Blob`, lavis pervenche).
+   Hiérarchie d'action « à la Duolingo » : **un seul CTA dominant** « Accéder à
+   l'app » (`Button` `primary lg`, `as="a"`) + lien secondaire discret
+   « Découvrir » (→ `#fonctionnalites`). Entrée orchestrée en cascade
+   (`Reveal`/`Stagger`), neutralisée en reduced-motion. `h1` unique, anti-CLS.
 2. **Fonctionnalités** ([Features.tsx](src/components/sections/Features.tsx)) —
    ancre `#fonctionnalites` : 3 piliers en cards, icônes Lucide décoratives —
    **Mood tracker** (note ton humeur, tendances, badges + échelle d'humeur
