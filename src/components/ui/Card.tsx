@@ -3,7 +3,7 @@ import { cn } from "@/lib/cn";
 
 export type CardProps = React.HTMLAttributes<HTMLDivElement> & {
   /**
-   * Surface douce lavande (brume) au lieu du blanc pur — pour le contenu
+   * Surface douce lavande (brume) au lieu du blanc pur, pour le contenu
    * apaisant / émotionnel.
    * @default false
    */

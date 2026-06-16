@@ -3,7 +3,7 @@
 /**
  * Header global du site vitrine Kitoo.
  *
- * Choix d'architecture — **top-nav par ancres** plutôt que le rail gauche 248px
+ * Choix d'architecture : **top-nav par ancres** plutôt que le rail gauche 248px
  * du design system : le rail concerne l'application (navigation entre sections
  * fonctionnelles connectées). Pour une vitrine one-page, une barre supérieure
  * d'ancres est le pattern marketing attendu, plus lisible sur mobile et plus

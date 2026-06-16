@@ -1,5 +1,5 @@
 /**
- * Section « Confiance & preuve sociale » (R7, ancre `#confiance`) — refonte
+ * Section « Confiance & preuve sociale » (R7, ancre `#confiance`) : refonte
  * enrichie du bloc confiance (étape 7).
  *
  * Registre **soutenant, jamais clinique ni alarmant**, aucun langage de
@@ -97,14 +97,14 @@ export function Trust() {
           })}
         </Stagger>
 
-        {/* Disclaimer médical obligatoire — doux, soutenant, jamais alarmant.
+        {/* Disclaimer médical obligatoire : doux, soutenant, jamais alarmant.
             kitoo-heart : posture d'écoute bienveillante (contexte de soutien). */}
         <Reveal>
           <div className="rounded-card mt-8 flex flex-col items-center gap-4 bg-white px-5 py-4 shadow-sm sm:flex-row">
             <Mascot pose="heart" decorative className="w-24 shrink-0 sm:w-28" />
             <p className="text-body text-ink-700">
               Kitoo ne remplace pas un suivi médical professionnel. Si un moment
-              est difficile, tu n&apos;es pas seul·e — on t&apos;aide à aller
+              est difficile, tu n&apos;es pas seul·e, on t&apos;aide à aller
               vers les bonnes personnes, en douceur.
             </p>
           </div>
@@ -113,7 +113,7 @@ export function Trust() {
         {/* Stats illustratives (compteur doux) */}
         <Stats />
 
-        {/* Preuve sociale — personas fictifs */}
+        {/* Preuve sociale : personas fictifs */}
         <Testimonials />
       </Container>
     </section>

@@ -19,7 +19,7 @@ const variants: Record<IconButtonVariant, string> = {
 
 const sizes: Record<IconButtonSize, string> = {
   sm: "h-9 w-9", // 36px (desktop)
-  md: "h-11 w-11", // 44px — cible tactile mobile
+  md: "h-11 w-11", // 44px, cible tactile mobile
   lg: "h-12 w-12",
 };
 
@@ -37,7 +37,7 @@ export type IconButtonProps = Omit<
 
 /**
  * Bouton icône rond, cohérent avec `Button` (mêmes états hover/active/focus).
- * `aria-label` est requis par le typage — un bouton icône doit toujours être
+ * `aria-label` est requis par le typage : un bouton icône doit toujours être
  * nommé pour les lecteurs d'écran.
  *
  * @example

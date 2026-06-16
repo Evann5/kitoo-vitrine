@@ -1,5 +1,5 @@
 /**
- * Section Hero refondue (R4) — première impression, ancre `#hero`.
+ * Section Hero refondue (R4) : première impression, ancre `#hero`.
  *
  * Hiérarchie d'action « à la Duolingo » : **un seul CTA dominant** (« Accéder à
  * l'app », pervenche, gros) + un lien secondaire discret (« Découvrir ») qui ne

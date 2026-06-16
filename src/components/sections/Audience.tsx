@@ -1,8 +1,8 @@
 /**
- * Section « Pour qui » — public cible et partenaires (ancre `#pour-qui`).
+ * Section « Pour qui » : public cible et partenaires (ancre `#pour-qui`).
  *
  * Registre : les jeunes adultes sont tutoyés et rassurés ; les psychologues
- * partenaires sont vouvoyés avec respect. Aucun langage de diagnostic — Kitoo
+ * partenaires sont vouvoyés avec respect. Aucun langage de diagnostic : Kitoo
  * oriente et accompagne, il n'évalue pas. Source : brief / design system Kitoo.
  *
  * Server Component : icônes Lucide décoratives (`aria-hidden`), en outline.

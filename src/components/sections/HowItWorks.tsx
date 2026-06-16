@@ -1,9 +1,9 @@
 /**
- * Section « Comment ça marche » (R11) — le parcours en **timeline verticale
+ * Section « Comment ça marche » (R11) : le parcours en **timeline verticale
  * numérotée** (ancre `#comment-ca-marche`).
  *
  * Différenciation voulue : contrairement à « Fonctionnalités » (grille bento,
- * lecture parallèle, fond clair), cette section se lit **séquentiellement** —
+ * lecture parallèle, fond clair), cette section se lit **séquentiellement**,
  * une liste ordonnée d'étapes reliées par un connecteur, sur un **panneau
  * lavande** (`brand-50`) qui la distingue de la section précédente. Révélation
  * en cascade (`Stagger`) ; le connecteur (décoratif, `aria-hidden`) apparaît

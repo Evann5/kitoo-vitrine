@@ -1,5 +1,5 @@
 /**
- * Gamification **douce et bienveillante** — aperçu illustratif (non connecté).
+ * Gamification **douce et bienveillante** : aperçu illustratif (non connecté).
  * Série de régularité + badges présentés sans pression ni langage de
  * performance : encourager, jamais culpabiliser. Server Component.
  */
@@ -70,7 +70,7 @@ export function Gamification() {
             Des petites victoires, en douceur.
           </h3>
           <p className="text-body text-ink-600 mt-2 max-w-prose">
-            Kitoo célèbre ta régularité avec bienveillance — jamais comme une
+            Kitoo célèbre ta régularité avec bienveillance, jamais comme une
             performance à tenir.
           </p>
         </div>

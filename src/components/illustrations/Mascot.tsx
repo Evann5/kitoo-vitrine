@@ -13,13 +13,13 @@ export type MascotProps = {
    * façon neutralisée sous `prefers-reduced-motion`. @default true
    */
   animate?: boolean;
-  /** Rendu décoratif (`aria-hidden`) — sinon `alt` issu du registre. */
+  /** Rendu décoratif (`aria-hidden`) : sinon `alt` issu du registre. */
   decorative?: boolean;
 };
 
 /**
  * Mascotte koala de Kitoo, mise en scène par `pose`. Flottement idle doux
- * (CSS `motion-safe:animate-float`) — neutralisé sous `prefers-reduced-motion`
+ * (CSS `motion-safe:animate-float`) : neutralisé sous `prefers-reduced-motion`
  * (gating `motion-safe:` + bloc reduced-motion global). L'illustration réelle
  * remplace automatiquement le placeholder une fois déposée.
  *

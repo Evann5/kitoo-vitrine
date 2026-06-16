@@ -1,9 +1,9 @@
 /**
- * Section « Aperçu » (R6) — démo humeur interactive + gamification douce
+ * Section « Aperçu » (R6) : démo humeur interactive + gamification douce
  * (ancre `#apercu`).
  *
  * ⚠️ **Purement illustratif** : aucune donnée enregistrée ni envoyée, aucun lien
- * avec l'app — juste un état React local pour faire « ressentir » le Mood
+ * avec l'app, juste un état React local pour faire « ressentir » le Mood
  * Tracker. Ton bienveillant, jamais culpabilisant.
  *
  * Server Component : pré-rend une mascotte par humeur et les passe au sélecteur
@@ -53,7 +53,7 @@ export function MoodDemo() {
 
         {/* CTA discret vers l'app (la vraie expérience s'y vit). */}
         <p className="text-body text-ink-600 mt-12 text-center md:text-left">
-          La vraie expérience t&apos;attend dans l&apos;app —{" "}
+          La vraie expérience t&apos;attend dans l&apos;app :{" "}
           <a
             href={siteConfig.appUrl}
             target="_blank"

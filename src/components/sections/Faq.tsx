@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * Section FAQ — accordéon accessible (ancre `#faq`).
+ * Section FAQ : accordéon accessible (ancre `#faq`).
  *
  * Comportement : **un seul panneau ouvert à la fois** (clic sur une question
  * ouverte la referme). Chaque question est un vrai `<button>` (donc activable au

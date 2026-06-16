@@ -59,10 +59,10 @@ export function Footer() {
   return (
     <footer className="border-ink-200 mt-auto border-t bg-white">
       <div className="max-w-content mx-auto w-full px-4 py-12 sm:px-6">
-        {/* Disclaimer médical — doux, mis en évidence */}
+        {/* Disclaimer médical : doux, mis en évidence */}
         <p className="rounded-card bg-brand-100 text-body text-brand-800 px-5 py-4">
           Kitoo ne remplace pas un suivi médical professionnel. Si tu traverses
-          un moment difficile, parles-en à un pro — on est là pour t&apos;y
+          un moment difficile, parles-en à un pro, on est là pour t&apos;y
           aider.
         </p>
 

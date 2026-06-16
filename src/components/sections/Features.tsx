@@ -1,9 +1,9 @@
 /**
- * Section Fonctionnalités — les 3 piliers de Kitoo en **grille de cards de
+ * Section Fonctionnalités : les 3 piliers de Kitoo en **grille de cards de
  * taille égale** (ancre `#fonctionnalites`).
  *
  * Différenciation voulue : contrairement à « Comment ça marche » (timeline
- * séquentielle), cette section se lit **en parallèle, en un coup d'œil** — des
+ * séquentielle), cette section se lit **en parallèle, en un coup d'œil**, des
  * cards sur fond clair. Apparition en cascade (`Stagger`), micro-interaction de
  * survol (légère élévation). Casse la monotonie juste après le Hero.
  *
@@ -16,7 +16,7 @@ import { Container } from "@/components/ui";
 import type { MascotPose } from "@/lib/illustrations";
 import { cn } from "@/lib/cn";
 
-/** Échelle d'humeur (5 niveaux, couleurs fixes du DS) — décoratif. */
+/** Échelle d'humeur (5 niveaux, couleurs fixes du DS) : décoratif. */
 const moodScale = [
   "bg-mood-very-positive",
   "bg-mood-positive",

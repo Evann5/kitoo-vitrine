@@ -44,7 +44,7 @@ const variants: Record<ButtonVariant, string> = {
 
 const sizes: Record<ButtonSize, string> = {
   sm: "h-9 px-4 text-small",
-  md: "h-11 px-5 text-body", // 44px — cible tactile mobile
+  md: "h-11 px-5 text-body", // 44px, cible tactile mobile
   lg: "h-12 px-6 text-body",
 };
 

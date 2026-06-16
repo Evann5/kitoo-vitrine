@@ -6,7 +6,7 @@ import { join } from "node:path";
 /**
  * Vérifie (au build / rendu serveur) si l'asset final d'une illustration a été
  * déposé dans `public/illustrations/`. Permet au composant `Illustration` de
- * basculer automatiquement sur le placeholder quand le fichier est absent —
+ * basculer automatiquement sur le placeholder quand le fichier est absent :
  * sans toucher au code lors de l'ajout des vraies images.
  *
  * `server-only` : ce module ne doit jamais être importé côté client (fs).

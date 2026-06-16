@@ -1,7 +1,7 @@
 import type { Transition, Variants } from "framer-motion";
 
 /**
- * Presets de mouvement centralisés — alignés sur les tokens du design system
+ * Presets de mouvement centralisés : alignés sur les tokens du design system
  * Kitoo : entrées douces et rassurantes (ease-out, fondus + légères montées),
  * jamais de rebond ni d'overshoot élastique.
  *
@@ -19,9 +19,9 @@ export const ease = [0.22, 0.61, 0.36, 1] as const;
 
 /** Transitions réutilisables (durées 120–320 ms du DS). */
 export const transitions = {
-  /** ~240 ms — transition par défaut, douce. */
+  /** ~240 ms : transition par défaut, douce. */
   soft: { duration: 0.24, ease } satisfies Transition,
-  /** ~160 ms — micro-interactions plus vives. */
+  /** ~160 ms : micro-interactions plus vives. */
   quick: { duration: 0.16, ease } satisfies Transition,
 } as const;
 
@@ -30,7 +30,7 @@ const RISE = 12;
 
 /** Variants d'animation réutilisables. */
 export const variants = {
-  /** Fondu + légère montée — le preset le plus courant. */
+  /** Fondu + légère montée : le preset le plus courant. */
   fadeInUp: {
     hidden: { opacity: 0, y: RISE },
     show: { opacity: 1, y: 0, transition: transitions.soft },

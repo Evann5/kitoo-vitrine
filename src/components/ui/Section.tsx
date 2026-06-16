@@ -1,7 +1,7 @@
 import { cn } from "@/lib/cn";
 
 export type SectionProps = React.HTMLAttributes<HTMLElement> & {
-  /** Ancre de navigation (ex. `fonctionnalites`) — rend un `id` ciblable. */
+  /** Ancre de navigation (ex. `fonctionnalites`) : rend un `id` ciblable. */
   id?: string;
 };
 

@@ -1,13 +1,13 @@
 "use client";
 
 /**
- * Stats de réassurance (R7) — chiffres illustratifs présentés en cards avec
+ * Stats de réassurance (R7) : chiffres illustratifs présentés en cards avec
  * **compteur animé doux**. Projet d'école : valeurs illustratives (claims
  * produit), aucune donnée analytique réelle.
  *
  * Accessibilité : la **valeur finale est toujours présente dans le DOM** (rendu
  * serveur + état initial), l'animation ne fait que recompter à l'entrée dans le
- * viewport. Sous `prefers-reduced-motion`, aucune animation — la valeur reste
+ * viewport. Sous `prefers-reduced-motion`, aucune animation, la valeur reste
  * affichée. Le nombre qui s'anime est `aria-hidden` ; un `aria-label` porte la
  * valeur finale pour les lecteurs d'écran.
  */
@@ -63,7 +63,7 @@ function Counter({ count, suffix }: { count: number; suffix?: string }) {
     const duration = 1000;
     let startTime: number | null = null;
     // Le premier frame (p≈0) initialise l'affichage à 0 puis compte jusqu'à
-    // `count` — pas de setState synchrone dans le corps de l'effet.
+    // `count` : pas de setState synchrone dans le corps de l'effet.
     const tick = (t: number) => {
       startTime ??= t;
       const p = Math.min(1, (t - startTime) / duration);

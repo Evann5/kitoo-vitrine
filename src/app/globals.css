@@ -4,7 +4,7 @@
 @config "../../tailwind.config.ts";
 
 /*
- * Variables CSS de marque — miroir des tokens Tailwind pour les usages hors
+ * Variables CSS de marque : miroir des tokens Tailwind pour les usages hors
  * utilitaires (ombres composées, anneau de focus, surfaces).
  * Source : design-system/guidelines/Kitoo_Design_System.pdf
  */
@@ -35,7 +35,7 @@
   /* Mouvement */
   --ease-kitoo: cubic-bezier(0.22, 0.61, 0.36, 1);
 
-  /* Échelle d'humeur — couleurs fixes du DS (valeurs par défaut). */
+  /* Échelle d'humeur : couleurs fixes du DS (valeurs par défaut). */
   --mood-very-positive: #ffd93d;
   --mood-positive: #a8e6cf;
   --mood-neutral: #e0e0e0;
@@ -87,7 +87,7 @@ body {
 }
 
 /*
- * Animation d'entrée douce (fondu + légère montée) — entrées en ease-out,
+ * Animation d'entrée douce (fondu + légère montée) : entrées en ease-out,
  * ~320ms. `both` garde l'état final ; sous reduced-motion (bloc ci-dessous)
  * la durée est ramenée à ~0, l'élément s'affiche directement à son état final.
  */

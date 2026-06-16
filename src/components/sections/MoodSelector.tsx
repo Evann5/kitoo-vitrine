@@ -17,7 +17,7 @@ export type MoodSelectorProps = {
  * Sélecteur d'humeur **illustratif** (aucune donnée enregistrée). Groupe de
  * radios accessible (roving tabindex + flèches), libellé + visage (jamais la
  * couleur seule). À la sélection, le fond prend la teinte douce compagne et la
- * mascotte change de pose — transition neutralisée sous `prefers-reduced-motion`
+ * mascotte change de pose, transition neutralisée sous `prefers-reduced-motion`
  * (l'interaction reste pleinement utilisable).
  */
 export function MoodSelector({ mascots }: MoodSelectorProps) {

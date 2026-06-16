@@ -3,7 +3,7 @@ import { cn } from "@/lib/cn";
 
 export type TagProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   /**
-   * État sélectionné — remplissage pervenche.
+   * État sélectionné : remplissage pervenche.
    * @default false
    */
   selected?: boolean;

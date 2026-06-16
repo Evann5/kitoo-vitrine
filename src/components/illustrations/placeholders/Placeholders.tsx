@@ -1,5 +1,5 @@
 /**
- * Placeholders SVG doux — cohérents avec le design system Kitoo (formes
+ * Placeholders SVG doux : cohérents avec le design system Kitoo (formes
  * arrondies, palette lavande/pervenche). Affichés tant que la vraie illustration
  * n'est pas déposée dans `public/illustrations/`. En dev, une légende discrète
  * rappelle la clé et les dimensions attendues.
@@ -15,7 +15,7 @@ type PlaceholderProps = {
   height: number;
 };
 
-/** Légende dev (clé + dimensions) — masquée en production. */
+/** Légende dev (clé + dimensions) : masquée en production. */
 function DevCaption({
   label,
   x,

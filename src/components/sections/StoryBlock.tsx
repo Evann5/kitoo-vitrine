@@ -14,7 +14,7 @@ export type StoryBlockProps = {
    * Sur mobile, le texte reste toujours au-dessus (lisibilité). @default false
    */
   reverse?: boolean;
-  /** Numéro d'étape (badge pervenche) — pour les parcours narratifs. */
+  /** Numéro d'étape (badge pervenche) : pour les parcours narratifs. */
   step?: number;
   /** Petite icône d'accent (Lucide), affichée dans une pastille lavande. */
   icon?: LucideIcon;
@@ -26,7 +26,7 @@ export type StoryBlockProps = {
  * Bloc de storytelling vertical : **texte d'un côté, illustration de l'autre**,
  * en colonnes alternées sur desktop (`reverse`) et empilées sur mobile (texte
  * puis illustration). Le texte apparaît en cascade (`Stagger`) et l'illustration
- * en fondu/zoom doux (`Reveal`) à l'entrée dans le viewport — tout statique sous
+ * en fondu/zoom doux (`Reveal`) à l'entrée dans le viewport : tout statique sous
  * `prefers-reduced-motion`.
  *
  * @example

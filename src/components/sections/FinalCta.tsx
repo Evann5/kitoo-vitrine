@@ -1,5 +1,5 @@
 /**
- * CTA final — invitation chaleureuse à accéder à l'app.
+ * CTA final : invitation chaleureuse à accéder à l'app.
  *
  * Ton : doux, encourageant, tutoiement. Sur une surface lavande douce
  * (`Card soft`). Le lien externe vers l'app s'ouvre dans un nouvel onglet avec

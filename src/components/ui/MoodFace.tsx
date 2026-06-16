@@ -19,7 +19,7 @@ export type MoodFaceProps = {
 };
 
 /**
- * Visage d'humeur rond, dessiné sur-mesure (set de marque — **pas un emoji**,
+ * Visage d'humeur rond, dessiné sur-mesure (set de marque, **pas un emoji**,
  * jamais utilisé comme affordance UI seule). Purement **décoratif**
  * (`aria-hidden`) : le libellé textuel de l'humeur porte le sens. Couleur fixe
  * issue de l'échelle d'humeur du design system.

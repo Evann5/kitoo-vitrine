@@ -15,7 +15,7 @@ export type IllustrationMeta = {
   file: string;
   /** Texte alternatif par défaut (sens de l'image). Vide = décoratif. */
   alt: string;
-  /** Dimensions intrinsèques (anti-CLS) — ratio réel de l'asset. */
+  /** Dimensions intrinsèques (anti-CLS) : ratio réel de l'asset. */
   width: number;
   height: number;
   /** Type de repli si l'asset final est absent. */
@@ -50,7 +50,7 @@ export const illustrations: Record<IllustrationKey, IllustrationMeta> = {
   "kitoo-crying": {
     // Réservé aux contextes de soutien (jamais en décoration gratuite).
     file: "kitoo-crying.png",
-    alt: "Le koala Kitoo, ému — Kitoo est là pour t'écouter",
+    alt: "Le koala Kitoo, ému : Kitoo est là pour t'écouter",
     width: 1333,
     height: 800,
     kind: "mascot",

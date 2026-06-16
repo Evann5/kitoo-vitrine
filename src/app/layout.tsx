@@ -10,7 +10,7 @@ import { siteMetadata } from "@/lib/metadata";
 import "./globals.css";
 
 /**
- * Goodly Medium — police display de marque (titres, wordmark, chiffres héros).
+ * Goodly Medium : police display de marque (titres, wordmark, chiffres héros).
  * Chargée localement depuis le design system. Si le fichier `.otf` venait à
  * manquer, le fallback Poppins (déclaré dans la stack `font-display`) prend le
  * relais sans casser le rendu.
@@ -23,7 +23,7 @@ const goodly = localFont({
   fallback: ["Poppins", "system-ui", "sans-serif"],
 });
 
-/** Nunito — body / UI (corps, libellés, texte long). */
+/** Nunito : body / UI (corps, libellés, texte long). */
 const nunito = Nunito({
   variable: "--font-body",
   subsets: ["latin"],
@@ -31,7 +31,7 @@ const nunito = Nunito({
   display: "swap",
 });
 
-/** Atkinson Hyperlegible — mode dyslexie requis par la spec. */
+/** Atkinson Hyperlegible : mode dyslexie requis par la spec. */
 const atkinson = Atkinson_Hyperlegible({
   variable: "--font-dyslexia",
   subsets: ["latin"],
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
 
 /**
  * Données structurées JSON-LD (Organization + WebSite) pour le SEO.
- * Contenu statique — aucune entrée utilisateur, injection sûre.
+ * Contenu statique, aucune entrée utilisateur, injection sûre.
  */
 const jsonLd = {
   "@context": "https://schema.org",

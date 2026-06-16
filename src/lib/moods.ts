@@ -21,7 +21,7 @@ export type Mood = {
 };
 
 /**
- * Échelle d'humeur du design system — **fixe, à ne pas re-thématiser**.
+ * Échelle d'humeur du design system : **fixe, à ne pas re-thématiser**.
  * Ordonnée du plus positif au plus négatif. Les teintes `soft` servent de fond
  * émotionnel doux ; les `pose` font réagir la mascotte avec bienveillance
  * (l'humeur la plus basse appelle une pose de soutien, jamais alarmante).
@@ -59,7 +59,7 @@ export const moods: Mood[] = [
   },
   {
     // L'humeur la plus basse : la mascotte pleure *avec* toi (soutien, jamais
-    // alarmant) — cf. ménagement autour de `kitoo-crying`.
+    // alarmant), cf. ménagement autour de `kitoo-crying`.
     level: "very-negative",
     label: "Très négatif",
     color: "#FF595E",

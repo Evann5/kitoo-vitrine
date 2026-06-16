@@ -1,10 +1,10 @@
 /**
- * Témoignages (R7) — **personas fictifs** (projet d'école). Ne reproduit aucune
+ * Témoignages (R7) : **personas fictifs** (projet d'école). Ne reproduit aucune
  * citation de personne réelle ni logo d'organisation. Prénom + tranche d'âge,
  * voix de marque Kitoo (chaleureuse, tutoiement). Une mention « illustratifs »
  * l'indique discrètement, pour rester crédible sans tromper.
  *
- * Avatars en **initiales** (pas de fausse photo) — décoratifs (`aria-hidden`),
+ * Avatars en **initiales** (pas de fausse photo), décoratifs (`aria-hidden`),
  * le nom porte le sens. Server Component (apparition via Reveal/Stagger client).
  */
 import { Mascot } from "@/components/illustrations";
@@ -66,7 +66,7 @@ export function Testimonials() {
               Ils prennent soin d&apos;eux avec Kitoo.
             </h3>
             <p className="text-small text-ink-600 mt-2">
-              Témoignages illustratifs — personas fictifs (projet étudiant).
+              Témoignages illustratifs : personas fictifs (projet étudiant).
             </p>
           </div>
         </div>
