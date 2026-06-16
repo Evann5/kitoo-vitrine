@@ -105,7 +105,7 @@ function FeatureCard({
         <Mascot
           pose={pose}
           decorative
-          className={cn("w-full", featured ? "max-w-[240px]" : "max-w-[150px]")}
+          className={cn("w-full", featured ? "max-w-[420px]" : "max-w-[170px]")}
         />
       </div>
     </div>
