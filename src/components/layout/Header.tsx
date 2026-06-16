@@ -7,8 +7,9 @@
  * un unique CTA à droite. Pas de liens de section ni de menu burger : la lecture
  * one-page se fait au scroll, l'action est concentrée sur « Accéder à l'app ».
  *
- * - Sticky + effet givré (`backdrop-blur`) qui s'accentue au scroll.
- * - Même rendu sur mobile et desktop (logo + CTA tiennent côte à côte).
+ * - Sticky, fond `brand-50` (même teinte que le hero) pour fondre la barre
+ *   dans la page plutôt que de poser un bandeau blanc.
+ * - La barre se condense légèrement au scroll ; même rendu mobile/desktop.
  */
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -28,7 +29,7 @@ export function Header() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 w-full">
+    <header className="bg-brand-50 sticky top-0 z-50 w-full">
       <nav
         aria-label="Navigation principale"
         className={cn(
