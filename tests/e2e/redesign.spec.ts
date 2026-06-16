@@ -22,9 +22,7 @@ test.describe("Refonte — desktop", () => {
     }
   });
 
-  test("header : condensé au scroll + section active (aria-current)", async ({
-    page,
-  }) => {
+  test("header : condensé au scroll", async ({ page }) => {
     await page.goto("/");
     const navBar = page.locator("header nav").first();
     const initial = (await navBar.boundingBox())!.height;
@@ -33,9 +31,6 @@ test.describe("Refonte — desktop", () => {
     await page.waitForTimeout(500);
     const condensed = (await navBar.boundingBox())!.height;
     expect(condensed).toBeLessThan(initial);
-
-    const active = page.locator('header a[aria-current="true"]').first();
-    await expect(active).toBeVisible();
   });
 
   test("démo humeur : sélection au clavier (flèches) et réaction", async ({

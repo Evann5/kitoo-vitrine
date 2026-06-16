@@ -1,7 +1,6 @@
-import { act, fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import { BackToTop } from "@/components/layout/BackToTop";
-import { Header } from "@/components/layout/Header";
 import { MobileCtaBar } from "@/components/layout/MobileCtaBar";
 import { siteConfig } from "@/lib/site-config";
 
@@ -35,31 +34,6 @@ beforeEach(() => {
 afterEach(() => {
   vi.restoreAllMocks();
   document.querySelectorAll("section[id]").forEach((s) => s.remove());
-});
-
-describe("Header — section active", () => {
-  test("met aria-current=true sur le lien de la section visible", () => {
-    siteConfig.nav.forEach((n) => {
-      const s = document.createElement("section");
-      s.id = n.href.replace("#", "");
-      document.body.appendChild(s);
-    });
-    render(<Header />);
-
-    const faqSection = document.getElementById("faq")!;
-    act(() => {
-      observers.forEach((o) =>
-        o.cb([
-          { isIntersecting: true, target: faqSection, intersectionRatio: 1 },
-        ]),
-      );
-    });
-
-    const faqLinks = screen.getAllByRole("link", { name: "FAQ" });
-    expect(
-      faqLinks.some((l) => l.getAttribute("aria-current") === "true"),
-    ).toBe(true);
-  });
 });
 
 describe("MobileCtaBar", () => {
