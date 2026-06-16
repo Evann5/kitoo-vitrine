@@ -71,7 +71,7 @@ export function Footer() {
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="font-display text-title text-ink-900 flex items-center gap-2">
               <Image
-                src="/kitoo-logo.jpg"
+                src="/kitoo-logo.png"
                 alt=""
                 width={36}
                 height={36}

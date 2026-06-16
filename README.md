@@ -178,7 +178,7 @@ s'empilent dans [`page.tsx`](src/app/page.tsx), dans l'ordre de la navigation :
 
 1. **Hero** ([Hero.tsx](src/components/sections/Hero.tsx)) — ancre `#hero`,
    **refondu (R4)** : layout **plein écran** (`min-h-[100svh]`) deux colonnes
-   (empilé mobile-first), **mascotte koala animée** (`Mascot pose="wave"`,
+   (empilé mobile-first), **mascotte koala animée** (`Mascot pose="classic"`,
    `priority`, idle doux) sur **fond organique** (`Blob`, lavis pervenche).
    Hiérarchie d'action « à la Duolingo » : **un seul CTA dominant** « Accéder à
    l'app » (`Button` `primary lg`, `as="a"`) + lien secondaire discret
@@ -309,28 +309,42 @@ focus pervenche visible, skip-link, cibles tactiles ≥ 44px.
 
 ## Illustrations & mascotte
 
-Système d'illustrations à **placeholders** (refonte R3), conçu pour un
-remplacement **sans toucher au code**.
+Les **8 illustrations réelles** de la mascotte Kitoo (R12) sont intégrées via le
+système à placeholders (R3) — remplacement **sans toucher au code**.
 
 - **Registre central** ([src/lib/illustrations.ts](src/lib/illustrations.ts)) :
-  le code consomme une **clé** (`koala-wave`, `koala-calm`, …, `blob-soft`,
-  `wave-divider`), jamais un chemin. Chaque clé porte ses métadonnées (fichier,
-  `alt`, dimensions, `kind`).
+  le code consomme une **clé** (`kitoo-classic`, `kitoo-heart`, …, + décors
+  `blob-soft`/`wave-divider`), jamais un chemin. Chaque clé porte ses
+  métadonnées (fichier, `alt`, dimensions réelles, `kind`).
 - **Résolution automatique** : [Illustration](src/components/illustrations/Illustration.tsx)
-  affiche l'asset déposé dans `public/illustrations/` s'il existe (vérifié au
-  build), sinon un **placeholder SVG** doux et cohérent avec le DS. Dimensions
-  fixées (anti-CLS), `lazy` par défaut, `alt`/`aria-hidden` selon le sens.
-- **Mascotte** : [Mascot](src/components/illustrations/Mascot.tsx) (`pose`) avec
-  flottement idle doux (`motion-safe:animate-float`, neutralisé en
-  `prefers-reduced-motion`). **Décors** : [Blob](src/components/illustrations/Blob.tsx).
+  sert l'asset réel via **`next/image`** (PNG → WebP/AVIF, lazy hors hero,
+  anti-CLS) s'il existe, sinon un placeholder SVG. **Mascotte** :
+  [Mascot](src/components/illustrations/Mascot.tsx) (`pose`, idle
+  `motion-safe:animate-float`). **Décors** : [Blob](src/components/illustrations/Blob.tsx).
 
-### Remplacer un placeholder par la vraie illustration
+### Répartition contextuelle des émotions
+
+Chaque émotion est placée là où elle a du sens (varié mais apaisant) :
+
+| Section           | Émotion(s)                                                   |
+| ----------------- | ------------------------------------------------------------ |
+| Hero              | `kitoo-classic` (accueil)                                    |
+| Fonctionnalités   | `classic` (Mood), `heart` (Chat), `sleeping` (Bien-être)     |
+| Comment ça marche | `classic` → `soda` → `skating` (neutre → légèreté → énergie) |
+| Démo humeur       | `sunglasses` / `soda` / `classic` / `classic` / `crying`     |
+| Confiance         | `heart` (écoute, près du disclaimer de soutien)              |
+| Témoignages       | `bubble-tea` (convivialité)                                  |
+| Gamification      | `sunglasses` (félicitations)                                 |
+
+> **`kitoo-crying` est réservé aux contextes de soutien** (humeur la plus basse) —
+> la mascotte est émue _avec_ toi, **jamais alarmant**, jamais en décoration gratuite.
+
+### Remplacer / ajouter une illustration
 
 1. Dépose le fichier dans `public/illustrations/` avec le **nom exact** indiqué
-   dans [`public/illustrations/README.md`](public/illustrations/README.md)
-   (table clé → fichier, format, dimensions, ratio, `alt`).
-2. Redéploie : la résolution se fait au build, le placeholder est remplacé
-   automatiquement. **Aucune modification de code.**
+   dans [`public/illustrations/README.md`](public/illustrations/README.md).
+2. Si le ratio diffère, ajuste `width`/`height` dans le registre. Redéploie :
+   résolution au build, **aucune autre modification de code**.
 
 ## Boutons & micro-interactions
 

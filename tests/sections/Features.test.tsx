@@ -22,13 +22,14 @@ describe("Features (grille bento)", () => {
     ).toBeInTheDocument();
   });
 
-  test("icône d'accent + illustration par card (svg présents)", () => {
+  test("icône d'accent (svg) + illustration mascotte (img) par card", () => {
     const { container } = render(<Features />);
-    // 3 icônes Lucide (aria-hidden) + 3 mascottes placeholder.
-    expect(container.querySelectorAll("svg").length).toBeGreaterThanOrEqual(6);
+    // 3 icônes Lucide décoratives (svg aria-hidden).
     expect(
       container.querySelectorAll('svg[aria-hidden="true"]').length,
     ).toBeGreaterThanOrEqual(3);
+    // 3 mascottes réelles (next/image → <img>), décoratives.
+    expect(container.querySelectorAll("img").length).toBeGreaterThanOrEqual(3);
   });
 
   test("disposition en GRILLE, pas une liste ordonnée (différenciation)", () => {

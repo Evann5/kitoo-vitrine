@@ -32,35 +32,39 @@ export const moods: Mood[] = [
     label: "Très positif",
     color: "#FFD93D",
     soft: "#FFF7D6",
-    pose: "celebrate",
+    pose: "sunglasses",
   },
   {
     level: "positive",
     label: "Positif",
     color: "#A8E6CF",
     soft: "#E6F7EF",
-    pose: "wave",
+    pose: "soda",
   },
   {
     level: "neutral",
     label: "Neutre",
     color: "#E0E0E0",
     soft: "#F3F3F3",
-    pose: "calm",
+    pose: "classic",
   },
   {
+    // TODO: ajouter une vraie pose « légèrement triste » ; en attendant, on
+    // reste sur la pose neutre (jamais alarmant pour un état seulement négatif).
     level: "negative",
     label: "Négatif",
     color: "#FF8C42",
     soft: "#FFEAD9",
-    pose: "thinking",
+    pose: "classic",
   },
   {
+    // L'humeur la plus basse : la mascotte pleure *avec* toi (soutien, jamais
+    // alarmant) — cf. ménagement autour de `kitoo-crying`.
     level: "very-negative",
     label: "Très négatif",
     color: "#FF595E",
     soft: "#FFE2E3",
-    pose: "support",
+    pose: "crying",
   },
 ];
 

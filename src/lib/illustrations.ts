@@ -1,10 +1,10 @@
 /**
  * Registre central des illustrations Kitoo.
  *
- * Le code consomme une **clé** (jamais un chemin en dur). Pour fournir la vraie
- * illustration, dépose un fichier dans `public/illustrations/` avec le nom
- * indiqué ci-dessous : le composant `Illustration` l'utilisera automatiquement
- * (sinon il affiche un placeholder doux). Voir `public/illustrations/README.md`.
+ * Le code consomme une **clé** (jamais un chemin en dur). Les illustrations
+ * réelles de la mascotte sont déposées dans `public/illustrations/` ; si un
+ * fichier manque, le composant `Illustration` affiche un placeholder doux.
+ * Voir `public/illustrations/README.md`.
  */
 
 /** Nature de l'illustration → détermine le placeholder de repli. */
@@ -15,69 +15,86 @@ export type IllustrationMeta = {
   file: string;
   /** Texte alternatif par défaut (sens de l'image). Vide = décoratif. */
   alt: string;
-  /** Dimensions intrinsèques (anti-CLS). */
+  /** Dimensions intrinsèques (anti-CLS) — ratio réel de l'asset. */
   width: number;
   height: number;
   /** Type de repli si l'asset final est absent. */
   kind: IllustrationKind;
 };
 
-/** Clés de la mascotte koala. */
+/** Émotions/poses de la mascotte koala (illustrations réelles). */
 export type MascotPose =
-  | "wave"
-  | "calm"
-  | "thinking"
-  | "celebrate"
-  | "sleep"
-  | "support";
+  | "classic"
+  | "crying"
+  | "sleeping"
+  | "soda"
+  | "bubble-tea"
+  | "sunglasses"
+  | "skating"
+  | "heart";
 
 /** Toutes les clés du registre. */
 export type IllustrationKey =
-  | `koala-${MascotPose}`
+  | `kitoo-${MascotPose}`
   | "blob-soft"
   | "wave-divider";
 
 export const illustrations: Record<IllustrationKey, IllustrationMeta> = {
-  "koala-wave": {
-    file: "koala-wave.svg",
-    alt: "Le koala Kitoo fait un signe de la main pour t'accueillir",
-    width: 400,
-    height: 400,
+  "kitoo-classic": {
+    file: "kitoo-classic.png",
+    alt: "Le koala Kitoo, accueillant",
+    width: 718,
+    height: 431,
     kind: "mascot",
   },
-  "koala-calm": {
-    file: "koala-calm.svg",
-    alt: "Le koala Kitoo, paisible et détendu",
-    width: 400,
-    height: 400,
+  "kitoo-crying": {
+    // Réservé aux contextes de soutien (jamais en décoration gratuite).
+    file: "kitoo-crying.png",
+    alt: "Le koala Kitoo, ému — Kitoo est là pour t'écouter",
+    width: 1333,
+    height: 800,
     kind: "mascot",
   },
-  "koala-thinking": {
-    file: "koala-thinking.svg",
-    alt: "Le koala Kitoo, pensif",
-    width: 400,
-    height: 400,
-    kind: "mascot",
-  },
-  "koala-celebrate": {
-    file: "koala-celebrate.svg",
-    alt: "Le koala Kitoo célèbre une bonne nouvelle",
-    width: 400,
-    height: 400,
-    kind: "mascot",
-  },
-  "koala-sleep": {
-    file: "koala-sleep.svg",
+  "kitoo-sleeping": {
+    file: "kitoo-sleeping.png",
     alt: "Le koala Kitoo se repose paisiblement",
-    width: 400,
-    height: 400,
+    width: 585,
+    height: 369,
     kind: "mascot",
   },
-  "koala-support": {
-    file: "koala-support.svg",
-    alt: "Le koala Kitoo tend la main pour te soutenir",
-    width: 400,
-    height: 400,
+  "kitoo-soda": {
+    file: "kitoo-soda.png",
+    alt: "Le koala Kitoo, détendu, une boisson à la main",
+    width: 839,
+    height: 794,
+    kind: "mascot",
+  },
+  "kitoo-bubble-tea": {
+    file: "kitoo-bubble-tea.png",
+    alt: "Le koala Kitoo savoure un bubble tea",
+    width: 440,
+    height: 426,
+    kind: "mascot",
+  },
+  "kitoo-sunglasses": {
+    file: "kitoo-sunglasses.png",
+    alt: "Le koala Kitoo, fier et de bonne humeur",
+    width: 616,
+    height: 526,
+    kind: "mascot",
+  },
+  "kitoo-skating": {
+    file: "kitoo-skating.png",
+    alt: "Le koala Kitoo avance avec énergie",
+    width: 649,
+    height: 687,
+    kind: "mascot",
+  },
+  "kitoo-heart": {
+    file: "kitoo-heart.png",
+    alt: "Le koala Kitoo te tend un cœur, bienveillant",
+    width: 579,
+    height: 612,
     kind: "mascot",
   },
   "blob-soft": {

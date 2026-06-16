@@ -76,7 +76,7 @@ const jsonLd = {
       name: siteMetadata.name,
       url: siteMetadata.url,
       description: siteMetadata.description,
-      logo: `${siteMetadata.url}/kitoo-logo.jpg`,
+      logo: `${siteMetadata.url}/kitoo-logo.png`,
     },
     {
       "@type": "WebSite",

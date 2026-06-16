@@ -50,7 +50,7 @@ const features: Feature[] = [
   {
     title: "Mood tracker",
     icon: Smile,
-    pose: "calm",
+    pose: "classic",
     description:
       "Note ton humeur chaque jour parmi 5 niveaux, visualise tes tendances au fil du temps et gagne des badges de régularité.",
     featured: true,
@@ -59,14 +59,14 @@ const features: Feature[] = [
   {
     title: "Chat avec un pro",
     icon: MessageCircleHeart,
-    pose: "support",
+    pose: "heart",
     description:
       "Échange en messagerie sécurisée avec un psychologue partenaire, quand tu en ressens le besoin.",
   },
   {
     title: "Espace bien-être",
     icon: Leaf,
-    pose: "thinking",
+    pose: "sleeping",
     description:
       "Des articles et exercices validés par des professionnels de santé pour prendre soin de toi.",
   },

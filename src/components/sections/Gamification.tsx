@@ -4,6 +4,7 @@
  * performance : encourager, jamais culpabiliser. Server Component.
  */
 import { CalendarHeart, Leaf, Sparkles, type LucideIcon } from "lucide-react";
+import { Mascot } from "@/components/illustrations";
 import { Card } from "@/components/ui";
 import { cn } from "@/lib/cn";
 
@@ -58,13 +59,22 @@ function Streak() {
 export function Gamification() {
   return (
     <div className="mt-16 sm:mt-24">
-      <h3 className="font-display text-title text-ink-900">
-        Des petites victoires, en douceur.
-      </h3>
-      <p className="text-body text-ink-600 mt-2 max-w-prose">
-        Kitoo célèbre ta régularité avec bienveillance — jamais comme une
-        performance à tenir.
-      </p>
+      <div className="flex items-center gap-4">
+        <Mascot
+          pose="sunglasses"
+          decorative
+          className="hidden w-24 shrink-0 sm:block"
+        />
+        <div>
+          <h3 className="font-display text-title text-ink-900">
+            Des petites victoires, en douceur.
+          </h3>
+          <p className="text-body text-ink-600 mt-2 max-w-prose">
+            Kitoo célèbre ta régularité avec bienveillance — jamais comme une
+            performance à tenir.
+          </p>
+        </div>
+      </div>
 
       <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
         <Card soft className="flex flex-col justify-center">

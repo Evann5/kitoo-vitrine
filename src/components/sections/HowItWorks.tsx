@@ -11,28 +11,32 @@
  *
  * Ton encourageant, sans pression, sans langage de diagnostic. Server Component.
  */
-import { Blob } from "@/components/illustrations";
+import { Blob, Mascot } from "@/components/illustrations";
 import { Stagger, StaggerItem } from "@/components/motion";
 import { Container } from "@/components/ui";
+import type { MascotPose } from "@/lib/illustrations";
 import { cn } from "@/lib/cn";
 
-type Step = { number: number; title: string; body: string };
+type Step = { number: number; title: string; body: string; pose: MascotPose };
 
 const steps: Step[] = [
   {
     number: 1,
     title: "Tu notes ton humeur du jour",
     body: "En quelques secondes, parmi 5 niveaux. Pas de pression : c'est quand tu veux, et rien n'est obligatoire.",
+    pose: "classic",
   },
   {
     number: 2,
     title: "Tu reçois des ressources adaptées",
     body: "Selon comment tu te sens, Kitoo te propose des exercices et des contenus bien-être qui te correspondent.",
+    pose: "soda",
   },
   {
     number: 3,
     title: "Tu échanges avec un pro si tu veux",
     body: "Si tu en ressens le besoin, tu peux parler à un psychologue partenaire en messagerie sécurisée. On est là.",
+    pose: "skating",
   },
 ];
 
@@ -79,12 +83,24 @@ export function HowItWorks() {
                   )}
                 </div>
 
-                {/* Contenu de l'étape */}
-                <div className={cn("pt-1.5", isLast ? "pb-0" : "pb-12")}>
-                  <h3 className="font-display text-heading text-ink-900 sm:text-title">
-                    {step.title}
-                  </h3>
-                  <p className="text-body text-ink-600 mt-2">{step.body}</p>
+                {/* Contenu de l'étape (texte + petite mascotte décorative) */}
+                <div
+                  className={cn(
+                    "flex flex-1 flex-col gap-4 pt-1.5 sm:flex-row sm:items-center sm:justify-between",
+                    isLast ? "pb-0" : "pb-12",
+                  )}
+                >
+                  <div>
+                    <h3 className="font-display text-heading text-ink-900 sm:text-title">
+                      {step.title}
+                    </h3>
+                    <p className="text-body text-ink-600 mt-2">{step.body}</p>
+                  </div>
+                  <Mascot
+                    pose={step.pose}
+                    decorative
+                    className="w-24 shrink-0 sm:w-28"
+                  />
                 </div>
               </StaggerItem>
             );

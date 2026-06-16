@@ -22,4 +22,11 @@ describe("Footer", () => {
     expect(screen.getByText("Mentions légales")).toBeInTheDocument();
     expect(screen.getByText("CGU")).toBeInTheDocument();
   });
+
+  test("affiche le nouveau logo Kitoo (.png)", () => {
+    const { container } = render(<Footer />);
+    const logo = container.querySelector('img[src*="kitoo-logo"]');
+    expect(logo).not.toBeNull();
+    expect(logo?.getAttribute("src")).toContain("kitoo-logo");
+  });
 });

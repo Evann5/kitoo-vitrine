@@ -122,7 +122,7 @@ export function Header() {
           onClick={() => setOpen(false)}
         >
           <Image
-            src="/kitoo-logo.jpg"
+            src="/kitoo-logo.png"
             alt=""
             width={36}
             height={36}

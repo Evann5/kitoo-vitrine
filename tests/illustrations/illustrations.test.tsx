@@ -11,80 +11,84 @@ import {
 } from "@/lib/illustrations";
 
 describe("registre illustrations.ts", () => {
-  test("contient toutes les clés attendues", () => {
+  test("contient les 8 clés réelles de la mascotte", () => {
     const expected: IllustrationKey[] = [
-      "koala-wave",
-      "koala-calm",
-      "koala-thinking",
-      "koala-celebrate",
-      "koala-sleep",
-      "koala-support",
-      "blob-soft",
-      "wave-divider",
+      "kitoo-classic",
+      "kitoo-crying",
+      "kitoo-sleeping",
+      "kitoo-soda",
+      "kitoo-bubble-tea",
+      "kitoo-sunglasses",
+      "kitoo-skating",
+      "kitoo-heart",
     ];
     for (const key of expected) {
       expect(illustrationKeys).toContain(key);
+      expect(illustrations[key].file).toMatch(/\.(svg|png|webp)$/);
+      expect(illustrations[key].kind).toBe("mascot");
     }
   });
 
-  test("chaque entrée porte ses métadonnées (fichier, dims, kind)", () => {
+  test("chaque entrée porte ses métadonnées (dimensions réelles)", () => {
     for (const key of illustrationKeys) {
       const m = illustrations[key];
-      expect(m.file).toMatch(/\.(svg|png|webp)$/);
       expect(m.width).toBeGreaterThan(0);
       expect(m.height).toBeGreaterThan(0);
-      expect(["mascot", "decor"]).toContain(m.kind);
+      expect(typeof m.alt).toBe("string");
     }
   });
 
-  test("illustrationSrc construit le chemin public attendu", () => {
-    expect(illustrationSrc("koala-wave")).toBe("/illustrations/koala-wave.svg");
+  test("illustrationSrc pointe vers le fichier réel", () => {
+    expect(illustrationSrc("kitoo-classic")).toBe(
+      "/illustrations/kitoo-classic.png",
+    );
   });
 });
 
-describe("Illustration (fallback placeholder)", () => {
-  test("rend un placeholder SVG quand l'asset réel est absent", () => {
-    const { container } = render(<Illustration name="koala-wave" />);
-    // Aucun asset réel déposé → placeholder SVG (pas une balise <img>).
+describe("Illustration — résolution réelle vs fallback", () => {
+  test("rend l'asset RÉEL (next/image) quand le fichier existe", () => {
+    const { container } = render(<Illustration name="kitoo-classic" />);
+    const img = container.querySelector("img");
+    expect(img).not.toBeNull();
+    expect(img?.getAttribute("src")).toContain("kitoo-classic");
+  });
+
+  test("FALLBACK placeholder SVG quand l'asset est absent (décor sans fichier)", () => {
+    const { container } = render(<Illustration name="blob-soft" />);
     expect(container.querySelector("svg")).not.toBeNull();
     expect(container.querySelector("img")).toBeNull();
   });
 
-  test("illustration porteuse de sens : rôle image + alt du registre", () => {
-    render(<Illustration name="koala-wave" />);
+  test("porteuse de sens : alt du registre (rôle image)", () => {
+    render(<Illustration name="kitoo-heart" />);
     expect(
-      screen.getByRole("img", { name: illustrations["koala-wave"].alt }),
+      screen.getByRole("img", { name: illustrations["kitoo-heart"].alt }),
     ).toBeInTheDocument();
-  });
-
-  test("décor : décoratif (aria-hidden), pas de rôle image", () => {
-    render(<Illustration name="blob-soft" />);
-    expect(screen.queryByRole("img")).toBeNull();
   });
 });
 
 describe("Mascot", () => {
-  test("applique la pose (clé koala-<pose>) et expose un alt", () => {
-    render(<Mascot pose="calm" />);
+  test("résout la clé kitoo-<pose> et expose un alt", () => {
+    render(<Mascot pose="classic" />);
     expect(
-      screen.getByRole("img", { name: illustrations["koala-calm"].alt }),
+      screen.getByRole("img", { name: illustrations["kitoo-classic"].alt }),
     ).toBeInTheDocument();
   });
 
-  test("idle flottement gardé derrière motion-safe (neutralisé en reduced-motion)", () => {
-    const { container } = render(<Mascot pose="wave" />);
+  test("idle flottement gardé derrière motion-safe", () => {
+    const { container } = render(<Mascot pose="classic" />);
     const wrapper = container.firstElementChild as HTMLElement;
     expect(wrapper.className).toContain("motion-safe:animate-float");
   });
 
   test("animate={false} retire l'animation idle", () => {
-    const { container } = render(<Mascot pose="wave" animate={false} />);
+    const { container } = render(<Mascot pose="classic" animate={false} />);
     const wrapper = container.firstElementChild as HTMLElement;
     expect(wrapper.className).not.toContain("animate-float");
   });
 
-  test("decorative : la mascotte devient aria-hidden", () => {
-    render(<Mascot pose="wave" decorative />);
+  test("decorative : la mascotte devient aria-hidden (pas de rôle image)", () => {
+    render(<Mascot pose="heart" decorative />);
     expect(screen.queryByRole("img")).toBeNull();
   });
 });

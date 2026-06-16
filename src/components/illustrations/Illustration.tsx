@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { illustrationAssetExists } from "@/lib/illustration-assets";
 import {
   illustrations,
@@ -57,17 +58,17 @@ export function Illustration({
   const isDecorative = decorative ?? meta.alt === "";
 
   if (illustrationAssetExists(meta.file)) {
+    // Asset réel (raster) optimisé par next/image (WebP/AVIF, lazy hors hero),
+    // dimensions intrinsèques fixées (anti-CLS).
     return (
-      // Assets locaux variés (SVG inclus) ; dimensions fixées (anti-CLS).
-      // eslint-disable-next-line @next/next/no-img-element
-      <img
+      <Image
         src={illustrationSrc(name)}
         alt={isDecorative ? "" : meta.alt}
         aria-hidden={isDecorative || undefined}
         width={meta.width}
         height={meta.height}
-        loading={priority ? "eager" : "lazy"}
-        decoding="async"
+        priority={priority}
+        sizes="(max-width: 640px) 70vw, 320px"
         className={cn("h-auto w-full", className)}
       />
     );

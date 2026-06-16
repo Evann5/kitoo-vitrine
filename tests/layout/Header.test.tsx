@@ -71,4 +71,10 @@ describe("Header", () => {
       within(region as HTMLElement).getAllByRole("link").length,
     ).toBeGreaterThan(0);
   });
+
+  test("affiche le nouveau logo Kitoo (.png)", () => {
+    const { container } = render(<Header />);
+    const logo = container.querySelector('img[src*="kitoo-logo"]');
+    expect(logo).not.toBeNull();
+  });
 });

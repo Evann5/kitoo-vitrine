@@ -3,7 +3,7 @@ import type { MascotPose } from "@/lib/illustrations";
 import { Illustration } from "./Illustration";
 
 export type MascotProps = {
-  /** Pose de la mascotte (résolue en clé `koala-<pose>`). @default "wave" */
+  /** Pose de la mascotte (résolue en clé `kitoo-<pose>`). @default "classic" */
   pose?: MascotPose;
   className?: string;
   /** Chargement prioritaire (hero). @default false */
@@ -24,10 +24,10 @@ export type MascotProps = {
  * remplace automatiquement le placeholder une fois déposée.
  *
  * @example
- * <Mascot pose="wave" priority className="w-64" />
+ * <Mascot pose="classic" priority className="w-64" />
  */
 export function Mascot({
-  pose = "wave",
+  pose = "classic",
   className,
   priority = false,
   animate = true,
@@ -42,7 +42,7 @@ export function Mascot({
       )}
     >
       <Illustration
-        name={`koala-${pose}`}
+        name={`kitoo-${pose}`}
         priority={priority}
         decorative={decorative}
       />

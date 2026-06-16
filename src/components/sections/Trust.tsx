@@ -14,7 +14,7 @@ import {
   UserCheck,
   type LucideIcon,
 } from "lucide-react";
-import { Blob } from "@/components/illustrations";
+import { Blob, Mascot } from "@/components/illustrations";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion";
 import { Container } from "@/components/ui";
 import { Stats } from "./Stats";
@@ -97,13 +97,17 @@ export function Trust() {
           })}
         </Stagger>
 
-        {/* Disclaimer médical obligatoire — doux, soutenant, jamais alarmant. */}
+        {/* Disclaimer médical obligatoire — doux, soutenant, jamais alarmant.
+            kitoo-heart : posture d'écoute bienveillante (contexte de soutien). */}
         <Reveal>
-          <p className="rounded-card text-body text-ink-700 mt-8 bg-white px-5 py-4 shadow-sm">
-            Kitoo ne remplace pas un suivi médical professionnel. Si un moment
-            est difficile, tu n&apos;es pas seul·e — on t&apos;aide à aller vers
-            les bonnes personnes, en douceur.
-          </p>
+          <div className="rounded-card mt-8 flex flex-col items-center gap-4 bg-white px-5 py-4 shadow-sm sm:flex-row">
+            <Mascot pose="heart" decorative className="w-24 shrink-0 sm:w-28" />
+            <p className="text-body text-ink-700">
+              Kitoo ne remplace pas un suivi médical professionnel. Si un moment
+              est difficile, tu n&apos;es pas seul·e — on t&apos;aide à aller
+              vers les bonnes personnes, en douceur.
+            </p>
+          </div>
         </Reveal>
 
         {/* Stats illustratives (compteur doux) */}

@@ -92,9 +92,9 @@ export function Hero() {
             variant="scaleIn"
             className="flex justify-center md:justify-end"
           >
-            <div className="relative w-64 sm:w-80">
-              <Blob className="pointer-events-none absolute inset-0 -z-0 scale-125 opacity-70" />
-              <Mascot pose="wave" priority className="relative w-full" />
+            <div className="relative flex w-72 items-center justify-center sm:w-96">
+              <Blob className="pointer-events-none absolute inset-0 -z-0 scale-110 opacity-70" />
+              <Mascot pose="classic" priority className="relative w-full" />
             </div>
           </Reveal>
         </div>

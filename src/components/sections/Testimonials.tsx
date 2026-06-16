@@ -7,6 +7,7 @@
  * Avatars en **initiales** (pas de fausse photo) — décoratifs (`aria-hidden`),
  * le nom porte le sens. Server Component (apparition via Reveal/Stagger client).
  */
+import { Mascot } from "@/components/illustrations";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion";
 import { Card } from "@/components/ui";
 import { cn } from "@/lib/cn";
@@ -54,12 +55,21 @@ export function Testimonials() {
   return (
     <div className="mt-16 sm:mt-24">
       <Reveal>
-        <h3 className="font-display text-title text-ink-900">
-          Ils prennent soin d&apos;eux avec Kitoo.
-        </h3>
-        <p className="text-small text-ink-600 mt-2">
-          Témoignages illustratifs — personas fictifs (projet étudiant).
-        </p>
+        <div className="flex items-center gap-4">
+          <Mascot
+            pose="bubble-tea"
+            decorative
+            className="hidden w-24 shrink-0 sm:block"
+          />
+          <div>
+            <h3 className="font-display text-title text-ink-900">
+              Ils prennent soin d&apos;eux avec Kitoo.
+            </h3>
+            <p className="text-small text-ink-600 mt-2">
+              Témoignages illustratifs — personas fictifs (projet étudiant).
+            </p>
+          </div>
+        </div>
       </Reveal>
 
       <Stagger className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
