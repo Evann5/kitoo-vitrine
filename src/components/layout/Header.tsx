@@ -13,24 +13,39 @@
  * - La barre se condense légèrement au scroll ; même rendu mobile/desktop.
  */
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { buttonVariants } from "@/components/ui";
 import { cn } from "@/lib/cn";
 import { siteConfig } from "@/lib/site-config";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
+  // Masquée quand on défile vers le bas, réaffichée dès qu'on remonte.
+  const [hidden, setHidden] = useState(false);
+  const lastY = useRef(0);
 
-  // Effet givré : on s'accentue dès que la page défile.
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 8);
+      // Toujours visible tout en haut ; sinon on suit le sens du défilement.
+      if (y < 96) setHidden(false);
+      else if (y > lastY.current + 4) setHidden(true);
+      else if (y < lastY.current - 4) setHidden(false);
+      lastY.current = y;
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <header className="fixed top-0 z-50 w-full">
+    <header
+      className={cn(
+        "duration-kitoo ease-kitoo fixed top-0 z-50 w-full transition-transform",
+        hidden ? "-translate-y-full" : "translate-y-0",
+      )}
+    >
       <nav
         aria-label="Navigation principale"
         className={cn(
