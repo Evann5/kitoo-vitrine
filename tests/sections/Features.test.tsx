@@ -2,8 +2,8 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, test } from "vitest";
 import { Features } from "@/components/sections/Features";
 
-describe("Features (scroll-story)", () => {
-  test("rend les 3 blocs avec titre et description", () => {
+describe("Features (grille bento)", () => {
+  test("rend les 3 piliers en cards (titres h3) avec description", () => {
     render(<Features />);
     for (const title of [
       "Mood tracker",
@@ -20,22 +20,21 @@ describe("Features (scroll-story)", () => {
     expect(
       screen.getByText(/messagerie sécurisée avec un psychologue/i),
     ).toBeInTheDocument();
-    expect(
-      screen.getByText(/validés par des professionnels de santé/i),
-    ).toBeInTheDocument();
   });
 
-  test("chaque bloc a une illustration (mascotte placeholder)", () => {
-    render(<Features />);
-    expect(screen.getAllByRole("img").length).toBeGreaterThanOrEqual(3);
-  });
-
-  test("les icônes d'accent sont décoratives (aria-hidden)", () => {
+  test("icône d'accent + illustration par card (svg présents)", () => {
     const { container } = render(<Features />);
-    const decorativeIcons = container.querySelectorAll(
-      'svg[aria-hidden="true"]',
-    );
-    expect(decorativeIcons.length).toBeGreaterThanOrEqual(3);
+    // 3 icônes Lucide (aria-hidden) + 3 mascottes placeholder.
+    expect(container.querySelectorAll("svg").length).toBeGreaterThanOrEqual(6);
+    expect(
+      container.querySelectorAll('svg[aria-hidden="true"]').length,
+    ).toBeGreaterThanOrEqual(3);
+  });
+
+  test("disposition en GRILLE, pas une liste ordonnée (différenciation)", () => {
+    const { container } = render(<Features />);
+    expect(container.querySelector("ol")).toBeNull();
+    expect(container.querySelector('[class*="grid"]')).not.toBeNull();
   });
 
   test("la section porte l'ancre #fonctionnalites", () => {

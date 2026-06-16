@@ -185,18 +185,21 @@ s'empilent dans [`page.tsx`](src/app/page.tsx), dans l'ordre de la navigation :
    « Découvrir » (→ `#fonctionnalites`). Entrée orchestrée en cascade
    (`Reveal`/`Stagger`), neutralisée en reduced-motion. `h1` unique, anti-CLS.
 2. **Fonctionnalités** ([Features.tsx](src/components/sections/Features.tsx)) —
-   ancre `#fonctionnalites`, **scroll-story (R5)** : 3 blocs `StoryBlock`
-   alternés (texte ↔ mascotte), révélés au scroll — **Mood tracker** (+ échelle
-   d'humeur), **Chat avec un pro**, **Espace bien-être**.
+   ancre `#fonctionnalites`, **grille bento (R11)** : lecture **parallèle** « en
+   un coup d'œil » sur fond clair, une card héros (Mood tracker + échelle
+   d'humeur) + deux cards (Chat avec un pro, Espace bien-être), mascottes,
+   apparition `Stagger`, micro-interaction de survol.
 3. **Comment ça marche** ([HowItWorks.tsx](src/components/sections/HowItWorks.tsx))
-   — ancre `#comment-ca-marche`, **scroll-story (R5)** : parcours en 3 étapes
-   numérotées alternées (notes ton humeur → reçois des ressources → échanges
-   avec un pro), ton encourageant et sans pression.
+   — ancre `#comment-ca-marche`, **timeline verticale (R11)** : lecture
+   **séquentielle** sur panneau lavande (`brand-50`), liste ordonnée (`<ol>`) de
+   3 étapes numérotées reliées par un **connecteur** (décoratif, `aria-hidden`),
+   révélation en cascade. Ton encourageant et sans pression.
 
-> Les deux sections s'appuient sur le composant générique
-> [StoryBlock](src/components/sections/StoryBlock.tsx) (texte + illustration,
-> alternance gauche/droite desktop → empilé mobile, révélation `Reveal`/`Stagger`
-> neutralisée en reduced-motion).
+> Les deux sections post-Hero ont des **rythmes visuels volontairement distincts**
+> (grille parallèle vs timeline séquentielle, fond clair vs lavande) pour casser
+> la monotonie. Le composant générique
+> [StoryBlock](src/components/sections/StoryBlock.tsx) reste disponible pour
+> d'autres usages.
 
 4. **Aperçu / démo humeur & gamification** ([MoodDemo.tsx](src/components/sections/MoodDemo.tsx))
    — ancre `#apercu`, **R6** : démo **illustrative** (aucune donnée, aucun lien

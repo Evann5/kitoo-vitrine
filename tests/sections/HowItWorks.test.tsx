@@ -2,8 +2,15 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, test, vi } from "vitest";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 
-describe("HowItWorks (scroll-story)", () => {
-  test("rend les 3 étapes dans le bon ordre", () => {
+describe("HowItWorks (timeline)", () => {
+  test("structure de liste ordonnée (<ol>) avec 3 étapes", () => {
+    const { container } = render(<HowItWorks />);
+    const ol = container.querySelector("ol");
+    expect(ol).not.toBeNull();
+    expect(ol!.querySelectorAll(":scope > li")).toHaveLength(3);
+  });
+
+  test("3 étapes numérotées dans le bon ordre", () => {
     render(<HowItWorks />);
     const titles = screen
       .getAllByRole("heading", { level: 3 })
@@ -13,14 +20,17 @@ describe("HowItWorks (scroll-story)", () => {
       "Tu reçois des ressources adaptées",
       "Tu échanges avec un pro si tu veux",
     ]);
-  });
-
-  test("exactement 3 étapes numérotées dans une liste ordonnée", () => {
-    const { container } = render(<HowItWorks />);
-    expect(container.querySelectorAll("ol > li")).toHaveLength(3);
     for (const n of ["1", "2", "3"]) {
       expect(screen.getByText(n)).toBeInTheDocument();
     }
+  });
+
+  test("le connecteur de timeline est décoratif (aria-hidden)", () => {
+    const { container } = render(<HowItWorks />);
+    // Connecteurs entre étapes : 2 (entre 1-2 et 2-3), aria-hidden.
+    const decorative = container.querySelectorAll('li [aria-hidden="true"]');
+    // badges (3) + connecteurs (2) sont tous décoratifs.
+    expect(decorative.length).toBeGreaterThanOrEqual(5);
   });
 
   test("ton encourageant sans pression", () => {

@@ -1,39 +1,37 @@
 /**
- * Section « Comment ça marche » (R5) — le parcours en 3 étapes narratives, en
- * storytelling vertical alterné (ancre `#comment-ca-marche`).
+ * Section « Comment ça marche » (R11) — le parcours en **timeline verticale
+ * numérotée** (ancre `#comment-ca-marche`).
  *
- * Ton encourageant et sans pression (« pas de pression, c'est quand tu veux »),
- * tutoiement, casse phrase. Aucun langage de diagnostic. Server Component.
+ * Différenciation voulue : contrairement à « Fonctionnalités » (grille bento,
+ * lecture parallèle, fond clair), cette section se lit **séquentiellement** —
+ * une liste ordonnée d'étapes reliées par un connecteur, sur un **panneau
+ * lavande** (`brand-50`) qui la distingue de la section précédente. Révélation
+ * en cascade (`Stagger`) ; le connecteur (décoratif, `aria-hidden`) apparaît
+ * avec son étape. Tout statique sous `prefers-reduced-motion`.
+ *
+ * Ton encourageant, sans pression, sans langage de diagnostic. Server Component.
  */
-import { Blob, Mascot } from "@/components/illustrations";
+import { Blob } from "@/components/illustrations";
+import { Stagger, StaggerItem } from "@/components/motion";
 import { Container } from "@/components/ui";
-import type { MascotPose } from "@/lib/illustrations";
-import { StoryBlock } from "./StoryBlock";
+import { cn } from "@/lib/cn";
 
-type Step = {
-  number: number;
-  title: string;
-  pose: MascotPose;
-  body: string;
-};
+type Step = { number: number; title: string; body: string };
 
 const steps: Step[] = [
   {
     number: 1,
     title: "Tu notes ton humeur du jour",
-    pose: "wave",
     body: "En quelques secondes, parmi 5 niveaux. Pas de pression : c'est quand tu veux, et rien n'est obligatoire.",
   },
   {
     number: 2,
     title: "Tu reçois des ressources adaptées",
-    pose: "thinking",
     body: "Selon comment tu te sens, Kitoo te propose des exercices et des contenus bien-être qui te correspondent.",
   },
   {
     number: 3,
     title: "Tu échanges avec un pro si tu veux",
-    pose: "support",
     body: "Si tu en ressens le besoin, tu peux parler à un psychologue partenaire en messagerie sécurisée. On est là.",
   },
 ];
@@ -59,22 +57,39 @@ export function HowItWorks() {
           </h2>
         </div>
 
-        <ol className="mt-12 flex flex-col gap-16 sm:gap-24">
-          {steps.map((step, i) => (
-            <li key={step.number}>
-              <StoryBlock
-                title={step.title}
-                step={step.number}
-                reverse={i % 2 === 1}
-                illustration={
-                  <Mascot pose={step.pose} className="w-full max-w-[300px]" />
-                }
-              >
-                <p>{step.body}</p>
-              </StoryBlock>
-            </li>
-          ))}
-        </ol>
+        {/* Timeline : liste ordonnée, badge numéroté + connecteur vertical. */}
+        <Stagger as="ol" className="mt-12 max-w-2xl">
+          {steps.map((step, i) => {
+            const isLast = i === steps.length - 1;
+            return (
+              <StaggerItem as="li" key={step.number} className="flex gap-5">
+                {/* Colonne badge + connecteur */}
+                <div className="flex flex-col items-center">
+                  <span
+                    className="rounded-pill bg-brand-700 font-display text-body shadow-btn inline-flex h-12 w-12 shrink-0 items-center justify-center text-white"
+                    aria-hidden="true"
+                  >
+                    {step.number}
+                  </span>
+                  {!isLast && (
+                    <span
+                      aria-hidden="true"
+                      className="rounded-pill bg-brand-200 mt-2 w-1 flex-1"
+                    />
+                  )}
+                </div>
+
+                {/* Contenu de l'étape */}
+                <div className={cn("pt-1.5", isLast ? "pb-0" : "pb-12")}>
+                  <h3 className="font-display text-heading text-ink-900 sm:text-title">
+                    {step.title}
+                  </h3>
+                  <p className="text-body text-ink-600 mt-2">{step.body}</p>
+                </div>
+              </StaggerItem>
+            );
+          })}
+        </Stagger>
       </Container>
     </section>
   );

@@ -1,88 +1,116 @@
 /**
- * Section Fonctionnalités (R5) — les 3 piliers de Kitoo en storytelling vertical
- * alterné (ancre `#fonctionnalites`). Une idée par bloc (`StoryBlock`), illustration
- * et texte se révélant au scroll. Copy chaleureux tutoyé, fidèle au brief produit.
+ * Section Fonctionnalités (R11) — les 3 piliers de Kitoo en **grille bento**
+ * (ancre `#fonctionnalites`).
  *
- * Server Component : compose les blocs (Reveal/Stagger client) avec mascotte
- * server. Aucune logique applicative (la démo d'humeur arrive en R6).
+ * Différenciation voulue : contrairement à « Comment ça marche » (timeline
+ * séquentielle), cette section se lit **en parallèle, en un coup d'œil** — une
+ * grille de cards sur fond clair, avec une card « héros » plus grande (Mood
+ * tracker). Apparition en cascade (`Stagger`), micro-interaction de survol
+ * (légère élévation). Casse la monotonie juste après le Hero.
+ *
+ * Server Component : compose la grille (Stagger client) avec mascottes server.
  */
 import { Leaf, MessageCircleHeart, Smile, type LucideIcon } from "lucide-react";
 import { Blob, Mascot } from "@/components/illustrations";
+import { Stagger, StaggerItem } from "@/components/motion";
 import { Container } from "@/components/ui";
 import type { MascotPose } from "@/lib/illustrations";
 import { cn } from "@/lib/cn";
-import { StoryBlock } from "./StoryBlock";
+
+/** Échelle d'humeur (5 niveaux, couleurs fixes du DS) — décoratif. */
+const moodScale = [
+  "bg-mood-very-positive",
+  "bg-mood-positive",
+  "bg-mood-neutral",
+  "bg-mood-negative",
+  "bg-mood-very-negative",
+] as const;
+
+function MoodScale() {
+  return (
+    <div className="mt-5 flex items-center gap-2" aria-hidden="true">
+      {moodScale.map((c) => (
+        <span key={c} className={cn("rounded-pill h-7 w-7", c)} />
+      ))}
+    </div>
+  );
+}
 
 type Feature = {
   title: string;
   icon: LucideIcon;
   pose: MascotPose;
-  body: React.ReactNode;
+  description: string;
+  /** Card « héros » de la grille bento (plus grande). */
+  featured?: boolean;
+  extra?: React.ReactNode;
 };
-
-/** Échelle d'humeur (5 niveaux, couleurs fixes du DS) — décoratif. */
-const moodScale = [
-  { label: "Très positif", className: "bg-mood-very-positive" },
-  { label: "Positif", className: "bg-mood-positive" },
-  { label: "Neutre", className: "bg-mood-neutral" },
-  { label: "Négatif", className: "bg-mood-negative" },
-  { label: "Très négatif", className: "bg-mood-very-negative" },
-] as const;
-
-function MoodScale() {
-  return (
-    <div
-      className="mt-5 flex items-center justify-center gap-2 md:justify-start"
-      aria-hidden="true"
-    >
-      {moodScale.map((m) => (
-        <span
-          key={m.label}
-          className={cn("rounded-pill h-7 w-7", m.className)}
-        />
-      ))}
-    </div>
-  );
-}
 
 const features: Feature[] = [
   {
     title: "Mood tracker",
     icon: Smile,
     pose: "calm",
-    body: (
-      <>
-        <p>
-          Note ton humeur chaque jour parmi 5 niveaux, visualise tes tendances
-          au fil du temps et gagne des badges de régularité.
-        </p>
-        <MoodScale />
-      </>
-    ),
+    description:
+      "Note ton humeur chaque jour parmi 5 niveaux, visualise tes tendances au fil du temps et gagne des badges de régularité.",
+    featured: true,
+    extra: <MoodScale />,
   },
   {
     title: "Chat avec un pro",
     icon: MessageCircleHeart,
     pose: "support",
-    body: (
-      <p>
-        Échange en messagerie sécurisée avec un psychologue partenaire, quand tu
-        en ressens le besoin. En confiance, à ton rythme.
-      </p>
-    ),
+    description:
+      "Échange en messagerie sécurisée avec un psychologue partenaire, quand tu en ressens le besoin.",
   },
   {
     title: "Espace bien-être",
     icon: Leaf,
     pose: "thinking",
-    body: (
-      <p>
-        Des articles, des exercices et des conseils validés par des
-        professionnels de santé pour prendre soin de toi au quotidien.
-      </p>
-    ),
+    description:
+      "Des articles et exercices validés par des professionnels de santé pour prendre soin de toi.",
   },
 ];
+
+function FeatureCard({
+  feature,
+  className,
+}: {
+  feature: Feature;
+  className?: string;
+}) {
+  const { icon: Icon, title, description, pose, featured, extra } = feature;
+  return (
+    <div
+      className={cn(
+        "rounded-card flex h-full flex-col bg-white p-6 shadow-sm sm:p-8",
+        "duration-kitoo ease-kitoo transition-[transform,box-shadow] hover:shadow-md motion-safe:hover:-translate-y-1",
+        className,
+      )}
+    >
+      <span className="rounded-control bg-brand-100 text-brand-700 inline-flex h-12 w-12 items-center justify-center">
+        <Icon aria-hidden="true" strokeWidth={1.75} className="h-6 w-6" />
+      </span>
+      <h3
+        className={cn(
+          "font-display text-title text-ink-900 mt-4",
+          featured && "sm:text-[34px]",
+        )}
+      >
+        {title}
+      </h3>
+      <p className="text-body text-ink-600 mt-2">{description}</p>
+      {extra}
+      <div className="mt-auto flex justify-center pt-6">
+        <Mascot
+          pose={pose}
+          decorative
+          className={cn("w-full", featured ? "max-w-[240px]" : "max-w-[150px]")}
+        />
+      </div>
+    </div>
+  );
+}
 
 export function Features() {
   return (
@@ -105,21 +133,18 @@ export function Features() {
           </h2>
         </div>
 
-        <div className="mt-12 flex flex-col gap-16 sm:gap-24">
-          {features.map((feature, i) => (
-            <StoryBlock
-              key={feature.title}
-              title={feature.title}
-              icon={feature.icon}
-              reverse={i % 2 === 1}
-              illustration={
-                <Mascot pose={feature.pose} className="w-full max-w-[300px]" />
-              }
-            >
-              {feature.body}
-            </StoryBlock>
-          ))}
-        </div>
+        {/* Grille bento : une card héros (haute, à gauche) + deux cards empilées. */}
+        <Stagger className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-3 lg:grid-rows-2">
+          <StaggerItem className="lg:col-span-2 lg:row-span-2">
+            <FeatureCard feature={features[0]} className="h-full" />
+          </StaggerItem>
+          <StaggerItem>
+            <FeatureCard feature={features[1]} className="h-full" />
+          </StaggerItem>
+          <StaggerItem>
+            <FeatureCard feature={features[2]} className="h-full" />
+          </StaggerItem>
+        </Stagger>
       </Container>
     </section>
   );
