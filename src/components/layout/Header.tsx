@@ -28,33 +28,25 @@ export function Header() {
   }, []);
 
   return (
-    <header
-      className={cn(
-        "duration-kitoo ease-kitoo sticky top-0 z-50 w-full transition-[background-color,box-shadow,border-color]",
-        "border-b backdrop-blur-sm",
-        scrolled
-          ? "border-ink-200 bg-white/85 shadow-sm backdrop-blur-md"
-          : "border-transparent bg-white/60",
-      )}
-    >
+    <header className="sticky top-0 z-50 w-full">
       <nav
         aria-label="Navigation principale"
         className={cn(
           "max-w-content duration-kitoo ease-kitoo mx-auto flex w-full items-center justify-between gap-4 px-4 transition-[height] sm:px-6",
-          scrolled ? "h-14" : "h-16",
+          scrolled ? "h-20" : "h-24",
         )}
       >
         {/* Logo + wordmark */}
         <a
           href="#hero"
-          className="rounded-control font-display text-title text-ink-900 flex items-center gap-2"
+          className="rounded-control font-display text-ink-900 flex items-center gap-3 text-[2rem] leading-none"
         >
           <Image
             src="/kitoo-logo.png"
             alt=""
-            width={36}
-            height={36}
-            className="rounded-control"
+            width={48}
+            height={48}
+            className="rounded-control h-12 w-12"
             priority
           />
           <span>Kitoo</span>
@@ -65,7 +57,7 @@ export function Header() {
           href={siteConfig.appUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className={buttonVariants({ size: "sm" })}
+          className={buttonVariants({ size: "lg" })}
         >
           Accéder à l&apos;app
         </a>
