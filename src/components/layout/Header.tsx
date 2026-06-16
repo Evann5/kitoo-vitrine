@@ -7,8 +7,9 @@
  * un unique CTA à droite. Pas de liens de section ni de menu burger : la lecture
  * one-page se fait au scroll, l'action est concentrée sur « Accéder à l'app ».
  *
- * - Sticky, fond `brand-50` (même teinte que le hero) pour fondre la barre
- *   dans la page plutôt que de poser un bandeau blanc.
+ * - `fixed` + fond transparent : la barre **survole** le hero (qui remonte
+ *   jusqu'en haut de page), si bien que les décors du hero passent derrière
+ *   sans couture ni bandeau blanc. La barre prend donc la teinte du hero.
  * - La barre se condense légèrement au scroll ; même rendu mobile/desktop.
  */
 import Image from "next/image";
@@ -29,7 +30,7 @@ export function Header() {
   }, []);
 
   return (
-    <header className="bg-brand-50 sticky top-0 z-50 w-full">
+    <header className="fixed top-0 z-50 w-full">
       <nav
         aria-label="Navigation principale"
         className={cn(
