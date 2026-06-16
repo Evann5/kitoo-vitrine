@@ -80,33 +80,47 @@ function FeatureCard({
   className?: string;
 }) {
   const { icon: Icon, title, description, pose, featured, extra } = feature;
+
+  const cardClass = cn(
+    "rounded-card bg-white p-6 shadow-sm sm:p-8",
+    "duration-kitoo ease-kitoo transition-[transform,box-shadow] hover:shadow-md motion-safe:hover:-translate-y-1",
+    className,
+  );
+
+  // Card héros : texte + koala côte à côte sur grand écran (remplit la hauteur),
+  // empilés sur mobile. Card standard : vertical, koala en bas.
+  if (featured) {
+    return (
+      <div className={cn(cardClass, "flex h-full flex-col justify-center")}>
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:gap-8">
+          <div className="lg:flex-1">
+            <span className="rounded-control bg-brand-100 text-brand-700 inline-flex h-12 w-12 items-center justify-center">
+              <Icon aria-hidden="true" strokeWidth={1.75} className="h-6 w-6" />
+            </span>
+            <h3 className="font-display text-title text-ink-900 mt-4 sm:text-[34px]">
+              {title}
+            </h3>
+            <p className="text-body text-ink-600 mt-2">{description}</p>
+            {extra}
+          </div>
+          <div className="flex justify-center lg:flex-1">
+            <Mascot pose={pose} decorative className="w-full max-w-[340px]" />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div
-      className={cn(
-        "rounded-card flex h-full flex-col bg-white p-6 shadow-sm sm:p-8",
-        "duration-kitoo ease-kitoo transition-[transform,box-shadow] hover:shadow-md motion-safe:hover:-translate-y-1",
-        className,
-      )}
-    >
+    <div className={cn(cardClass, "flex h-full flex-col")}>
       <span className="rounded-control bg-brand-100 text-brand-700 inline-flex h-12 w-12 items-center justify-center">
         <Icon aria-hidden="true" strokeWidth={1.75} className="h-6 w-6" />
       </span>
-      <h3
-        className={cn(
-          "font-display text-title text-ink-900 mt-4",
-          featured && "sm:text-[34px]",
-        )}
-      >
-        {title}
-      </h3>
+      <h3 className="font-display text-title text-ink-900 mt-4">{title}</h3>
       <p className="text-body text-ink-600 mt-2">{description}</p>
       {extra}
       <div className="mt-auto flex justify-center pt-6">
-        <Mascot
-          pose={pose}
-          decorative
-          className={cn("w-full", featured ? "max-w-[420px]" : "max-w-[170px]")}
-        />
+        <Mascot pose={pose} decorative className="w-full max-w-[170px]" />
       </div>
     </div>
   );
