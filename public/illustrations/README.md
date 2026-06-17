@@ -20,14 +20,14 @@ build, aucune modification de code nécessaire).
 
 | Clé                 | Fichier                 | Dim. réelles | Sens / usage principal                          |
 | ------------------- | ----------------------- | ------------ | ----------------------------------------------- |
-| `kitoo-classic`     | `kitoo-classic.png`     | 718×431      | Accueil / neutre (Hero, Mood tracker, étape 1)  |
-| `kitoo-heart`       | `kitoo-heart.png`       | 579×612      | Écoute / soutien (Chat, bloc confiance)         |
-| `kitoo-sleeping`    | `kitoo-sleeping.png`    | 585×369      | Repos / bien-être (Espace bien-être)            |
-| `kitoo-soda`        | `kitoo-soda.png`        | 839×794      | Légèreté / détente (humeur positive, étape 2)   |
-| `kitoo-bubble-tea`  | `kitoo-bubble-tea.png`  | 440×426      | Convivialité (témoignages)                      |
-| `kitoo-sunglasses`  | `kitoo-sunglasses.png`  | 616×526      | Fierté / bonne humeur (très positif, badges)    |
-| `kitoo-skating`     | `kitoo-skating.png`     | 649×687      | Énergie / avancée (étape 3 du parcours)         |
-| `kitoo-crying`      | `kitoo-crying.png`      | 1333×800     | Émotion / soutien (très négatif) — **ménagé**   |
+| `kitoo-classic`     | `kitoo-classic.png`     | 1100×1100      | Accueil / neutre (Hero, Mood tracker, étape 1)  |
+| `kitoo-heart`       | `kitoo-heart.png`       | 1100×1100      | Écoute / soutien (Chat, bloc confiance)         |
+| `kitoo-sleeping`    | `kitoo-sleeping.png`    | 1100×1100      | Repos / bien-être (Espace bien-être)            |
+| `kitoo-soda`        | `kitoo-soda.png`        | 1100×1100      | Légèreté / détente (humeur positive, étape 2)   |
+| `kitoo-bubble-tea`  | `kitoo-bubble-tea.png`  | 1100×1100      | Convivialité (témoignages)                      |
+| `kitoo-sunglasses`  | `kitoo-sunglasses.png`  | 1100×1100      | Fierté / bonne humeur (très positif, badges)    |
+| `kitoo-skating`     | `kitoo-skating.png`     | 1100×1100      | Énergie / avancée (étape 3 du parcours)         |
+| `kitoo-crying`      | `kitoo-crying.png`      | 1100×1100     | Émotion / soutien (très négatif) — **ménagé**   |
 
 ## Décors (formes SVG générées, pas d'asset requis)
 
