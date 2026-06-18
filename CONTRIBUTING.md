@@ -1,17 +1,17 @@
 # Contribuer à Kitoo (site vitrine)
 
-Merci de garder le dépôt propre et lisible — la qualité du versioning fait partie
+Merci de garder le dépôt propre et lisible : la qualité du versioning fait partie
 des critères d'évaluation.
 
 ## Stratégie de branches
 
 - `main` : toujours **stable** (lint + tests + build au vert, déployé sur Vercel).
 - Branches de travail, depuis `main` :
-  - `feat/…` — nouvelle fonctionnalité / section (ex. `feat/temoignages`)
-  - `fix/…` — correction de bug
-  - `chore/…` — outillage, config, dépendances
-  - `docs/…` — documentation
-  - `test/…` — tests
+  - `feat/…` : nouvelle fonctionnalité / section (ex. `feat/temoignages`)
+  - `fix/…` : correction de bug
+  - `chore/…` : outillage, config, dépendances
+  - `docs/…` : documentation
+  - `test/…` : tests
 - Ouvrir une **Pull Request** vers `main`. La CI (lint + tests + build + e2e)
   doit être verte avant le merge.
 

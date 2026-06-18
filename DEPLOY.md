@@ -1,4 +1,4 @@
-# Déploiement — Kitoo (Vercel)
+# Déploiement Kitoo (Vercel)
 
 Le site est déployé sur **Vercel**, configuré **entièrement en CLI**.
 
@@ -20,8 +20,7 @@ Le site est déployé sur **Vercel**, configuré **entièrement en CLI**.
 - [x] `NEXT_PUBLIC_APP_URL` configurée sur les 3 environnements Vercel
 - [x] Aucun secret commité ; `.env.local` et `.vercel/` ignorés
 - [x] Liens app centralisés (`appLink`) : accueil + `/connexion` + `/inscription`
-- [x] `NEXT_PUBLIC_APP_URL` = `https://kitoo-app.vercel.app` sur les 3 environnements
-      + redéploiement production (CTA live vérifiés : `/`, `/connexion`, `/inscription`)
+- [x] `NEXT_PUBLIC_APP_URL` = `https://kitoo-app.vercel.app` sur les 3 environnements + redéploiement production (CTA live vérifiés : `/`, `/connexion`, `/inscription`)
 
 ## Déploiement continu
 
@@ -45,7 +44,7 @@ Définis dans [`vercel.json`](vercel.json) et appliqués à toutes les routes :
 
 `NEXT_PUBLIC_APP_URL` (variable **publique**, valeur placeholder `#` tant que le
 lien de l'app n'est pas connu) est configurée sur les **3 environnements**
-(Production, Preview, Development) côté Vercel — jamais commitée. C'est l'**URL de
+(Production, Preview, Development) côté Vercel, jamais commitée. C'est l'**URL de
 base** de l'app : la vitrine en dérive l'accueil et les sous-routes `/connexion`
 et `/inscription` via le helper `appLink()` (`src/lib/site-config.ts`). Une seule
 valeur à renseigner.
@@ -72,7 +71,7 @@ vercel --prod --yes
 # (ou simplement pousser un commit sur main : redeploy automatique)
 ```
 
-> Les variables `NEXT_PUBLIC_*` sont **exposées au navigateur** — n'y mettre
+> Les variables `NEXT_PUBLIC_*` sont **exposées au navigateur**, n'y mettre
 > aucun secret.
 
 ## Commandes CLI utilisées (mise en place)

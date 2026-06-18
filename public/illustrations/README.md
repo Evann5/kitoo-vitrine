@@ -1,4 +1,4 @@
-# Illustrations Kitoo — guide de dépôt
+# Illustrations Kitoo : guide de dépôt
 
 Les illustrations **réelles** de la mascotte Kitoo (émotions) sont déposées ici.
 Le code ne référence jamais un chemin : il consomme une **clé** (registre
@@ -14,7 +14,7 @@ build, aucune modification de code nécessaire).
   asset (anti-CLS) ; l'image est ensuite mise à l'échelle par les sections.
 - **Mascotte** : reste fidèle au koala violet ; **ne pas recolorer**.
 - `kitoo-crying` est **réservé aux contextes de soutien** (humeur la plus basse,
-  écoute) — jamais en décoration gratuite, jamais alarmant.
+  écoute), jamais en décoration gratuite, jamais alarmant.
 
 ## Émotions de la mascotte (clés `kitoo-*`)
 
@@ -27,7 +27,7 @@ build, aucune modification de code nécessaire).
 | `kitoo-bubble-tea`  | `kitoo-bubble-tea.png`  | 1100×1100      | Convivialité (témoignages)                      |
 | `kitoo-sunglasses`  | `kitoo-sunglasses.png`  | 1100×1100      | Fierté / bonne humeur (très positif, badges)    |
 | `kitoo-skating`     | `kitoo-skating.png`     | 1100×1100      | Énergie / avancée (étape 3 du parcours)         |
-| `kitoo-crying`      | `kitoo-crying.png`      | 1100×1100     | Émotion / soutien (très négatif) — **ménagé**   |
+| `kitoo-crying`      | `kitoo-crying.png`      | 1100×1100     | Émotion / soutien (très négatif), **ménagé**   |
 
 ## Décors (formes SVG générées, pas d'asset requis)
 

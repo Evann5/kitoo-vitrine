@@ -4,7 +4,7 @@ Toutes les évolutions notables du site vitrine Kitoo.
 Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/),
 versionnage [SemVer](https://semver.org/lang/fr/).
 
-## [2.0.0] — 2026-06-15 — Refonte UI/UX V2
+## [2.0.0] - 2026-06-15 - Refonte UI/UX V2
 
 Refonte visuelle et d'interaction complète (R1–R10), inspirée des grandes
 landing pages tout en gardant l'identité douce et apaisante de Kitoo.
@@ -35,7 +35,7 @@ landing pages tout en gardant l'identité douce et apaisante de Kitoo.
 - `lottie-react` retiré (inutilisé) ; pages de démo dev supprimées.
 - 132 tests unitaires + 21 e2e (parcours refondu + axe). `pnpm audit` : 0 vuln.
 
-## [1.0.0] — 2026-06-15 — Site vitrine V1
+## [1.0.0] - 2026-06-15 - Site vitrine V1
 
 Première version livrable de la landing one-page Kitoo.
 

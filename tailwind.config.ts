@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss";
 
 /**
- * Configuration Tailwind — tokens du design system Kitoo.
+ * Configuration Tailwind : tokens du design system Kitoo.
  *
  * Source de vérité : `design-system/guidelines/Kitoo_Design_System.pdf`.
  * Chargée par Tailwind v4 via la directive `@config` dans `src/app/globals.css`.
@@ -19,10 +19,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Pervenche — couleur primaire / de marque (graine = 500).
+        // Pervenche : couleur primaire / de marque (graine = 500).
         brand: {
           50: "#F3F3FE",
-          100: "#E9EAFA", // brume lavande — surface douce
+          100: "#E9EAFA", // brume lavande, surface douce
           200: "#D7D8F6",
           300: "#BFC0F4",
           400: "#ABACF2",
@@ -33,7 +33,7 @@ const config: Config = {
           900: "#3B3C7D",
           DEFAULT: "#9B9DF0",
         },
-        // Neutres « encre » — cast froid/lavande, jamais gris chaud.
+        // Neutres « encre » : cast froid/lavande, jamais gris chaud.
         ink: {
           50: "#FAFAFD", // canvas de l'app (off-white teinté lavande)
           100: "#F2F2F7",
@@ -47,7 +47,7 @@ const config: Config = {
           900: "#16161D", // texte principal
           DEFAULT: "#16161D",
         },
-        // Échelle d'humeur — couleurs fixes du DS, exposées en variables CSS
+        // Échelle d'humeur : couleurs fixes du DS, exposées en variables CSS
         // pour permettre la bascule daltonisme (override dans globals.css).
         mood: {
           "very-positive": "var(--mood-very-positive)",
@@ -56,7 +56,7 @@ const config: Config = {
           negative: "var(--mood-negative)",
           "very-negative": "var(--mood-very-negative)",
         },
-        // Sémantique — accordée au pervenche, jamais criarde.
+        // Sémantique : accordée au pervenche, jamais criarde.
         success: "#38B27E",
         warning: "#F2A33C",
         danger: "#E5575C",
@@ -100,14 +100,14 @@ const config: Config = {
         prose: "680px", // largeur max du texte long
       },
       transitionTimingFunction: {
-        // Entrées douces et rassurantes — aucun rebond ni overshoot.
+        // Entrées douces et rassurantes, aucun rebond ni overshoot.
         kitoo: "cubic-bezier(0.22, 0.61, 0.36, 1)",
       },
       transitionDuration: {
         kitoo: "200ms",
       },
       keyframes: {
-        // Flottement doux (idle de la mascotte) — montée/descente subtile.
+        // Flottement doux (idle de la mascotte) : montée/descente subtile.
         float: {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-8px)" },

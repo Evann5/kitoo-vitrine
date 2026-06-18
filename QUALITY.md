@@ -1,4 +1,4 @@
-# Qualité — Kitoo (audit R9)
+# Qualité Kitoo (audit R9)
 
 Passe transversale de qualité sur la landing refondue (R4–R8) : responsive,
 accessibilité et performance.
@@ -19,7 +19,7 @@ Audit `lighthouse@12 --preset=desktop` sur le build de production.
 > refonte (Hero plein écran, scroll-story, démo interactive, animations,
 > mascotte) **n'a pas dégradé la qualité**.
 
-## Responsive — matrice testée
+## Responsive : matrice testée
 
 Aucun **débordement horizontal** et lisibilité maintenue à tous les breakpoints
 (vérifié automatiquement en parcourant toute la page) :
@@ -42,7 +42,7 @@ Aucun **débordement horizontal** et lisibilité maintenue à tous les breakpoin
 ## Accessibilité (WCAG AA)
 
 - **axe-core : 0 violation** critique/sérieuse sur la page complète stabilisée
-  (toutes sections révélées) — vérifié en e2e ([a11y.spec.ts](tests/e2e/a11y.spec.ts)).
+  (toutes sections révélées), vérifié en e2e ([a11y.spec.ts](tests/e2e/a11y.spec.ts)).
 - **Un seul `h1`** (Hero), hiérarchie `h2`/`h3`/`h4` cohérente.
 - Contraste : surfaces pervenche à texte en `brand-700`, eyebrows/links en
   `brand-800`, labels en `ink-600` (tous ≥ 4.5:1).

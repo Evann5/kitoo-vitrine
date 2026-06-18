@@ -1,4 +1,4 @@
-# Design System — Kitoo
+# Design System Kitoo
 
 Ce dossier accueille **manuellement** les fichiers du design system Kitoo, à déposer
 **avant l'étape suivante** du développement du site vitrine. Tant que ces fichiers
@@ -25,7 +25,7 @@ Les fichiers de police :
 ### `assets/`
 Les ressources graphiques :
 
-- `kitoo-logo.jpg` — **le koala. Ne pas le recolorer** ni le modifier.
+- `kitoo-logo.jpg` : **le koala. Ne pas le recolorer** ni le modifier.
 
 ### `guidelines/`
 La documentation de référence :

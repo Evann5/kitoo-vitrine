@@ -45,7 +45,7 @@ describe("registre illustrations.ts", () => {
   });
 });
 
-describe("Illustration — résolution réelle vs fallback", () => {
+describe("Illustration : résolution réelle vs fallback", () => {
   test("rend l'asset RÉEL (next/image) quand le fichier existe", () => {
     const { container } = render(<Illustration name="kitoo-classic" />);
     const img = container.querySelector("img");

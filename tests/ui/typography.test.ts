@@ -5,7 +5,7 @@ import config from "../../tailwind.config.ts";
  * Garantit le seuil d'accessibilité WCAG : le corps de texte ne descend jamais
  * sous 16px. On vérifie la valeur du token `body` dans la config Tailwind.
  */
-describe("typographie — taille du corps", () => {
+describe("typographie : taille du corps", () => {
   test("le token fontSize `body` vaut au moins 16px", () => {
     const fontSize = config.theme?.extend?.fontSize as
       | Record<string, [string, ...unknown[]]>

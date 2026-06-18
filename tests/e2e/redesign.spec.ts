@@ -5,7 +5,7 @@ import { expect, test } from "@playwright/test";
  * section active, démo humeur au clavier, bande de réassurance, CTA mobile.
  */
 
-test.describe("Refonte — desktop", () => {
+test.describe("Refonte : desktop", () => {
   test.use({ viewport: { width: 1280, height: 800 } });
 
   test("les sections scroll-story se révèlent au scroll", async ({ page }) => {
@@ -54,7 +54,7 @@ test.describe("Refonte — desktop", () => {
   });
 });
 
-test.describe("Refonte — mobile", () => {
+test.describe("Refonte : mobile", () => {
   test.use({ viewport: { width: 390, height: 780 } });
 
   test("barre CTA collante apparaît après le hero → lien app sécurisé", async ({

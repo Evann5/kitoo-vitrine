@@ -49,7 +49,7 @@ export const appRoutes = {
  * Source unique : l'URL provient de `NEXT_PUBLIC_APP_URL`, jamais codée en dur.
  *
  * - **Fallback propre** : si `appUrl` vaut `"#"` (URL pas encore configurée),
- *   renvoie `"#"` quel que soit le `path` — le lien reste cliquable, le build
+ *   renvoie `"#"` quel que soit le `path`, le lien reste cliquable, le build
  *   ne casse pas.
  * - Normalise les slashs (slash final de base ignoré, pas de `//` accidentel).
  *
