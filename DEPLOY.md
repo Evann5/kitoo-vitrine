@@ -20,8 +20,8 @@ Le site est déployé sur **Vercel**, configuré **entièrement en CLI**.
 - [x] `NEXT_PUBLIC_APP_URL` configurée sur les 3 environnements Vercel
 - [x] Aucun secret commité ; `.env.local` et `.vercel/` ignorés
 - [x] Liens app centralisés (`appLink`) : accueil + `/connexion` + `/inscription`
-- [ ] Renseigner `NEXT_PUBLIC_APP_URL` avec l'URL réelle de l'app (cf. procédure
-      ci-dessous), puis redéployer
+- [x] `NEXT_PUBLIC_APP_URL` = `https://kitoo-app.vercel.app` sur les 3 environnements
+      + redéploiement production (CTA live vérifiés : `/`, `/connexion`, `/inscription`)
 
 ## Déploiement continu
 
