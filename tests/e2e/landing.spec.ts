@@ -24,10 +24,10 @@ test.describe("Parcours visiteur (desktop)", () => {
     }
   });
 
-  test("navigation par ancre depuis le header", async ({ page }) => {
+  test("navigation par ancre depuis le footer", async ({ page }) => {
     await page.goto("/");
-    const nav = page.getByRole("navigation", { name: "Navigation principale" });
-    await nav.getByRole("link", { name: "FAQ" }).click();
+    // Le header minimaliste n'a plus d'ancres ; la nav par ancres vit au footer.
+    await page.locator("footer").getByRole("link", { name: "FAQ" }).click();
     await expect(page).toHaveURL(/#faq$/);
     await expect(page.locator("#faq")).toBeInViewport();
   });
@@ -85,22 +85,17 @@ test.describe("Parcours visiteur (desktop)", () => {
 test.describe("Parcours visiteur (mobile)", () => {
   test.use({ viewport: { width: 390, height: 844 } });
 
-  test("menu burger : ouverture, navigation, fermeture", async ({ page }) => {
+  test("barre CTA collante : apparaît après le hero et pointe vers l'app", async ({
+    page,
+  }) => {
     await page.goto("/");
-    const burger = page.getByRole("button", { name: "Ouvrir le menu" });
-    const menuId = await burger.getAttribute("aria-controls");
-    await burger.click();
-    await expect(
-      page.getByRole("button", { name: "Fermer le menu" }),
-    ).toHaveAttribute("aria-expanded", "true");
-
-    // Cliquer un lien ferme le menu.
-    await page
-      .locator(`#${menuId}`)
-      .getByRole("link", { name: "Pour qui" })
-      .click();
-    await expect(
-      page.getByRole("button", { name: "Ouvrir le menu" }),
-    ).toHaveAttribute("aria-expanded", "false");
+    // Apparaît une fois le hero dépassé.
+    await page.locator("#fonctionnalites").scrollIntoViewIfNeeded();
+    const cta = page
+      .locator("div.fixed.bottom-0")
+      .getByRole("link", { name: /Accéder à l'app/i });
+    await expect(cta).toBeVisible();
+    await expect(cta).toHaveAttribute("target", "_blank");
+    await expect(cta).toHaveAttribute("rel", "noopener noreferrer");
   });
 });

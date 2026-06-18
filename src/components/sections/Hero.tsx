@@ -3,7 +3,9 @@
  *
  * Hiérarchie d'action « à la Duolingo » : **un seul CTA dominant** (« Accéder à
  * l'app », pervenche, gros) + un lien secondaire discret (« Découvrir ») qui ne
- * concurrence pas le CTA. Voix de marque Kitoo : chaleureuse, rassurante,
+ * concurrence pas le CTA. Deux accès directs à l'app en appui (« Créer un
+ * compte » → `/inscription`, « Se connecter » → `/connexion`), discrets pour ne
+ * pas surcharger la hiérarchie. Voix de marque Kitoo : chaleureuse, rassurante,
  * tutoiement, casse phrase.
  *
  * Server Component : compose les wrappers d'animation client (`Reveal`,
@@ -15,7 +17,7 @@ import { ArrowDown } from "lucide-react";
 import { Blob, Mascot } from "@/components/illustrations";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion";
 import { Button, Container } from "@/components/ui";
-import { siteConfig } from "@/lib/site-config";
+import { appLink, appRoutes, siteConfig } from "@/lib/site-config";
 
 export function Hero() {
   return (
@@ -84,6 +86,31 @@ export function Hero() {
                   />
                 </a>
               </div>
+            </StaggerItem>
+
+            {/* Accès directs à l'app (sous-routes via appLink, jamais en dur). */}
+            <StaggerItem>
+              <p className="text-small text-ink-600 mt-5">
+                <a
+                  href={appLink(appRoutes.signup)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-control text-brand-800 hover:text-brand-900 font-bold underline-offset-4 hover:underline"
+                >
+                  Créer un compte
+                </a>
+                <span aria-hidden="true" className="text-ink-400 mx-2">
+                  ·
+                </span>
+                <a
+                  href={appLink(appRoutes.login)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-control text-brand-800 hover:text-brand-900 font-bold underline-offset-4 hover:underline"
+                >
+                  Se connecter
+                </a>
+              </p>
             </StaggerItem>
           </Stagger>
 

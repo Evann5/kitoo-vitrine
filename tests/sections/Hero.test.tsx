@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { afterEach, describe, expect, test, vi } from "vitest";
 import { Hero } from "@/components/sections/Hero";
-import { siteConfig } from "@/lib/site-config";
+import { appLink, appRoutes, siteConfig } from "@/lib/site-config";
 
 describe("Hero", () => {
   afterEach(() => {
@@ -32,6 +32,19 @@ describe("Hero", () => {
       "href",
       "#fonctionnalites",
     );
+  });
+
+  test("accès directs : « Créer un compte » → /inscription, « Se connecter » → /connexion (_blank sécurisé)", () => {
+    render(<Hero />);
+    const signup = screen.getByRole("link", { name: "Créer un compte" });
+    expect(signup).toHaveAttribute("href", appLink(appRoutes.signup));
+    expect(signup).toHaveAttribute("target", "_blank");
+    expect(signup).toHaveAttribute("rel", "noopener noreferrer");
+
+    const login = screen.getByRole("link", { name: "Se connecter" });
+    expect(login).toHaveAttribute("href", appLink(appRoutes.login));
+    expect(login).toHaveAttribute("target", "_blank");
+    expect(login).toHaveAttribute("rel", "noopener noreferrer");
   });
 
   test("la mascotte est rendue avec un nom accessible (pose wave)", () => {

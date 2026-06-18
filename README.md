@@ -87,16 +87,37 @@ Copier `.env.local.example` vers `.env.local` et renseigner les valeurs :
 cp .env.local.example .env.local
 ```
 
-- `NEXT_PUBLIC_APP_URL` — URL de l'application Kitoo (laisser `"#"` tant qu'elle
-  n'est pas connue). `.env.local` est ignoré par git.
+- `NEXT_PUBLIC_APP_URL` — URL **de base** de l'application Kitoo (laisser `"#"`
+  tant qu'elle n'est pas connue). `.env.local` est ignoré par git.
+
+### Connexion à l'application
+
+L'URL de l'app est **centralisée** : une seule source (`NEXT_PUBLIC_APP_URL`),
+exposée via `siteConfig.appUrl`, et un helper `appLink(path)` qui compose les
+sous-routes — **aucune URL en dur** dans les composants.
+
+```ts
+import { appLink, appRoutes } from "@/lib/site-config";
+
+appLink(); // accueil de l'app (ou "#" si non configurée)
+appLink(appRoutes.login); // …/connexion
+appLink(appRoutes.signup); // …/inscription
+```
+
+- **Accueil de l'app** — CTA « Accéder à l'app » (header, hero, CTA final, barre
+  CTA mobile) → `siteConfig.appUrl`.
+- **Connexion / Inscription** — liens directs du hero : « Se connecter » →
+  `appLink('/connexion')`, « Créer un compte » → `appLink('/inscription')`.
+- **Liens externes sûrs** : `target="_blank"` + `rel="noopener noreferrer"`.
+- **Fallback propre** : si `NEXT_PUBLIC_APP_URL` vaut `"#"`, `appLink(...)`
+  renvoie `"#"` (liens cliquables, build non cassé).
 
 ### Remplacer `NEXT_PUBLIC_APP_URL` quand le lien de l'app arrive
 
 - **En local** : éditer `.env.local` (`NEXT_PUBLIC_APP_URL="https://app.kitoo.fr"`).
 - **En production (Vercel)** : mettre à jour la variable sur les 3 environnements
-  puis redéployer — procédure détaillée dans [`DEPLOY.md`](DEPLOY.md). Tous les
-  CTA (`Button` primaire, header, hero, CTA final) consomment cette valeur via
-  `siteConfig.appUrl`, donc une seule mise à jour suffit.
+  puis redéployer — procédure détaillée dans [`DEPLOY.md`](DEPLOY.md). Une seule
+  mise à jour suffit (tous les liens en dérivent).
 
 ## Arborescence
 

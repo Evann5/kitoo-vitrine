@@ -34,6 +34,38 @@ export type SiteConfig = {
   readonly nav: readonly NavItem[];
 };
 
+/**
+ * Sous-routes connues de l'application (jamais d'URL en dur dans les composants).
+ * Composer avec `appLink` : `appLink(appRoutes.login)`.
+ */
+export const appRoutes = {
+  home: "/",
+  login: "/connexion",
+  signup: "/inscription",
+} as const;
+
+/**
+ * Compose un lien vers l'application à partir de l'URL de base (`appUrl`).
+ * Source unique : l'URL provient de `NEXT_PUBLIC_APP_URL`, jamais codée en dur.
+ *
+ * - **Fallback propre** : si `appUrl` vaut `"#"` (URL pas encore configurée),
+ *   renvoie `"#"` quel que soit le `path` — le lien reste cliquable, le build
+ *   ne casse pas.
+ * - Normalise les slashs (slash final de base ignoré, pas de `//` accidentel).
+ *
+ * @example
+ * appLink()              // "#" si non configurée, sinon l'accueil de l'app
+ * appLink("/connexion")  // "https://app.kitoo.fr/connexion"
+ */
+export function appLink(path: string = appRoutes.home): string {
+  const base = siteConfig.appUrl;
+  if (base === "#") return "#";
+  const cleanBase = base.replace(/\/+$/, "");
+  if (path === "" || path === "/") return cleanBase || "#";
+  const cleanPath = path.startsWith("/") ? path : `/${path}`;
+  return `${cleanBase}${cleanPath}`;
+}
+
 export const siteConfig: SiteConfig = {
   name: "Kitoo",
   baseline:

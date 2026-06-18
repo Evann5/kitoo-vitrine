@@ -1,44 +1,50 @@
 import { expect, test } from "@playwright/test";
 
-test("header sticky : liens de nav, CTA et skip-link présents (desktop)", async ({
+/**
+ * Header minimaliste (logo + CTA) et accès directs à l'app depuis le hero.
+ * Le header ne porte plus de liens de section ni de menu burger (refonte
+ * « à la Duolingo ») : la navigation par ancres vit dans le footer / le hero.
+ */
+
+test("header : logo + CTA vers l'app (nouvel onglet sécurisé)", async ({
   page,
 }) => {
   await page.setViewportSize({ width: 1280, height: 800 });
   await page.goto("/");
 
-  // Le header expose la navigation principale et ses ancres.
   const nav = page.getByRole("navigation", { name: "Navigation principale" });
-  await expect(
-    nav.getByRole("link", { name: "Fonctionnalités" }),
-  ).toBeVisible();
 
-  // CTA vers l'app, en _blank.
-  const cta = nav.getByRole("link", { name: /Accéder à l'app/i }).first();
+  // Logo (lien vers le haut de page).
+  await expect(nav.getByRole("link", { name: /Kitoo/i }).first()).toBeVisible();
+
+  // CTA dominant vers l'app, en _blank sécurisé.
+  const cta = nav.getByRole("link", { name: /Accéder à l'app/i });
+  await expect(cta).toBeVisible();
   await expect(cta).toHaveAttribute("target", "_blank");
-
-  // Disclaimer médical présent dans le footer (le contenu en compte plusieurs).
-  await expect(
-    page
-      .locator("footer")
-      .getByText(/ne remplace pas un suivi médical professionnel/i),
-  ).toBeVisible();
+  await expect(cta).toHaveAttribute("rel", "noopener noreferrer");
+  await expect(cta).toHaveAttribute("href", /.+/);
 });
 
-test("menu mobile : ouverture via burger puis fermeture via Échap", async ({
+test("hero : accès directs « Créer un compte » et « Se connecter » (sécurisés)", async ({
   page,
 }) => {
+  await page.goto("/");
+
+  for (const name of ["Créer un compte", "Se connecter"]) {
+    const link = page.locator("#hero").getByRole("link", { name });
+    await expect(link).toBeVisible();
+    await expect(link).toHaveAttribute("target", "_blank");
+    await expect(link).toHaveAttribute("rel", "noopener noreferrer");
+    await expect(link).toHaveAttribute("href", /.+/);
+  }
+});
+
+test("mobile : le header garde logo + CTA accessibles", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/");
 
-  const burger = page.getByRole("button", { name: "Ouvrir le menu" });
-  await expect(burger).toBeVisible();
-  await burger.click();
-
-  const close = page.getByRole("button", { name: "Fermer le menu" });
-  await expect(close).toHaveAttribute("aria-expanded", "true");
-
-  await page.keyboard.press("Escape");
+  const nav = page.getByRole("navigation", { name: "Navigation principale" });
   await expect(
-    page.getByRole("button", { name: "Ouvrir le menu" }),
-  ).toHaveAttribute("aria-expanded", "false");
+    nav.getByRole("link", { name: /Accéder à l'app/i }),
+  ).toBeVisible();
 });
