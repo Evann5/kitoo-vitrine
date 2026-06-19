@@ -38,6 +38,9 @@ describe("Page /design-system", () => {
       ).toBeInTheDocument();
     }
 
+    // Bloc dédié au logo & wordmark.
+    expect(screen.getByText("Logo & wordmark")).toBeInTheDocument();
+
     // Sous-navigation : une ancre par section.
     for (const id of ["couleurs", "typographie", "composants", "illustrations"]) {
       expect(container.querySelector(`a[href="#${id}"]`)).not.toBeNull();

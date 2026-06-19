@@ -13,6 +13,7 @@
  * démo mouvement · sont déléguées à de petits composants client).
  */
 import type { Metadata } from "next";
+import Image from "next/image";
 import {
   Heart,
   Leaf,
@@ -194,6 +195,52 @@ export default function DesignSystemPage() {
                 <b>ne jamais la recolorer</b>.
               </p>
             </Card>
+
+            <Lbl>Logo & wordmark</Lbl>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+              <div className="text-center">
+                <Card className="flex h-28 items-center justify-center">
+                  <Image
+                    src="/kitoo-logo.png"
+                    alt="Logo Kitoo"
+                    width={72}
+                    height={72}
+                    className="rounded-control"
+                  />
+                </Card>
+                <p className="text-small text-ink-600 mt-2">Marque (koala)</p>
+              </div>
+              <div className="text-center">
+                <Card className="flex h-28 items-center justify-center">
+                  <span className="font-display text-display text-ink-900">
+                    Kitoo
+                  </span>
+                </Card>
+                <p className="text-small text-ink-600 mt-2">Wordmark (Goodly)</p>
+              </div>
+              <div className="text-center">
+                <Card className="flex h-28 items-center justify-center gap-2">
+                  <Image
+                    src="/kitoo-logo.png"
+                    alt=""
+                    width={40}
+                    height={40}
+                    className="rounded-control"
+                  />
+                  <span className="font-display text-title text-ink-900">
+                    Kitoo
+                  </span>
+                </Card>
+                <p className="text-small text-ink-600 mt-2">
+                  Lockup (header / footer)
+                </p>
+              </div>
+            </div>
+            <p className="text-small text-ink-600 mt-3">
+              Le koala <b>est</b> la marque : ne jamais le recolorer ni le
+              déformer, garder un espace de respiration autour, et le poser sur
+              un fond clair.
+            </p>
           </Sec>
 
           {/* 2 · Couleurs */}
