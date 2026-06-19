@@ -141,9 +141,25 @@ design-system/          # design system Kitoo (déposé manuellement)
 
 ## Design tokens & composants
 
-Les tokens Kitoo sont définis dans [`tailwind.config.ts`](tailwind.config.ts)
-(chargé en Tailwind v4 via `@config` dans [`globals.css`](src/app/globals.css)).
-Source de vérité : `design-system/guidelines/Kitoo_Design_System.pdf`.
+Les tokens Kitoo sont la **source de vérité** unique : ils vivent dans
+[`src/lib/design-tokens.ts`](src/lib/design-tokens.ts), importé **à la fois** par
+[`tailwind.config.ts`](tailwind.config.ts) (génération des classes, chargé en
+Tailwind v4 via `@config` dans [`globals.css`](src/app/globals.css)) et par la
+page `/design-system` : aucune valeur ne peut diverger. Source d'origine :
+`design-system/guidelines/Kitoo_Design_System.pdf`.
+
+### Page `/design-system` (vitrine de la charte, pour la soutenance)
+
+[`src/app/design-system/page.tsx`](src/app/design-system/page.tsx) présente
+**l'intégralité du design system en direct** et navigable, pensée pour l'oral :
+identité & principe directeur, nuanciers complets (pervenche, encre, échelle
+d'humeur + daltonisme, sémantiques) avec **tokens + hex copiables**, typographie
+(Goodly/Nunito/Atkinson + échelle), espacement, rayons, ombres, mouvement,
+**composants `ui/` rendus live et étiquetés**, iconographie & mood faces, grille
+des illustrations `kitoo-*` (via le registre), voix & ton, et modes
+d'accessibilité (dyslexie/daltonisme) démontrables. Sommaire à ancres collant,
+responsive, accessible. Hors nav principale : **lien discret dans le footer**
+(page interne, `noindex`).
 
 ### Couleurs
 

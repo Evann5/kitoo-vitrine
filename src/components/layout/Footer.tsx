@@ -93,8 +93,15 @@ export function Footer() {
           <AccessibilityToggle />
         </div>
 
-        <div className="text-small text-ink-600 mt-8">
-          © {year} Kitoo. Prends soin de toi. 💜
+        <div className="text-small text-ink-600 mt-8 flex flex-wrap items-center justify-between gap-2">
+          <span>© {year} Kitoo. Prends soin de toi. 💜</span>
+          {/* Lien discret vers la charte (page de soutenance, hors nav principale). */}
+          <a
+            href="/design-system"
+            className="rounded-control duration-kitoo ease-kitoo hover:text-brand-700 transition-colors"
+          >
+            Design system
+          </a>
         </div>
       </div>
     </footer>

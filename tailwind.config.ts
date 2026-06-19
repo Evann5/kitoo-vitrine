@@ -1,9 +1,18 @@
 import type { Config } from "tailwindcss";
+import {
+  brandScale,
+  inkScale,
+  radii,
+  semanticColors,
+  shadows,
+} from "./src/lib/design-tokens";
 
 /**
  * Configuration Tailwind : tokens du design system Kitoo.
  *
- * Source de vérité : `design-system/guidelines/Kitoo_Design_System.pdf`.
+ * Valeurs (couleurs / rayons / ombres) importées depuis la **source de vérité**
+ * `src/lib/design-tokens.ts`, partagée avec la page `/design-system` pour qu'aucune
+ * valeur ne diverge. Source d'origine : `design-system/guidelines/Kitoo_Design_System.pdf`.
  * Chargée par Tailwind v4 via la directive `@config` dans `src/app/globals.css`.
  *
  * Principes : tout est arrondi et doux, ombres diffuses teintées lavande
@@ -19,34 +28,9 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Pervenche : couleur primaire / de marque (graine = 500).
-        brand: {
-          50: "#F3F3FE",
-          100: "#E9EAFA", // brume lavande, surface douce
-          200: "#D7D8F6",
-          300: "#BFC0F4",
-          400: "#ABACF2",
-          500: "#9B9DF0", // graine de marque
-          600: "#7E80E6", // hover par défaut des boutons
-          700: "#6466CF",
-          800: "#4F50A8",
-          900: "#3B3C7D",
-          DEFAULT: "#9B9DF0",
-        },
-        // Neutres « encre » : cast froid/lavande, jamais gris chaud.
-        ink: {
-          50: "#FAFAFD", // canvas de l'app (off-white teinté lavande)
-          100: "#F2F2F7",
-          200: "#E6E6EE", // filets / bordures subtiles
-          300: "#D2D2DE", // bordures de contrôle par défaut
-          400: "#A6A7B8",
-          500: "#7C7D90",
-          600: "#5C5D70", // couleur d'icône par défaut
-          700: "#44455A",
-          800: "#2E2F45",
-          900: "#16161D", // texte principal
-          DEFAULT: "#16161D",
-        },
+        // Pervenche / encre / sémantique : importés de `design-tokens.ts`.
+        brand: { ...brandScale, DEFAULT: brandScale[500] },
+        ink: { ...inkScale, DEFAULT: inkScale[900] },
         // Échelle d'humeur : couleurs fixes du DS, exposées en variables CSS
         // pour permettre la bascule daltonisme (override dans globals.css).
         mood: {
@@ -56,28 +40,10 @@ const config: Config = {
           negative: "var(--mood-negative)",
           "very-negative": "var(--mood-very-negative)",
         },
-        // Sémantique : accordée au pervenche, jamais criarde.
-        success: "#38B27E",
-        warning: "#F2A33C",
-        danger: "#E5575C",
+        ...semanticColors,
       },
-      borderRadius: {
-        control: "16px", // boutons, inputs
-        card: "22px", // cartes
-        panel: "30px", // panneaux / grandes surfaces
-        pill: "9999px", // pills, tags, badges
-      },
-      boxShadow: {
-        // Ombres douces, diffuses, teintées lavande rgba(42,43,87,…).
-        sm: "0 1px 2px rgba(42,43,87,0.06), 0 2px 6px rgba(42,43,87,0.06)",
-        md: "0 6px 16px rgba(42,43,87,0.08), 0 12px 32px rgba(42,43,87,0.08)",
-        brand: "0 8px 24px rgba(155,157,240,0.35)", // légère lueur pervenche
-        focus: "0 0 0 4px rgba(155,157,240,0.40)", // anneau de focus 4px
-        // Boutons « 3D » : épaisseur basse pervenche foncée (brand-900) + halo
-        // lavande diffus. `btn-press` = état enfoncé (épaisseur réduite).
-        btn: "0 4px 0 0 #3B3C7D, 0 8px 18px rgba(42,43,87,0.18)",
-        "btn-press": "0 1px 0 0 #3B3C7D, 0 3px 10px rgba(42,43,87,0.14)",
-      },
+      borderRadius: { ...radii },
+      boxShadow: { ...shadows },
       fontFamily: {
         // Variables exposées par next/font dans layout.tsx.
         display: ["var(--font-display)", "Poppins", "system-ui", "sans-serif"],
