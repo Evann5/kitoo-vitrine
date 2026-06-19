@@ -212,7 +212,9 @@ export default function DesignSystemPage() {
               </div>
               <div className="text-center">
                 <Card className="flex h-28 items-center justify-center">
-                  <span className="font-display text-display text-ink-900">
+                  {/* tracking-normal : un letter-spacing non nul désactiverait la
+                      ligature « oo » → ∞ de Goodly (signature de la marque). */}
+                  <span className="font-display text-display text-ink-900 tracking-normal">
                     Kitoo
                   </span>
                 </Card>
