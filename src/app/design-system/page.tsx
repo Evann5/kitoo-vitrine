@@ -184,12 +184,10 @@ export default function DesignSystemPage() {
               <Swatch name="Brume lavande · brand-100" hex={brandScale[100]} />
               <Swatch name="Encre · ink-900" hex={inkScale[900]} dark />
             </div>
-            <Card soft className="mt-5 flex items-center gap-4">
-              <Illustration
-                name="kitoo-classic"
-                className="w-20 shrink-0"
-                decorative
-              />
+            <Card soft className="mt-5 flex items-center gap-5">
+              <div className="w-20 shrink-0 sm:w-24">
+                <Illustration name="kitoo-classic" decorative />
+              </div>
               <p className="text-body text-ink-700">
                 La <b>mascotte koala</b> incarne la voix de marque : présente,
                 bienveillante, jamais culpabilisante. Pervenche fidèle :{" "}
@@ -527,7 +525,9 @@ export default function DesignSystemPage() {
                   key={key}
                   className="rounded-card border-ink-200 border bg-white p-3 text-center"
                 >
-                  <Illustration name={key} className="mx-auto w-20" decorative />
+                  <div className="mx-auto w-20">
+                    <Illustration name={key} decorative />
+                  </div>
                   <figcaption className="text-small text-ink-600 mt-2 font-mono">
                     {key}
                   </figcaption>
